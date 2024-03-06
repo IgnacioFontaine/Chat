@@ -14,6 +14,7 @@ import SendIcon from "@mui/icons-material/Send";
 function Chat({ socket, username, room }) {
   
   const [currentMessage, setcurrentMessage] = useState("")
+  const [messagesList, setMessagesList] = useState([])
 
   const sendMessage = async () => {
     if (username && currentMessage) {
@@ -30,8 +31,12 @@ function Chat({ socket, username, room }) {
   useEffect(() => {
     socket.on("recieve_message", (data) => {
       console.log(data);
+      setMessagesList((list) => [...list, data])
+      
     })
-  },[socket])
+  }, [socket])
+  
+  
   
   return (
     <Box
@@ -48,11 +53,14 @@ function Chat({ socket, username, room }) {
         padding:4
       }}
     >
-      <Typography>ID Sala:{room}</Typography>
-      <Box sx={{ flexGrow: 1, overflow: "auto", p: 2 }}>
-        {/* {messages.map((message) => (
-          <Message key={message.id} message={message} />
-        ))} */}
+      <Typography variant="h5" fontFamily={"fantasy"}
+      sx={{backgroundColor:"#4566", width:"100%", textAlign:"center", borderRadius:3 }}
+      >ID Sala: {room}</Typography>
+      <Box sx={{ flexGrow: 1, overflow: "auto", p: 2, minHeight: "500px" }}>
+        
+        {messagesList?.map((message) => (
+          <Message key={message.id} message={message} username={username} />
+        ))}
         
       </Box>
       <Box sx={{ p: 1, backgroundColor: "#4566", width:"95%", borderRadius:2}}>
@@ -90,38 +98,38 @@ function Chat({ socket, username, room }) {
 
 export default Chat;
 
-const Message = ({ message }) => {
-  const isBot = message.sender === "bot";
+const Message = ({ message, username }) => {
+  const isMe = message.author === username;
 
   return (
     <Box
       sx={{
         display: "flex",
-        justifyContent: isBot ? "flex-start" : "flex-end",
+        justifyContent: isMe ? "flex-start" : "flex-end",
         mb: 2,
       }}
     >
       <Box
         sx={{
           display: "flex",
-          flexDirection: isBot ? "row" : "row-reverse",
+          flexDirection: isMe ? "row" : "row-reverse",
           alignItems: "center",
         }}
       >
-        <Avatar sx={{ bgcolor: isBot ? "primary.main" : "secondary.main" }}>
-          {isBot ? "B" : "U"}
+        <Avatar sx={{ bgcolor: isMe ? "primary.main" : "secondary.main" }}>
+          {isMe ? "Me" : message.author[0]}
         </Avatar>
         <Paper
           variant="outlined"
           sx={{
             p: 2,
-            ml: isBot ? 1 : 0,
-            mr: isBot ? 0 : 1,
-            backgroundColor: isBot ? "primary.light" : "secondary.light",
-            borderRadius: isBot ? "20px 20px 20px 5px" : "20px 20px 5px 20px",
+            ml: isMe ? 1 : 0,
+            mr: isMe ? 0 : 1,
+            backgroundColor: isMe ? "primary.light" : "secondary.light",
+            borderRadius: isMe ? "20px 20px 20px 5px" : "20px 20px 5px 20px",
           }}
         >
-          <Typography variant="body1">{message.text}</Typography>
+          <Typography variant="body1">{message.message}</Typography>
         </Paper>
       </Box>
     </Box>
