@@ -17,9 +17,9 @@ const io = new Server(server, {
 io.on('connection', (socket) => {
   console.log(`Usuario actual: ${socket.id}`)
 
-
   socket.on('join_room', (data) => {
     socket.join(data)
+    console.log(`Usuario con ID: ${socket.id} se unió a la sala: ${data}`)
   })
 
   socket.on('disconnect', () => {
