@@ -108,31 +108,34 @@ const Message = ({ message, username }) => {
     <Box
       sx={{
         display: "flex",
-        justifyContent: isMe ? "flex-start" : "flex-end",
+        justifyContent: isMe ? "flex-end" :"flex-start",
         mb: 2,
       }}
     >
       <Box
         sx={{
           display: "flex",
-          flexDirection: isMe ? "row" : "row-reverse",
+          flexDirection: isMe ? "row-reverse" :"row" ,
           alignItems: "center",
         }}
       >
-        <Avatar sx={{ bgcolor: isMe ? "primary.main" : "secondary.main" }} alt={message.author}>
+        <Avatar sx={{ bgcolor: isMe ? "secondary.main" : "primary.main"  }} alt={message.author}>
           {isMe ? "Me" : message.author[0]}
         </Avatar>
         <Paper
           variant="outlined"
           sx={{
             p: 2,
-            ml: isMe ? 1 : 0,
-            mr: isMe ? 0 : 1,
-            backgroundColor: isMe ? "primary.light" : "secondary.light",
-            borderRadius: isMe ? "20px 20px 20px 5px" : "20px 20px 5px 20px",
+            ml: isMe ? 0 : 1,
+            mr: isMe ? 1 : 0,
+            backgroundColor: isMe ? "secondary.light" : "primary.light" ,
+            borderRadius: isMe ? "20px 20px 5px 20px" : "20px 20px 20px 5px",
           }}
         >
           <Typography variant="body1">{message.message}</Typography>
+          <Typography variant="caption"
+            sx={{ display: "block",
+        justifyContent: "flex-start"}} >{message.time}</Typography>
         </Paper>
       </Box>
     </Box>
