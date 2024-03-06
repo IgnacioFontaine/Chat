@@ -26,7 +26,7 @@ function Chat({ socket, username, room }) {
       }
       await socket.emit("send_message", info)
       setMessagesList((list) => [...list, info])
-      // setcurrentMessage("")
+      setcurrentMessage("")
     }
   }
 
@@ -76,6 +76,7 @@ function Chat({ socket, username, room }) {
               name="message"
               variant="outlined"
               onChange={event => setcurrentMessage(event.target.value)}
+              value={currentMessage}
             />
           </Grid>
           <Grid item xs={2.5}>
@@ -86,11 +87,10 @@ function Chat({ socket, username, room }) {
               endIcon={<SendIcon />}
               onClick={sendMessage}
               sx={{
-                mt: 0.3,
-                width: "2vw"
+                width: "2vw",
+                height:"4.5vh"
               }}
             >
-              Enviar
             </Button>
           </Grid>
         </Grid>
