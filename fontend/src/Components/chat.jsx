@@ -25,15 +25,18 @@ function Chat({ socket, username, room }) {
         time: new Date(Date.now()).getHours() +":"+ new Date(Date.now()).getMinutes(),
       }
       await socket.emit("send_message", info)
+      setMessagesList((list) => [...list, info])
+      // setcurrentMessage("")
     }
   }
 
+  
+
   useEffect(() => {
-    socket.on("recieve_message", (data) => {
-      console.log(data);
-      setMessagesList((list) => [...list, data])
-      
-    })
+    const handlerMessage = data => setMessagesList((list) => [...list, data])
+    
+    socket.on("recieve_message", handlerMessage)
+    return ()=>socket.off("recieve_message", handlerMessage)
   }, [socket])
   
   
@@ -116,7 +119,7 @@ const Message = ({ message, username }) => {
           alignItems: "center",
         }}
       >
-        <Avatar sx={{ bgcolor: isMe ? "primary.main" : "secondary.main" }}>
+        <Avatar sx={{ bgcolor: isMe ? "primary.main" : "secondary.main" }} alt={message.author}>
           {isMe ? "Me" : message.author[0]}
         </Avatar>
         <Paper
