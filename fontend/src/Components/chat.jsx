@@ -42,10 +42,16 @@ function Chat({ socket, username, room }) {
   return (
     <Box
       sx={{
-        height: "100vh",
+        backgroundColor: "#2486",
+        height: "90vh",
+        width:"45vh",
         display: "flex",
         flexDirection: "column",
-        bgcolor: "grey.200",
+        justifyContent: "flex-end",
+        border:"1px solid",
+        borderColor: "gray",
+        borderRadius: 4,
+        padding:4
       }}
     >
       <Box sx={{ flexGrow: 1, overflow: "auto", p: 2 }}>
@@ -54,9 +60,9 @@ function Chat({ socket, username, room }) {
         )):<></>}
         
       </Box>
-      <Box sx={{ p: 2, backgroundColor: "background.default" }}>
-        <Grid container spacing={2}>
-          <Grid item xs={10}>
+      <Box sx={{ p: 1, backgroundColor: "#4566", width:"95%", borderRadius:2}}>
+        <Grid container spacing={0.5}>
+          <Grid item xs={9.5}>
             <TextField
               size="small"
               fullWidth
@@ -65,15 +71,18 @@ function Chat({ socket, username, room }) {
               onChange={event => setcurrentMessage(event.target.value)}
             />
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={2.5}>
             <Button
               fullWidth
               color="primary"
               variant="contained"
               endIcon={<SendIcon />}
               onClick={sendMessage}
+              sx={{
+                mt: 0.3,
+                width: "2vw"
+              }}
             >
-              Send
             </Button>
           </Grid>
         </Grid>
