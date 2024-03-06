@@ -10,11 +10,6 @@ import {
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 
-const messages = [
-  { id: 1, text: "Hi there!", sender: "bot" },
-  { id: 2, text: "Hello!", sender: "user" },
-  { id: 3, text: "How can I assist you today?", sender: "bot" },
-];
 
 function Chat({ socket, username, room }) {
   
@@ -28,7 +23,6 @@ function Chat({ socket, username, room }) {
         author: username,
         time: new Date(Date.now()).getHours() +":"+ new Date(Date.now()).getMinutes(),
       }
-
       await socket.emit("send_message", info)
     }
   }
@@ -43,7 +37,7 @@ function Chat({ socket, username, room }) {
     <Box
       sx={{
         backgroundColor: "#2486",
-        height: "90vh",
+        height: "85vh",
         width:"45vh",
         display: "flex",
         flexDirection: "column",
@@ -54,10 +48,11 @@ function Chat({ socket, username, room }) {
         padding:4
       }}
     >
+      <Typography>ID Sala:{room}</Typography>
       <Box sx={{ flexGrow: 1, overflow: "auto", p: 2 }}>
-        {messages? messages.map((message) => (
+        {/* {messages.map((message) => (
           <Message key={message.id} message={message} />
-        )):<></>}
+        ))} */}
         
       </Box>
       <Box sx={{ p: 1, backgroundColor: "#4566", width:"95%", borderRadius:2}}>
@@ -67,6 +62,7 @@ function Chat({ socket, username, room }) {
               size="small"
               fullWidth
               placeholder="Type a message"
+              name="message"
               variant="outlined"
               onChange={event => setcurrentMessage(event.target.value)}
             />
@@ -83,6 +79,7 @@ function Chat({ socket, username, room }) {
                 width: "2vw"
               }}
             >
+              Enviar
             </Button>
           </Grid>
         </Grid>

@@ -21,7 +21,7 @@ const SingInForm = () => {
         display: "flex",
         flexDirection: "column",
         backgroundColor: "#2486",
-        height: "97vh",
+        height: "90vh",
         width:"45vh",
         justifyContent: "flex-start",
         border:"1px solid",
@@ -31,13 +31,17 @@ const SingInForm = () => {
       }}>
       
       <Typography variant="h2" align="center" marginY={2} fontFamily={"fantasy"} >Sing Chat</Typography>
-      <FormControl sx={{
+      <FormControl
+        
+        sx={{
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         mt:5,
-        gap:7
-      }} onSubmit={joinRoom}>
+          gap: 7
+        }}
+      >
+        
         <TextField
           name="username"
           defaultValue=""
@@ -55,7 +59,9 @@ const SingInForm = () => {
           sx={{
             width: "10vw",
             color:"black"
-        }}>
+          }}
+        onClick={joinRoom}
+        >
           Login
         </Button>
       </FormControl>
