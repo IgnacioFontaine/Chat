@@ -21,31 +21,14 @@ const SingInForm = () => {
           rules={{
             required: 'Username is required',
           }}
-          
+          onChange={event => setUsername(event.target.value)}
         />
-        <Controller
-          name="password"
-          control={control}
+        <TextField
+          name="room"
+          type='text'
           defaultValue=""
-          rules={{
-            required: 'Password is required',
-            minLength: {
-              value: 6,
-              message: 'Password must be at least 6 characters'
-            }
-          }}
-          render={({ field }) => (
-            <TextField
-              {...field}
-              label="Password"
-              type="password"
-              variant="outlined"
-              margin="normal"
-              fullWidth
-              error={!!errors.password}
-              helperText={errors.password?.message}
-            />
-          )}
+          rules={{ required: 'Room is required'}}
+          onChange={event => setRoom(event.target.value)}
         />
         <Button type="submit" variant="contained" color="primary" fullWidth>
           Login
