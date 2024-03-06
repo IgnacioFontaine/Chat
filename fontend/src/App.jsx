@@ -10,12 +10,15 @@ const socket = io.connect("http://localhost:3001")
 function App() {
   const [username, setUsername] = useState('')
   const [room, setRoom] = useState('')
-  const [showChat, setShowChat] = useState('')
+  const [showChat, setShowChat] = useState(false)
 
 
   const joinRoom = () => {
     if (username !== "" && room !== "") {
       socket.emit('join_room', room)
+      setShowChat(true);
+    } else {
+    setShowChat(false);
     }
   }
   
@@ -57,7 +60,8 @@ function App() {
           name="username"
           defaultValue=""
           placeholder='Username'
-          onChange={event => setUsername(event.target.value)}
+          onChange={event => 
+      setUsername(event.target.value)}
         />
         <TextField
           name="room"
@@ -77,8 +81,8 @@ function App() {
         </Button>
       </FormControl>
     </Container>
-        {/* <SingInForm /> */}
-        <Chat socket={socket} username={username} room={room} />
+        
+        {showChat == true ? <Chat socket={socket} username={username} room={room} />:<></>}
       </Container>
     </Box>
   )
