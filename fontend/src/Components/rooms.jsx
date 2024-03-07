@@ -5,7 +5,7 @@ import io from 'socket.io-client'
 
 const socket = io.connect("http://localhost:3001")
 
-const SingInForm = () => {
+const Rooms = () => {
   const [username, setUsername] = useState('')
   const [room, setRoom] = useState('')
 
@@ -62,11 +62,20 @@ const SingInForm = () => {
           }}
         onClick={joinRoom}
         >
-          Login
+          Join
+        </Button>
+        <Button type="submit" variant="contained" color="primary" fullWidth fontFamily={"unset"}
+          sx={{
+            width: "10vw",
+            color:"black"
+          }}
+        onClick={()=>alert("Saliste")}
+        >
+          Logout
         </Button>
       </FormControl>
     </Container>
   );
 };
 
-export default SingInForm;
+export default Rooms;
