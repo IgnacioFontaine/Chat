@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./Views/home";
 import Error from "./Views/error";
-import SingUpView from "./Views/singUp";
+// import SingUpView from "./Views/singUp";
 
 function App() {
   
