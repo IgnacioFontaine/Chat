@@ -49,7 +49,7 @@ export default function SingInView() {
     <Box sx={{display:"flex"}}  >
       <SelfImage />
       <Container  component="main" sx={{
-        backgroundColor: `${color_primary}`,
+        background: "linear-gradient(to left,#7D56C1 ,blueviolet)",
         height:"109vh"
       }} > 
         <Box

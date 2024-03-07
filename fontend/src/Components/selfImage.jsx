@@ -31,13 +31,15 @@ export const SelfImage = () => {
         textAlign: "center",
         backgroundColor: "blueviolet",
         padding:10,
-        height:"90vh"}}>
+        height: "90vh",
+        // background: "linear-gradient(to right, blueviolet,#7D56C1)"
+      }}>
       <Box>
         <WhatsAppIcon  sx={{ fontSize: 250 }} />
       </Box>
       <Box>
-        <Typography variant="h1" sx={{mb:5}} >Not Whatsapp</Typography>
-        <Typography variant="body1" >
+        <Typography variant="h1" sx={{mb:5}} fontFamily={"fantasy"} >Not Whatsapp</Typography>
+        <Typography variant="body1" fontFamily={"fantasy"} >
           We are here for simple, short conversations <br />
           We are the solution whenever WhatsApp does not work!</Typography>
       </Box>

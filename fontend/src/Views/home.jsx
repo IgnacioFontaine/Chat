@@ -38,17 +38,16 @@ function Home() {
       sx={{
         display: "flex",
         flexDirection: "column",
-        backgroundColor: color_primary,
+        backgroundColor: "#2486",
         height: "90vh",
-        width:"45vh",
+        width:"50vh",
         justifyContent: "flex-start",
         border:"1px solid",
         borderColor: "gray",
-        borderRadius: 4,
-        padding:4
+        borderRadius: 4
       }}>
       
-      <Typography variant="h2" align="center" marginY={2} fontFamily={"fantasy"} >Sing Chat</Typography>
+      <Typography variant="h2" align="center" marginY={2} fontFamily={"fantasy"}  >Sing Chat</Typography>
       <FormControl
         
         sx={{

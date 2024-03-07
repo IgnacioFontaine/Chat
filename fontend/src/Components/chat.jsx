@@ -46,7 +46,7 @@ function Chat({ socket, username, room }) {
   return (
     <Box
       sx={{
-        backgroundColor: "blueviolet",
+        backgroundColor: "#2486",
         height: "82vh",
         width:"45vh",
         display: "flex",
