@@ -1,5 +1,6 @@
 import io from 'socket.io-client'
 import Chat from '../Components/chat'
+import NotChat from '../Components/notChat'
 // import SingInForm from './Components/singInForm'
 import { Container, Box, TextField, Button, Typography, FormControl } from '@mui/material'
 import image from "/abstract-blue.jpg"
@@ -30,7 +31,7 @@ function Home() {
         height: "100vh",
         width:"100vw",
         display: "flex",
-        bgcolor: "transparent",
+        bgcolor: "transparent"
       }} >
         <Container
       sx={{
@@ -79,12 +80,11 @@ function Home() {
           }}
         onClick={joinRoom}
         >
-          Login
+          Join
         </Button>
       </FormControl>
     </Container>
-        
-        {showChat == true ? <Chat socket={socket} username={username} room={room} />:<></>}
+        {showChat == true ? <Chat socket={socket} username={username} room={room} />:<NotChat />}
       </Container>
     </Box>
   )

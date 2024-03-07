@@ -1,27 +1,28 @@
 import { Box, Typography } from '@mui/material'
 import ChatIcon from '@mui/icons-material/Chat';
 
-
-
-function Error() {
+function NotChat() {
   
   return (
     <Box sx={{
         backgroundColor: "#2486",
-        height: "85vh",
+        height: "84vh",
         width:"45vh",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "flex-end",
+        justifyContent: "center",
         border:"1px solid",
         borderColor: "gray",
         borderRadius: 4,
-        padding:4
+        padding:3
     }}>
-      <Typography variant='h2' fontFamily={"fantasy"}>Set Username & Room!</Typography>
-      <ChatIcon sx={{ fontSize: 30 }} />
+      <ChatIcon sx={{ fontSize: 300 }} />
+      <Typography variant='h5'
+        fontFamily={"fantasy"}
+      sx={{textAlign:"center"}}
+      >Enter a room and start chatting!</Typography>
     </Box>
   )
 }
 
-export default Error;
+export default NotChat;
