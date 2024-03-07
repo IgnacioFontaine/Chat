@@ -23,7 +23,9 @@ function App() {
   }
   
   return (
-    <Box style={{ backgroundImage: `url(${image})` }}>
+    <Box style={{
+      backgroundImage: `url(${image})`}}>
+    
       <Container sx={{
         height: "100vh",
         width:"100vw",
@@ -88,4 +90,4 @@ function App() {
   )
 }
 
-export default App
+export default App;

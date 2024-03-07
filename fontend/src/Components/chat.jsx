@@ -57,7 +57,12 @@ function Chat({ socket, username, room }) {
       }}
     >
       <Typography variant="h5" fontFamily={"fantasy"}
-      sx={{backgroundColor:"#4566", width:"100%", textAlign:"center", borderRadius:3 }}
+        sx={{
+          backgroundColor: "#4566",
+          width: "100%",
+          textAlign: "center",
+          borderRadius: 3
+        }}
       >ID Sala: {room}</Typography>
       <Box sx={{ flexGrow: 1, overflow: "auto", p: 2, minHeight: "500px" }}>
         
@@ -66,7 +71,12 @@ function Chat({ socket, username, room }) {
         ))}
         
       </Box>
-      <Box sx={{ p: 1, backgroundColor: "#4566", width:"95%", borderRadius:2}}>
+      <Box sx={{
+        p: 1,
+        backgroundColor: "#4566",
+        width: "95%",
+        borderRadius: 2
+      }}>
         <Grid container spacing={0.5}>
           <Grid item xs={9.5}>
             <TextField
