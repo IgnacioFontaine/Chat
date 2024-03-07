@@ -1,9 +1,7 @@
-// https://firebase.google.com/docs/web/setup#available-libraries
-import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { initializeApp } from 'firebase/app';
 
-
-// Your web app's Firebase configuration
+// TODO: Replace the following with your app's Firebase project configuration
 const firebaseConfig = {
   apiKey: "AIzaSyAOxyXNrSOuXstLb-wx50PUY2s2ubWdAb4",
   authDomain: "notwhatsapp-b1189.firebaseapp.com",
@@ -13,7 +11,6 @@ const firebaseConfig = {
   appId: "1:637118885199:web:b2d49fcb8623bfedb2293a"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);

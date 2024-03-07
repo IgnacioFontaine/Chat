@@ -17,7 +17,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 const defaultTheme = createTheme();
 
-export default function SignUp() {
+export default function SingUpView() {
   const navigate = useNavigate();
   const auth = getAuth();
 
