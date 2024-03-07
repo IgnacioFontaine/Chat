@@ -14,8 +14,6 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState } from 'react';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
-// import { setUser } from '../Redux/actions';
-// import { useDispatch } from 'react-redux';
 
 const defaultTheme = createTheme();
 
@@ -43,7 +41,7 @@ export default function SingInView() {
 
   return (
     <ThemeProvider theme={defaultTheme}  >
-      <Container  component="main" maxWidth="xs" >
+      <Container component="main" maxWidth="xs" >
         <Box
           sx={{
             marginTop: 8,
