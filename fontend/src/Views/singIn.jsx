@@ -34,7 +34,7 @@ export default function SingInView() {
         // Signed in 
         const user = userCredential.user;
         // dispatch(setUser(user));
-        navigate("/");
+        navigate("/chat");
       })
       .catch((error) => {
         const errorMessage = error.message;

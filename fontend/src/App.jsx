@@ -23,8 +23,8 @@ function App() {
   
   return (
     <Routes>
-          <Route path="/" element={<IsAuthGuard />} />
-          <Route path="/singIn" element={<SingInView />} />
+          <Route path="/" element={<SingInView />} />
+          <Route path="/chat" element={<IsAuthGuard />} />
           <Route path="/singUp" element={<SingUpView />} />
           <Route path="*" element={<Error />}  />
         </Routes>

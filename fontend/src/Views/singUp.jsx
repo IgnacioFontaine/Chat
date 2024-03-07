@@ -34,7 +34,7 @@ export default function SingInView() {
         // Signed in 
         const user = userCredential.user;
         // dispatch(setUser(user));
-        navigate("/");
+        navigate("/chat");
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -100,7 +100,7 @@ export default function SingInView() {
             </Button>
             <Grid container sx={{mt:3}}>
               <Grid item>
-                <Link href="/singIn" variant="body2" sx={{textDecoration:"none"}}>
+                <Link href="/" variant="body2" sx={{textDecoration:"none"}}>
                   {"Already have an account? Sign in"}
                 </Link>
               </Grid>

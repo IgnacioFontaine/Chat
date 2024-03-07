@@ -1,16 +1,17 @@
-import { Box, Button, Typography } from '@mui/material'
+import { Box } from '@mui/material'
 import image from "/abstract-blue.jpg"
 import { useNavigate } from 'react-router-dom';
 
 
 function Error() {
   const navigate = useNavigate()
+  const error_view = true
   
   return (
     <Box style={{
-      backgroundImage: `url(${image})`}}>
-      <Typography>Error 404</Typography>
-      <Button onClick={() => navigate("/")}>Return to Home</Button>
+      backgroundImage: `url(${image})`
+    }}>
+      {error_view && navigate("/chat")}
     </Box>
   )
 }
