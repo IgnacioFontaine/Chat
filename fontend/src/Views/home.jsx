@@ -1,5 +1,5 @@
 import io from 'socket.io-client'
-import Chat from './Components/chat'
+import Chat from '../Components/chat'
 // import SingInForm from './Components/singInForm'
 import { Container, Box, TextField, Button, Typography, FormControl } from '@mui/material'
 import image from "/abstract-blue.jpg"

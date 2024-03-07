@@ -9,7 +9,7 @@ function App() {
     <Routes>
           <Route path="/" element={<Home />} />
           {/* <Route path="/singIn" element={<SingInView />} /> */}
-          <Route path="/singUp" element={<SingUpView />} />
+          {/* <Route path="/singUp" element={<SingUpView />} /> */}
           <Route path="*" element={<Error />}  />
         </Routes>
   )
