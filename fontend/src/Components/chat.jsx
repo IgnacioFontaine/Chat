@@ -10,6 +10,8 @@ import {
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 
+const color_primary = "#7D56C1";
+const color_secondary = "#3E2A61";
 
 function Chat({ socket, username, room }) {
   
@@ -44,7 +46,7 @@ function Chat({ socket, username, room }) {
   return (
     <Box
       sx={{
-        backgroundColor: "#2486",
+        backgroundColor: "blueviolet",
         height: "82vh",
         width:"45vh",
         display: "flex",

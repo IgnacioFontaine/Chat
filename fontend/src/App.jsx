@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux';
 import { setUser } from './Redux/actions';
 import { IsAuthGuard } from "./Components/isAuth";
 import { SelfImage } from './Components/selfImage';
+import Dev from "./Views/dev";
 
 function App() {
 
@@ -24,7 +25,7 @@ function App() {
   
   return (
     <Routes>
-          <Route path="/dev" element={<SelfImage />} />
+          <Route path="/dev" element={<Dev></Dev>} />
           <Route path="/" element={<SingInView />} />
           <Route path="/chat" element={<IsAuthGuard />} />
           <Route path="/singUp" element={<SingUpView />} />

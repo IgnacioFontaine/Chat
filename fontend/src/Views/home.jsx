@@ -1,13 +1,14 @@
 import io from 'socket.io-client'
 import Chat from '../Components/chat'
 import NotChat from '../Components/notChat'
-// import SingInForm from './Components/singInForm'
 import { Container, Box, TextField, Button, Typography, FormControl } from '@mui/material'
-import image from "/abstract-blue.jpg"
 import { useState } from 'react'
 
 
 const socket = io.connect("http://localhost:3001")
+const color_primary = "#7D56C1";
+const color_secondary = "#3E2A61";
+
 
 function Home() {
   const [username, setUsername] = useState('')
@@ -25,8 +26,7 @@ function Home() {
   }
   
   return (
-    <Box style={{
-      backgroundImage: `url(${image})`}}>
+    <Box style={{backgroundColor:"blueviolet"}}>
     
       <Container sx={{
         height: "100vh",
@@ -38,7 +38,7 @@ function Home() {
       sx={{
         display: "flex",
         flexDirection: "column",
-        backgroundColor: "#2486",
+        backgroundColor: color_primary,
         height: "90vh",
         width:"45vh",
         justifyContent: "flex-start",
@@ -65,7 +65,7 @@ function Home() {
           defaultValue=""
           placeholder='Username'
           onChange={event => 
-      setUsername(event.target.value)}
+          setUsername(event.target.value)}
         />
         <TextField
           name="room"

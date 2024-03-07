@@ -14,8 +14,12 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState } from 'react';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
+import { SelfImage } from '../Components/selfImage';
 
 const defaultTheme = createTheme();
+
+const color_primary = "#7D56C1";
+const color_secondary = "#3E2A61";
 
 export default function SingInView() {
   const navigate = useNavigate()
@@ -40,8 +44,12 @@ export default function SingInView() {
   }
 
   return (
-    <ThemeProvider theme={defaultTheme}  >
-      <Container component="main" maxWidth="xs" >
+    <Box sx={{ display: "flex" }}  >
+      <SelfImage />
+      <Container component="main" sx={{
+        backgroundColor: `${color_primary}`,
+        height:"109vh"
+      }} >
         <Box
           sx={{
             marginTop: 8,
@@ -52,7 +60,7 @@ export default function SingInView() {
             marginBottom:10
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'blue', color:"black" }}>
+          <Avatar sx={{ m: 1, bgcolor: `${color_secondary}`, color:"black" }}>
             <LockOutlinedIcon  />
           </Avatar>
           <Typography component="h1" variant="h3" fontFamily={"fantasy"}>
@@ -91,14 +99,14 @@ export default function SingInView() {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 5, mb: 2, bgcolor: 'blue', color: "black",":hover": { bgcolor: 'blue', color: "white" } }}
+              sx={{ mt: 5, mb: 2, bgcolor: `${color_secondary}`, color: "black",":hover": { bgcolor: `${color_secondary}`, color: "white" } }}
               onClick={singInFunction}
             >
               Sign In
             </Button>
             <Grid container sx={{mt:3}}>
               <Grid item>
-                <Link href="/singUp" variant="body2" sx={{textDecoration:"none"}}>
+                <Link href="/singUp" variant="body2" sx={{textDecoration:"none", color:"black"}}>
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
@@ -106,6 +114,6 @@ export default function SingInView() {
           </Box>
         </Box>
       </Container>
-     </ThemeProvider>
+     </Box>
   );
 }

@@ -24,14 +24,16 @@ function Footer(props) {
 export const SelfImage = () => {
   
   return (
-    <Box xs={0} sm={3} md={6}
+    <Box 
       sx={{
         justifyContent: "space-evenly",
         alignContent: "center",
         textAlign: "center",
-        padding: 10}}>
+        backgroundColor: "blueviolet",
+        padding:10,
+        height:"90vh"}}>
       <Box>
-        <WhatsAppIcon  sx={{ fontSize: 200 }} />
+        <WhatsAppIcon  sx={{ fontSize: 250 }} />
       </Box>
       <Box>
         <Typography variant="h1" sx={{mb:5}} >Not Whatsapp</Typography>
@@ -39,7 +41,7 @@ export const SelfImage = () => {
           We are here for simple, short conversations <br />
           We are the solution whenever WhatsApp does not work!</Typography>
       </Box>
-      <Box>
+      <Box  >
         <Footer />
       </Box>
     </Box>
