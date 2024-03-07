@@ -2,7 +2,8 @@ import ACTION_TYPES from "./actionsTypes";
 
 //Config initialState
 const initialState = {
-  user:null,
+  user: null,
+  username_user:null,
   error: false,
   errormsg: {},
 };
