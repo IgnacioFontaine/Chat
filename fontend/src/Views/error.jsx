@@ -1,4 +1,4 @@
-import { Box } from '@mui/material'
+import { Box, Button, Container, Typography } from '@mui/material'
 import image from "/abstract-blue.jpg"
 import { useNavigate } from 'react-router-dom';
 
@@ -11,7 +11,30 @@ function Error() {
     <Box style={{
       backgroundImage: `url(${image})`
     }}>
-      {error_view && navigate("/chat")}
+      <Container sx={{
+        height: "100vh",
+        width:"100vw",
+        display: "flex",
+        bgcolor: "transparent"
+      }}>
+        <Box sx={{
+        display: "flex",
+        flexDirection: "column",
+        backgroundColor: "#2486",
+        height: "90vh",
+        width:"45vh",
+          justifyContent: "center",
+        alignContent:"center",
+        border:"1px solid",
+        borderColor: "gray",
+        borderRadius: 4,
+        padding:4
+      }}>
+          <Typography variant='h1'>Eror 404!</Typography>
+          <Typography variant='h3'>Return to chat</Typography>
+          <Button sx={{bgcolor:"blue", color:"black",width: "10vw", height:"3vh", alignSelf:"center"}} onClick={()=>navigate("/chat")}>Chat</Button>
+        </Box>
+      </Container>
     </Box>
   )
 }
