@@ -3,7 +3,6 @@ import ACTION_TYPES from "./actionsTypes";
 //Config initialState
 const initialState = {
   user: null,
-  username_user:null,
   error: false,
   errormsg: {},
 };

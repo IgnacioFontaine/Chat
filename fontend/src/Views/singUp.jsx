@@ -1,3 +1,4 @@
+import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -11,106 +12,98 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-
+import { useNavigate } from 'react-router-dom';
 
 const defaultTheme = createTheme();
 
-export default function SingUpView() {
-  const navigate = useNavigate();
-  const auth = getAuth();
+export default function SingInView() {
+  const navigate = useNavigate()
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const singUpFunction = (event) => {
     event.preventDefault()
-
-  createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed up 
-    const user = userCredential.user;
-    navigate("/");
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });};
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        navigate("/");
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+      });
+  }
 
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <Container component="main" maxWidth="xs">
+    <ThemeProvider theme={defaultTheme}  >
+      <Container  component="main" maxWidth="xs" >
         <Box
           sx={{
-            marginTop: 5.3,
+            marginTop: 8,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            p:9.1
+            p: 5.7,
+            marginBottom:10
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: 'blue', color:"black" }}>
-            <LockOutlinedIcon />
+            <LockOutlinedIcon  />
           </Avatar>
           <Typography component="h1" variant="h3" fontFamily={"fantasy"}>
-            Sign up
+            Sign Up
           </Typography>
-          <Box component="form" noValidate sx={{ mt: 3 }}>
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                  value={email}
-                  onChange={event=>setEmail(event.target.value)}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  value={password}
-                  onChange={event=>setPassword(event.target.value)}
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  
-                  autoComplete="new-password"
-                  
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="I want to receive inspiration, marketing promotions and updates via email."
-                />
-              </Grid>
-            </Grid>
+          <Box component="form" noValidate sx={{ mt: 1 }}>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+              autoFocus
+              value={email}
+              onChange={event=>setEmail(event.target.value)}
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+              value={password}
+              onChange={event=>setPassword(event.target.value)}
+            />
+            <FormControlLabel
+              control={<Checkbox value="remember" color="primary" />}
+              label="Remember me"
+            />
             <Button
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2, bgcolor: 'blue', color: "black", ":hover": { bgcolor: 'blue', color: "white" } }}
+              sx={{ mt: 5, mb: 2, bgcolor: 'blue', color: "black",":hover": { bgcolor: 'blue', color: "white" } }}
               onClick={singUpFunction}
             >
               Sign Up
             </Button>
-            <Grid container justifyContent="flex-end">
+            <Grid container sx={{mt:3}}>
               <Grid item>
                 <Link href="/singIn" variant="body2" sx={{textDecoration:"none"}}>
-                  Already have an account? Sign in
+                  {"Already have an account? Sign in"}
                 </Link>
               </Grid>
             </Grid>
           </Box>
         </Box>
       </Container>
-    </ThemeProvider>
+     </ThemeProvider>
   );
 }
