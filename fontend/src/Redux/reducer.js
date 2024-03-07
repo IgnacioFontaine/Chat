@@ -11,6 +11,12 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   console.log(action);
   switch (action.type) {
+
+    case ACTION_TYPES.SET_USER:
+      return {
+        ...state,
+        user:action.payload
+      }
     
     case ACTION_TYPES.ERROR:
       return {

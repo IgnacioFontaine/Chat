@@ -1,11 +1,9 @@
-import { useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import SignIn from "./singIn";
 import Home from "../Views/home";
 
 export const IsAuthGuard = () => {
-  const navigate = useNavigate();
-  const current_user = useSelector((state) => state.products.user);
+  const current_user = useSelector((state) => state.user);
   console.log(current_user);
   
   if (current_user != null) {
