@@ -3,7 +3,7 @@ import SignIn from "./singIn";
 import Home from "../Views/home";
 
 export const IsAuthGuard = () => {
-  const current_user = useSelector((state) => state.user);
+  const current_user = useSelector((state) => state.products.user);
   console.log(current_user);
   
   if (current_user != null) {

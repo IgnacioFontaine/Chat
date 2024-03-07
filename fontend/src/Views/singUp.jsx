@@ -14,11 +14,14 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState } from 'react';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
+// import { setUser } from '../Redux/actions';
+// import { useDispatch } from 'react-redux';
 
 const defaultTheme = createTheme();
 
 export default function SingInView() {
   const navigate = useNavigate()
+  // const dispatch = useDispatch()
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -30,6 +33,7 @@ export default function SingInView() {
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
+        // dispatch(setUser(user));
         navigate("/");
       })
       .catch((error) => {

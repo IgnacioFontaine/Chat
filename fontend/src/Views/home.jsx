@@ -6,6 +6,7 @@ import { Container, Box, TextField, Button, Typography, FormControl } from '@mui
 import image from "/abstract-blue.jpg"
 import { useState } from 'react'
 
+
 const socket = io.connect("http://localhost:3001")
 
 function Home() {
