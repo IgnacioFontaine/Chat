@@ -3,6 +3,7 @@ import Chat from '../Components/chat'
 import NotChat from '../Components/notChat'
 import { Container, Box, TextField, Button, Typography, FormControl } from '@mui/material'
 import { useState } from 'react'
+import InfoPopover from '../Components/info'
 
 
 const socket = io.connect("http://localhost:3001")
@@ -47,7 +48,7 @@ function Home() {
         borderRadius: 4
       }}>
       
-      <Typography variant="h2" align="center" marginY={2} fontFamily={"fantasy"}  >Sing Chat</Typography>
+      <Typography variant="h2" align="center" marginY={2} fontFamily={"fantasy"}  >Sing Chat<InfoPopover/> </Typography>
       <FormControl
         
         sx={{

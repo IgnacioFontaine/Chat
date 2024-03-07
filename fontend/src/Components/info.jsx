@@ -21,8 +21,8 @@ function InfoPopover() {
 
   return (
     <div>
-      <Button aria-describedby={id} variant="contained" onClick={handleClick}>
-        <InfoIcon />
+      <Button aria-describedby={id} variant="contained" onClick={handleClick} sx={{backgroundColor:"transparent"}}>
+        <InfoIcon sx={{backgroundColor:"transparent", color:"black"}} />
       </Button>
       <Popover
         id={id}
@@ -34,10 +34,12 @@ function InfoPopover() {
           horizontal: 'left',
         }}
       >
-        <Typography sx={{ p: 2 }} variant='body2'>
-          Enter username and the same room as whoever you want to communicate with, then just chat!
+        <Typography sx={{ p: 2, backgroundColor:"#2486", color:"black" }} variant='body2'>
+          Enter username & the same room as <br />whoever you want to communicate with, then just chat!
         </Typography>
       </Popover>
     </div>
   );
 }
+
+export default InfoPopover;
