@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import { auth } from './firebase';
 import { useDispatch } from 'react-redux';
 import { setUser } from './Redux/actions';
+import { IsAuthGuard } from "./Components/isAuth";
 
 function App() {
 
@@ -22,7 +23,7 @@ function App() {
   
   return (
     <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<IsAuthGuard />} />
           <Route path="/singIn" element={<SingInView />} />
           <Route path="/singUp" element={<SingUpView />} />
           <Route path="*" element={<Error />}  />

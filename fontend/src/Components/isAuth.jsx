@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import SignIn from "./singIn";
+import SingInView from '../Views/singIn';
 import Home from "../Views/home";
 
 export const IsAuthGuard = () => {
@@ -14,7 +14,7 @@ export const IsAuthGuard = () => {
   );
   } else if (current_user == null) {
     return (
-    <SignIn />
+    <SingInView />
     )
   }
 };
