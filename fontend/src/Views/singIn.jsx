@@ -51,15 +51,22 @@ export default function SingInView() {
           background: "linear-gradient(to left,#7D56C1 ,blueviolet)"
       }} >
         <Box
-          
+          sx={{
+            marginTop: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            marginBottom: 10,
+            p: 5
+          }}
         >
-          <Avatar sx={{ m: 1, bgcolor: `${color_secondary}`, color:"black" }}>
+          <Avatar sx={{ m: 2, bgcolor: `${color_secondary}`, color:"black" }}>
             <LockOutlinedIcon  />
           </Avatar>
           <Typography component="h1" variant="h3" fontFamily={"fantasy"}>
             Sign in
           </Typography>
-          <Box component="form" noValidate sx={{ mt: 1 }}>
+          <Box component="form" noValidate sx={{ mt: 5}}>
             <TextField
               margin="normal"
               required
@@ -92,7 +99,7 @@ export default function SingInView() {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 5, mb: 2, bgcolor: `${color_secondary}`, color: "black",":hover": { bgcolor: `${color_secondary}`, color: "white" } }}
+              sx={{ mt: 7, bgcolor: `${color_secondary}`, color: "black",":hover": { bgcolor: `${color_secondary}`, color: "white" } }}
               onClick={singInFunction}
             >
               Sign In

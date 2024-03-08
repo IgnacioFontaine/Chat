@@ -27,7 +27,7 @@ export const SelfImage = () => {
     <Box 
       sx={{
         display: {
-          xs: 'none', sm: 'grid', lg: 'flex', xl: 'flex'
+          xs: 'none', sm: 'flex', lg: 'flex', xl: 'flex'
         },
         backgroundColor: "blueviolet"
       }}>
@@ -37,7 +37,8 @@ export const SelfImage = () => {
         justifyContent: "center",
         alignContent: "center",
         height: "100%",
-        p:5
+        p: 5,
+        pl:0
       }}>
         <Box>
           <WhatsAppIcon  sx={{ fontSize: 250 }} />

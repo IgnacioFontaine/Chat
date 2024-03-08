@@ -57,17 +57,17 @@ export default function SingInView() {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            p: 5.7,
-            marginBottom:10
+            marginBottom: 10,
+            p: 5
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: `${color_secondary}`, color:"black" }}>
+          <Avatar sx={{ m: 2, bgcolor: `${color_secondary}`, color:"black" }}>
             <LockOutlinedIcon  />
           </Avatar>
           <Typography component="h1" variant="h3" fontFamily={"fantasy"}>
             Sign Up
           </Typography>
-          <Box component="form" noValidate sx={{ mt: 1 }}>
+          <Box component="form" noValidate sx={{ mt: 5 }}>
             <TextField
               margin="normal"
               required
@@ -100,12 +100,12 @@ export default function SingInView() {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 5, mb: 2, bgcolor: `${color_secondary}`, color: "black",":hover": { bgcolor: `${color_secondary}`, color: "white" } }}
+              sx={{ mt: 7, bgcolor: `${color_secondary}`, color: "black",":hover": { bgcolor: `${color_secondary}`, color: "white" } }}
               onClick={singUpFunction}
             >
               Sign Up
             </Button>
-            <Grid container sx={{mt:3}}>
+            <Grid container sx={{mt:4}}>
               <Grid item>
                 <Link href="/" variant="body2" sx={{textDecoration:"none", color:"black"}}>
                   {"Already have an account? Sign in"}
