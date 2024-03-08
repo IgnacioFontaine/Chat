@@ -78,7 +78,8 @@ function Home() {
           defaultValue=""
           placeholder='Username'
           onChange={event => 
-          setUsername(event.target.value)}
+                setUsername(event.target.value)}
+              autoComplete='off'
         />
         <TextField
           name="room"
@@ -86,6 +87,7 @@ function Home() {
           defaultValue=""
           placeholder='Room'
           onChange={event => setRoom(event.target.value)}
+          autoComplete='off'
         />
             <Button
               type="submit"
@@ -110,7 +112,7 @@ function Home() {
                 ":hover":
                   { bgcolor: `${color_secondary}`, color: "white" }
               }}
-        onClick={handleOut}
+              onClick={handleOut}
         >
           Logout
         </Button>  

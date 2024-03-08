@@ -75,7 +75,7 @@ export default function SingInView() {
               id="email"
               label="Email Address"
               name="email"
-              autoComplete="email"
+              autoComplete='off'
               autoFocus
               value={email}
               onChange={event=>setEmail(event.target.value)}
