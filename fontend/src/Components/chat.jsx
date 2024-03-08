@@ -150,7 +150,7 @@ const Message = ({ message, username }) => {
           <Typography variant="body1">{message.message}</Typography>
           <Typography variant="caption"
             sx={{ display: "block",
-        justifyContent: "flex-start"}} >{message.time}</Typography>
+        textAlign: "flex-start"}} >{message.time}</Typography>
         </Paper>
       </Box>
     </Box>

@@ -1,6 +1,5 @@
 import './App.css'
 import { Route, Routes } from "react-router-dom";
-import Error from "./Views/error";
 import SingUpView from "./Views/singUp";
 import SingInView from "./Views/singIn";
 import { useEffect } from 'react';
@@ -26,7 +25,7 @@ function App() {
           <Route path="/" element={<SingInView />} />
           <Route path="/chat" element={<IsAuthGuard />} />
           <Route path="/singUp" element={<SingUpView />} />
-          <Route path="*" element={<Error />}  />
+          <Route path="*" element={<IsAuthGuard />}  />
         </Routes>
   )
 }
