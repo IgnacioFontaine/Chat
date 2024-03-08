@@ -55,7 +55,6 @@ function Chat({ socket, username, room }) {
         border:"1px solid",
         borderColor: "gray",
         borderRadius: 4,
-        padding:4
       }}
     >
       <Typography variant="h5" fontFamily={"fantasy"}

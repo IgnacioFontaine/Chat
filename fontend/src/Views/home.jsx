@@ -4,6 +4,9 @@ import NotChat from '../Components/notChat'
 import { Container, Box, TextField, Button, Typography, FormControl } from '@mui/material'
 import { useState } from 'react'
 import InfoPopover from '../Components/info'
+import { useSelector } from 'react-redux';
+import { auth } from "../firebase"
+import { useNavigate } from 'react-router-dom'
 
 
 const socket = io.connect("http://localhost:3001")
@@ -15,6 +18,9 @@ function Home() {
   const [username, setUsername] = useState('')
   const [room, setRoom] = useState('')
   const [showChat, setShowChat] = useState(false)
+  const navigate = useNavigate()
+
+  const user_current = useSelector((state) => state.products.user)
 
 
   const joinRoom = () => {
@@ -25,6 +31,13 @@ function Home() {
     setShowChat(false);
     }
   }
+
+  function handleOut() {
+    if (user_current) {
+      auth.signOut();
+      navigate("/")
+    }
+  }
   
   return (
     <Box style={{backgroundColor:"blueviolet"}}>
@@ -33,7 +46,7 @@ function Home() {
         height: "100vh",
         width:"100vw",
         display: "flex",
-        bgcolor: "transparent"
+        bgcolor: "transparent",
       }} >
         <Container
       sx={{
@@ -45,18 +58,18 @@ function Home() {
         justifyContent: "flex-start",
         border:"1px solid",
         borderColor: "gray",
-        borderRadius: 4
+            borderRadius: 4,
+        mt:5
       }}>
       
-      <Typography variant="h2" align="center" marginY={2} fontFamily={"fantasy"}  >Sing Chat<InfoPopover/> </Typography>
+      <Typography variant="h2" align="center" marginY={10} fontFamily={"fantasy"}  >Sing Chat<InfoPopover/> </Typography>
       <FormControl
-        
         sx={{
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        mt:5,
-          gap: 7
+        mt:1,
+        gap: 5
         }}
       >
         
@@ -74,18 +87,38 @@ function Home() {
           placeholder='Room'
           onChange={event => setRoom(event.target.value)}
         />
-        <Button type="submit" variant="contained" color="primary" fullWidth fontFamily={"unset"}
-          sx={{
-            width: "10vw",
-            color:"black"
-          }}
+            <Button
+              type="submit"
+              variant="contained"
+              fontFamily={"unset"}
+              sx={{
+                bgcolor: `${color_secondary}`,
+                color: "black",
+                ":hover":
+                  { bgcolor: `${color_secondary}`, color: "white" }
+              }}
         onClick={joinRoom}
         >
           Join
         </Button>
+            <Button
+              variant="contained"
+              fontFamily={"unset"}
+              sx={{
+                bgcolor: `${color_secondary}`,
+                color: "black",
+                ":hover":
+                  { bgcolor: `${color_secondary}`, color: "white" }
+              }}
+        onClick={handleOut}
+        >
+          Logout
+        </Button>  
       </FormControl>
-    </Container>
-        {showChat == true ? <Chat socket={socket} username={username} room={room} />:<NotChat />}
+        </Container >
+        <Box marginY={5}>
+          {showChat == true ? <Chat socket={socket} username={username} room={room}  />:<NotChat />}
+        </Box>
       </Container>
     </Box>
   )
