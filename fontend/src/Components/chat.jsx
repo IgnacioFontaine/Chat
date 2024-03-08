@@ -47,8 +47,8 @@ function Chat({ socket, username, room }) {
     <Box
       sx={{
         backgroundColor: "#2486",
-        height: "82vh",
-        width:"45vh",
+        height: "90vh",
+        width:"50vh",
         display: "flex",
         flexDirection: "column",
         justifyContent: "flex-end",
@@ -62,7 +62,7 @@ function Chat({ socket, username, room }) {
           backgroundColor: "#4566",
           width: "100%",
           textAlign: "center",
-          borderRadius: 3
+          borderRadius: 3,
         }}
       >ID Sala: {room}</Typography>
       <Box sx={{ flexGrow: 1, overflow: "auto", p: 2, minHeight: "500px" }}>
@@ -75,8 +75,8 @@ function Chat({ socket, username, room }) {
       <Box sx={{
         p: 1,
         backgroundColor: "#4566",
-        width: "95%",
-        borderRadius: 2
+        width: "96%",
+        borderRadius: 3
       }}>
         <Grid container spacing={0.5}>
           <Grid item xs={9.5}>
@@ -98,8 +98,12 @@ function Chat({ socket, username, room }) {
               endIcon={<SendIcon />}
               onClick={sendMessage}
               sx={{
-                width: "2vw",
-                height:"4.5vh"
+                bgcolor: `${color_secondary}`,
+                height: "4.6vh",
+                width:"4vw",
+                color: "black",
+                ":hover":
+                  { bgcolor: `${color_secondary}`, color: "white" }
               }}
             >
             </Button>

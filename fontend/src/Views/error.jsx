@@ -1,5 +1,4 @@
 import { Box, Button, Container, Typography } from '@mui/material'
-import image from "/abstract-blue.jpg"
 import { useNavigate } from 'react-router-dom';
 
 
@@ -9,7 +8,7 @@ function Error() {
   
   return (
     <Box style={{
-      backgroundImage: `url(${image})`
+      backgroundColor:"blueviolet"
     }}>
       <Container sx={{
         height: "100vh",

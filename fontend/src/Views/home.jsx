@@ -41,7 +41,6 @@ function Home() {
   
   return (
     <Box style={{backgroundColor:"blueviolet"}}>
-    
       <Container sx={{
         height: "100vh",
         width:"100vw",
@@ -58,7 +57,7 @@ function Home() {
         justifyContent: "flex-start",
         border:"1px solid",
         borderColor: "gray",
-            borderRadius: 4,
+        borderRadius: 4,
         mt:5
       }}>
       
@@ -68,7 +67,6 @@ function Home() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        mt:1,
         gap: 5
         }}
       >
@@ -92,14 +90,13 @@ function Home() {
             <Button
               type="submit"
               variant="contained"
-              fontFamily={"unset"}
               sx={{
                 bgcolor: `${color_secondary}`,
                 color: "black",
                 ":hover":
                   { bgcolor: `${color_secondary}`, color: "white" }
               }}
-        onClick={joinRoom}
+              onClick={joinRoom}
         >
           Join
         </Button>
