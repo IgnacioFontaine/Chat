@@ -1,6 +1,5 @@
 const ACTION_TYPES = {
   SET_USER: "SET_USER",
-  SET_USERNAME: "SET_USERNAME",
   ERROR:"ERROR"
 }
     
