@@ -1,3 +1,4 @@
+import './App.css'
 import { Route, Routes } from "react-router-dom";
 import Error from "./Views/error";
 import SingUpView from "./Views/singUp";

@@ -44,22 +44,14 @@ export default function SingInView() {
   }
 
   return (
-    <Box sx={{ display: "flex" }}  >
+    <Box display={"flex"} >
       <SelfImage />
-      <Container component="main" sx={{
-        // backgroundColor: `${color_primary}`,
-        background: "linear-gradient(to left,#7D56C1 ,blueviolet)",
-        height:"109vh"
+      <Container
+        sx={{
+          background: "linear-gradient(to left,#7D56C1 ,blueviolet)"
       }} >
         <Box
-          sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            p: 5.7,
-            marginBottom:10
-          }}
+          
         >
           <Avatar sx={{ m: 1, bgcolor: `${color_secondary}`, color:"black" }}>
             <LockOutlinedIcon  />

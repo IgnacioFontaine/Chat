@@ -26,25 +26,31 @@ export const SelfImage = () => {
   return (
     <Box 
       sx={{
-        justifyContent: "space-evenly",
-        alignContent: "center",
-        textAlign: "center",
-        backgroundColor: "blueviolet",
-        padding:10,
-        height: "90vh",
-        // background: "linear-gradient(to right, blueviolet,#7D56C1)"
+        display: {
+          xs: 'none', sm: 'grid', lg: 'flex', xl: 'flex'
+        },
+        backgroundColor: "blueviolet"
       }}>
-      <Box>
-        <WhatsAppIcon  sx={{ fontSize: 250 }} />
-      </Box>
-      <Box>
-        <Typography variant="h1" sx={{mb:5}} fontFamily={"fantasy"} >Not Whatsapp</Typography>
-        <Typography variant="body1" fontFamily={"fantasy"} >
-          We are here for simple, short conversations <br />
-          We are the solution whenever WhatsApp does not work!</Typography>
-      </Box>
-      <Box  >
-        <Footer />
+      <Box sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignContent: "center",
+        height: "100%",
+        p:5
+      }}>
+        <Box>
+          <WhatsAppIcon  sx={{ fontSize: 250 }} />
+        </Box>
+        <Box>
+          <Typography variant="h1" sx={{mb:5}} fontFamily={"fantasy"} >Not Whatsapp</Typography>
+          <Typography variant="body1" fontFamily={"fantasy"} >
+            We are here for simple, short conversations <br />
+            We are the solution whenever WhatsApp does not work!</Typography>
+        </Box>
+        <Box  >
+          <Footer />
+        </Box>
       </Box>
     </Box>
   )
