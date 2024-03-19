@@ -3,7 +3,8 @@ import ACTION_TYPES from "./actionsTypes";
 //Config initialState
 const initialState = {
   user: null,
-  rooms:[],
+  rooms: [],
+  select_room:{},
   error: false,
   errormsg: {},
 };
@@ -23,7 +24,12 @@ const reducer = (state = initialState, action) => {
         ...state,
         rooms:[...state.rooms, action.payload]
       }
-
+    
+    case ACTION_TYPES.SELECT_ROOM:
+      return {
+        ...state,
+        select_room:action.payload
+      }
     
     case ACTION_TYPES.ERROR:
       return {

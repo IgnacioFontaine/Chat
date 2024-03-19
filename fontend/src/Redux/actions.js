@@ -27,3 +27,17 @@ export const newRoom = (room) => {
     }
   };
 }
+
+export const selectRoom = (room) => {
+
+  return async (dispatch) => {
+    try {
+      dispatch({
+        type: ACTION_TYPES.SELECT_ROOM,
+        payload: room,
+      });
+    } catch (error) {
+      return dispatch({ type: ACTION_TYPES.ERROR, payload: error });
+    }
+  };
+}

@@ -68,7 +68,8 @@ function Home() {
         mt:5
       }}>
       
-      <Typography variant="h2" align="center" marginY={10} fontFamily={"fantasy"}  >Sing Chat<InfoPopover/> </Typography>
+          <Typography variant="h2" align="center" marginY={10} fontFamily={"fantasy"}  >Sing Chat<InfoPopover /> </Typography>
+          
       <FormControl
         sx={{
         display: "flex",

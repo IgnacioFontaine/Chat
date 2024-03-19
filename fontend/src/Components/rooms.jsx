@@ -76,7 +76,7 @@ function NewRoom() {
 }
 
 
-export default function BottomAppBar() {
+export default function Rooms() {
   const all_rooms = useSelector((state) => state.notWhatsapp.rooms);
   
   return (
