@@ -15,6 +15,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react'
 import { newRoom } from '../Redux/actions';
 
+
+
+const color_primary = "#7D56C1";
+const color_secondary = "#3E2A61";
+
 function NewRoom() {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
@@ -49,17 +54,23 @@ function NewRoom() {
           type='number'
           variant="outlined"
           fullWidth
-        />
-        <Button
-          variant="contained"
-          color="primary"
-          backgroundColor="#6E2B98"
-          startIcon={<AddIcon />}
-          sx={{ mt: 1 }}
-          onClick={handleCreate}
+      />
+      <Button
+              variant="contained"
+              fontFamily={"unset"}
+        sx={{
+                mt:1,
+                bgcolor: `${color_secondary}`,
+                color: "black",
+                ":hover":
+                  { bgcolor: `${color_secondary}`, color: "white" }
+              }}
+              startIcon={<AddIcon />}
+          
+            onClick={handleCreate}
         >
           Add
-        </Button>
+        </Button>  
     </Box>
   )
 }

@@ -3,9 +3,9 @@ import SingInView from '../Views/singIn';
 import Home from "../Views/home";
 
 export const IsAuthGuard = () => {
-  const current_user = useSelector((state) => state.products.user);
-  console.log(current_user);
+  const current_user = useSelector((state) => state.notWhatsapp.user);
   
+
   if (current_user != null) {
     return (
     <>

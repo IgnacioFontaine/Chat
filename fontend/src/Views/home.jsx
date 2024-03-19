@@ -7,6 +7,7 @@ import InfoPopover from '../Components/info'
 import { useSelector } from 'react-redux';
 import { auth } from "../firebase"
 import { useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
 
 
 const socket = io.connect("http://localhost:3001")
@@ -19,13 +20,18 @@ function Home() {
   const [room, setRoom] = useState('')
   const [showChat, setShowChat] = useState(false)
   const navigate = useNavigate()
+  const user_current = useSelector((state) => state.notWhatsapp.user)
 
-  const user_current = useSelector((state) => state.products.user)
-  console.log(user_current);
-
+  useEffect(() => {
+    
+    const username_email = user_current.slice(0, user_current.indexOf("@"));
+    setUsername(username_email)
+    
+  }, [user_current]);
+  
 
   const joinRoom = () => {
-    if (username !== "" && room !== "") {
+    if (room !== "") {
       socket.emit('join_room', room)
       setShowChat(true);
     } else {
@@ -71,15 +77,6 @@ function Home() {
         gap: 5
         }}
       >
-        
-        <TextField
-          name="username"
-          defaultValue=""
-          placeholder='Username'
-          onChange={event => 
-                setUsername(event.target.value)}
-              autoComplete='off'
-        />
         <TextField
           name="room"
           type='text'
