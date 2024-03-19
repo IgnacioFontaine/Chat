@@ -9,13 +9,15 @@ import {
   Paper,
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
+import { UseSelector } from "react-redux";
 
 const color_primary = "#7D56C1";
 const color_secondary = "#3E2A61";
 
-function Chat({ socket, username, room }) {
-
-  
+function Chat({ socket, username }) {
+  const room = UseSelector((state) => state.notWhatsapp.select_room);
+  console.log(room);
+  const room_id = room.id;
   
   const [currentMessage, setcurrentMessage] = useState("")
   const [messagesList, setMessagesList] = useState([])
@@ -24,7 +26,7 @@ function Chat({ socket, username, room }) {
     if (username && currentMessage) {
       const info = {
         message: currentMessage,
-        room,
+        room_id,
         author: username,
         time: new Date(Date.now()).getHours() +":"+ new Date(Date.now()).getMinutes(),
       }
@@ -41,8 +43,7 @@ function Chat({ socket, username, room }) {
     
     socket.on("recieve_message", handlerMessage)
     return ()=>socket.off("recieve_message", handlerMessage)
-  }, [socket])
-  
+  }, [socket, room])
   
   
   return (

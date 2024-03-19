@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import { auth } from "../firebase"
 import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
+import Rooms from '../Components/rooms'
 
 
 const socket = io.connect("http://localhost:3001")
@@ -68,17 +69,18 @@ function Home() {
         mt:5
       }}>
       
-          <Typography variant="h2" align="center" marginY={10} fontFamily={"fantasy"}  >Sing Chat<InfoPopover /> </Typography>
+          <Typography variant="h2" align="center" marginY={1} fontFamily={"fantasy"}  >Sing Chat<InfoPopover /> </Typography>
           
       <FormControl
         sx={{
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        gap: 5
+        gap:2
         }}
-      >
-        <TextField
+          >
+            <Rooms />
+        {/* <TextField
           name="room"
           type='text'
           defaultValue=""
@@ -98,7 +100,7 @@ function Home() {
               onClick={joinRoom}
         >
           Join
-        </Button>
+        </Button> */}
             <Button
               variant="contained"
               fontFamily={"unset"}
