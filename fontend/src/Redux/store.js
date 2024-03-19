@@ -1,10 +1,10 @@
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux'
 import {thunk} from 'redux-thunk'
 
-import productsReducer from './reducer';
+import notWhatsappReducer from './reducer';
 
 const rootReducer = combineReducers({
-  products: productsReducer
+  notWhatsapp: notWhatsappReducer
 })
 
 const middlewareEnhancer = applyMiddleware(thunk)

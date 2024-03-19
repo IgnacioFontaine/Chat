@@ -10,7 +10,6 @@ const initialState = {
 
 //Config reducer
 const reducer = (state = initialState, action) => {
-  console.log(action);
   switch (action.type) {
 
     case ACTION_TYPES.SET_USER:
@@ -19,7 +18,12 @@ const reducer = (state = initialState, action) => {
         user:action.payload
       }
     
-    
+    case ACTION_TYPES.CREATE_ROOM:
+      return {
+        ...state,
+        rooms:[...state.rooms, action.payload]
+      }
+
     
     case ACTION_TYPES.ERROR:
       return {

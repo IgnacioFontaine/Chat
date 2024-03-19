@@ -11,61 +11,79 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
 import { Divider } from '@mui/material';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react'
+import { newRoom } from '../Redux/actions';
 
 const rooms = [
   {
     id: 1,
     name: 'Trabajo',
-    person: 'T',
   },
   {
     id: 2,
     name: 'Familia',
-    person: 'F',
   },
   {
     id: 3,
     name: 'Amigos',
-    person: 'A',
   },
   {
     id: 4,
     name: 'Notas',
-    person: 'N',
   },
   {
     id: 5,
     name: 'Hermanos',
-    person: "H",
   },
   {
     id: 6,
     name: 'Juegos',
-    person: "H",
   },
   {
     id: 7,
     name: 'Futbol',
-    person: "H",
   },
 ];
 
 
 
 
+
+
+
 function NewRoom() {
+  const dispatch = useDispatch();
+  const [name, setName] = useState("");
+  const [id, setId] = useState("");
+
+    function handleCreate(event) {
+      event.preventDefault();
+      dispatch(newRoom({ name, id }));
+      setName("");
+      setId("")
+    
+  }
+
   return (
      <Box sx={{width:300}}>
         <TextField
           id="name"
+          name='name'
+          value={name}
+          onChange={event=>setName(event.target.value)}
           label="Name"
           variant="outlined"
+          autoComplete='off'
           fullWidth
         />
         <TextField
           id="id"
           label="ID"
+          name='id'
+          value={id}
+          onChange={event=>setId(event.target.value)}
+          type='number'
           variant="outlined"
           fullWidth
         />
@@ -73,7 +91,9 @@ function NewRoom() {
           variant="contained"
           color="primary"
           backgroundColor="#6E2B98"
-          startIcon={<AddIcon  />}
+          startIcon={<AddIcon />}
+          sx={{ mt: 1 }}
+          onClick={handleCreate}
         >
           Add
         </Button>
@@ -83,6 +103,8 @@ function NewRoom() {
 
 
 export default function BottomAppBar() {
+  const all_rooms = useSelector((state) => state.notWhatsapp);
+  console.log(all_rooms);
   return (
     <Box>
       <Paper square sx={{ pb: '25px',width:400, borderRadius:2, backgroundColor:"#B94BFF", color:"black" }}>
@@ -91,14 +113,14 @@ export default function BottomAppBar() {
         </Typography>
         <Divider />
         <List sx={{ mb: 1, maxHeight:300, overflow: 'auto'}}>
-          {rooms.map(({ id, name, person }) => (
+          {rooms.map(({ id, name }) => (
             <React.Fragment key={id}>
 
               <ListItemButton>
                 <ListItemAvatar>
-                  <Avatar alt="Profile Picture">{person}</Avatar>
+                  <Avatar alt="Profile Picture">{name[0]}</Avatar>
                 </ListItemAvatar>
-                <ListItemText primary={name}  />
+                <ListItemText primary={name} secondary={id}  />
               </ListItemButton>
             </React.Fragment>
           ))}
