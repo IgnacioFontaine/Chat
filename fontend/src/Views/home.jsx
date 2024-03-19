@@ -21,6 +21,7 @@ function Home() {
   const navigate = useNavigate()
 
   const user_current = useSelector((state) => state.products.user)
+  console.log(user_current);
 
 
   const joinRoom = () => {

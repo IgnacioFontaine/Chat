@@ -15,43 +15,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react'
 import { newRoom } from '../Redux/actions';
 
-const rooms = [
-  {
-    id: 1,
-    name: 'Trabajo',
-  },
-  {
-    id: 2,
-    name: 'Familia',
-  },
-  {
-    id: 3,
-    name: 'Amigos',
-  },
-  {
-    id: 4,
-    name: 'Notas',
-  },
-  {
-    id: 5,
-    name: 'Hermanos',
-  },
-  {
-    id: 6,
-    name: 'Juegos',
-  },
-  {
-    id: 7,
-    name: 'Futbol',
-  },
-];
-
-
-
-
-
-
-
 function NewRoom() {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
@@ -103,8 +66,8 @@ function NewRoom() {
 
 
 export default function BottomAppBar() {
-  const all_rooms = useSelector((state) => state.notWhatsapp);
-  console.log(all_rooms);
+  const all_rooms = useSelector((state) => state.notWhatsapp.rooms);
+  
   return (
     <Box>
       <Paper square sx={{ pb: '25px',width:400, borderRadius:2, backgroundColor:"#B94BFF", color:"black" }}>
@@ -112,9 +75,9 @@ export default function BottomAppBar() {
           Salas
         </Typography>
         <Divider />
-        <List sx={{ mb: 1, maxHeight:300, overflow: 'auto'}}>
-          {rooms.map(({ id, name }) => (
-            <React.Fragment key={id}>
+        <List sx={{ mb: 1, height:300, overflow: 'auto'}}>
+          {all_rooms && all_rooms.map(({ id, name }) => (
+            (<React.Fragment key={id}>
 
               <ListItemButton>
                 <ListItemAvatar>
@@ -122,7 +85,7 @@ export default function BottomAppBar() {
                 </ListItemAvatar>
                 <ListItemText primary={name} secondary={id}  />
               </ListItemButton>
-            </React.Fragment>
+            </React.Fragment>)
           ))}
         </List>
         <Divider />
