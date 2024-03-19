@@ -4,7 +4,7 @@ import ACTION_TYPES from "./actionsTypes";
 const initialState = {
   user: null,
   rooms: [],
-  select_room:{},
+  select_room:null,
   error: false,
   errormsg: {},
 };

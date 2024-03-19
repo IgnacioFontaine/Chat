@@ -9,19 +9,14 @@ import {
   Paper,
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
-import { useSelector  } from "react-redux";
-import io from 'socket.io-client';
+
 
 const color_primary = "#7D56C1";
 const color_secondary = "#3E2A61";
 
-const socket = io.connect("http://localhost:3001")
 
-function Chat({ username }) {
-  const room = useSelector((state) => state.notWhatsapp.select_room);
-  console.log(room);
-  const room_id = room.id;
-  
+
+function Chat({ socket, username, room }) {
   const [currentMessage, setcurrentMessage] = useState("")
   const [messagesList, setMessagesList] = useState([])
 
@@ -29,10 +24,12 @@ function Chat({ username }) {
     if (username && currentMessage) {
       const info = {
         message: currentMessage,
-        room_id,
+        room,
         author: username,
-        time: new Date(Date.now()).getHours() +":"+ new Date(Date.now()).getMinutes(),
+        time: new Date(Date.now()).getHours() + ":" + new Date(Date.now()).getMinutes(),
+        id:Math.random()
       }
+      console.log("Enviando mensaje: ", info);
       await socket.emit("send_message", info)
       setMessagesList((list) => [...list, info])
       setcurrentMessage("")
@@ -40,7 +37,6 @@ function Chat({ username }) {
   }
 
   
-
   useEffect(() => {
     const handlerMessage = data => setMessagesList((list) => [...list, data])
     
@@ -70,7 +66,7 @@ function Chat({ username }) {
           textAlign: "center",
           borderRadius: 3,
         }}
-      >ID Sala: {room_id}</Typography>
+      >ID Sala: {room}</Typography>
       <Box sx={{ flexGrow: 1, overflow: "auto", p: 2, minHeight: "500px" }}>
         
         {messagesList?.map((message) => (
@@ -132,6 +128,7 @@ const Message = ({ message, username }) => {
         justifyContent: isMe ? "flex-end" :"flex-start",
         mb: 2,
       }}
+      key={message.id}
     >
       <Box
         sx={{

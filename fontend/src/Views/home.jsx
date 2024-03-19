@@ -8,21 +8,20 @@ import { auth } from "../firebase"
 import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
 import Rooms from '../Components/rooms'
-
+import io from 'socket.io-client';
 
 
 const color_primary = "#7D56C1";
 const color_secondary = "#3E2A61";
 
-
+const socket = io.connect("http://localhost:3001")
 function Home() {
   const [username, setUsername] = useState('')
-  const [room, setRoom] = useState('')
-  const [showChat, setShowChat] = useState(false)
   const navigate = useNavigate()
   const user_current = useSelector((state) => state.notWhatsapp.user)
   const current_chat = useSelector((state) => state.notWhatsapp.select_room)
   console.log(current_chat);
+
 
   useEffect(() => {
     
@@ -72,27 +71,6 @@ function Home() {
         }}
           >
             <Rooms />
-        {/* <TextField
-          name="room"
-          type='text'
-          defaultValue=""
-          placeholder='Room'
-          onChange={event => setRoom(event.target.value)}
-          autoComplete='off'
-        />
-            <Button
-              type="submit"
-              variant="contained"
-              sx={{
-                bgcolor: `${color_secondary}`,
-                color: "black",
-                ":hover":
-                  { bgcolor: `${color_secondary}`, color: "white" }
-              }}
-              onClick={joinRoom}
-        >
-          Join
-        </Button> */}
             <Button
               variant="contained"
               fontFamily={"unset"}
@@ -109,8 +87,13 @@ function Home() {
       </FormControl>
         </Container >
         <Box marginY={5}>
-          <Chat username={username} key={current_chat.id}></Chat>
-          {/* {current_chat[0]  ? <Chat  username={username}   />:<NotChat />} */}
+          
+          {current_chat ? <Chat
+            socket={socket}
+            username={username}
+            room={current_chat.id}
+            key={current_chat.id}
+          ></Chat>:<NotChat />}
         </Box>
       </Container>
     </Box>
