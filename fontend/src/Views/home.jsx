@@ -1,7 +1,6 @@
-import io from 'socket.io-client'
 import Chat from '../Components/chat'
 import NotChat from '../Components/notChat'
-import { Container, Box, TextField, Button, Typography, FormControl } from '@mui/material'
+import { Container, Box, Button, Typography, FormControl } from '@mui/material'
 import { useState } from 'react'
 import InfoPopover from '../Components/info'
 import { useSelector } from 'react-redux';
@@ -11,7 +10,7 @@ import { useEffect } from 'react'
 import Rooms from '../Components/rooms'
 
 
-const socket = io.connect("http://localhost:3001")
+
 const color_primary = "#7D56C1";
 const color_secondary = "#3E2A61";
 
@@ -22,6 +21,8 @@ function Home() {
   const [showChat, setShowChat] = useState(false)
   const navigate = useNavigate()
   const user_current = useSelector((state) => state.notWhatsapp.user)
+  const current_chat = useSelector((state) => state.notWhatsapp.select_room)
+  console.log(current_chat);
 
   useEffect(() => {
     
@@ -29,16 +30,6 @@ function Home() {
     setUsername(username_email)
     
   }, [user_current]);
-  
-
-  const joinRoom = () => {
-    if (room !== "") {
-      socket.emit('join_room', room)
-      setShowChat(true);
-    } else {
-    setShowChat(false);
-    }
-  }
 
   function handleOut() {
     if (user_current) {
@@ -46,6 +37,7 @@ function Home() {
       navigate("/")
     }
   }
+
   
   return (
     <Box style={{backgroundColor:"blueviolet"}}>
@@ -117,7 +109,8 @@ function Home() {
       </FormControl>
         </Container >
         <Box marginY={5}>
-          {showChat == true ? <Chat socket={socket} username={username} room={room}  />:<NotChat />}
+          <Chat username={username} key={current_chat.id}></Chat>
+          {/* {current_chat[0]  ? <Chat  username={username}   />:<NotChat />} */}
         </Box>
       </Container>
     </Box>

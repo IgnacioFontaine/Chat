@@ -14,7 +14,7 @@ import { Divider } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react'
 import { newRoom, selectRoom } from '../Redux/actions';
-
+import io from 'socket.io-client'
 
 
 const color_primary = "#7D56C1";
@@ -76,13 +76,17 @@ function NewRoom() {
 }
 
 
+const socket = io.connect("http://localhost:3001")
+
 export default function Rooms() {
   const dispatch = useDispatch();
 
   const all_rooms = useSelector((state) => state.notWhatsapp.rooms);
 
   const handleSelect = (room) => {
-    dispatch(selectRoom(room))
+      dispatch(selectRoom(room))
+      socket.emit('join_room', room.id)
+    
   }
   
   return (
@@ -94,9 +98,9 @@ export default function Rooms() {
         <Divider />
         <List sx={{ mb: 1, height:300, overflow: 'auto'}}>
           {all_rooms && all_rooms.map(({  name, id }) => (
-            (<React.Fragment key={id} onClick={handleSelect({name,id})}>
+            (<React.Fragment key={id} >
 
-              <ListItemButton>
+              <ListItemButton onClick={ ()=>handleSelect({name,id})}>
                 <ListItemAvatar>
                   <Avatar alt="Profile Picture">{name[0]}</Avatar>
                 </ListItemAvatar>

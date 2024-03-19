@@ -9,13 +9,16 @@ import {
   Paper,
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
-import { UseSelector } from "react-redux";
+import { useSelector  } from "react-redux";
+import io from 'socket.io-client';
 
 const color_primary = "#7D56C1";
 const color_secondary = "#3E2A61";
 
-function Chat({ socket, username }) {
-  const room = UseSelector((state) => state.notWhatsapp.select_room);
+const socket = io.connect("http://localhost:3001")
+
+function Chat({ username }) {
+  const room = useSelector((state) => state.notWhatsapp.select_room);
   console.log(room);
   const room_id = room.id;
   
@@ -43,7 +46,7 @@ function Chat({ socket, username }) {
     
     socket.on("recieve_message", handlerMessage)
     return ()=>socket.off("recieve_message", handlerMessage)
-  }, [socket, room])
+  }, [socket])
   
   
   return (
@@ -67,7 +70,7 @@ function Chat({ socket, username }) {
           textAlign: "center",
           borderRadius: 3,
         }}
-      >ID Sala: {room}</Typography>
+      >ID Sala: {room_id}</Typography>
       <Box sx={{ flexGrow: 1, overflow: "auto", p: 2, minHeight: "500px" }}>
         
         {messagesList?.map((message) => (
