@@ -13,7 +13,7 @@ import AddIcon from '@mui/icons-material/Add';
 import { Divider } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react'
-import { newRoom } from '../Redux/actions';
+import { newRoom, selectRoom } from '../Redux/actions';
 
 
 
@@ -77,7 +77,13 @@ function NewRoom() {
 
 
 export default function Rooms() {
+  const dispatch = useDispatch();
+
   const all_rooms = useSelector((state) => state.notWhatsapp.rooms);
+
+  const handleSelect = (room) => {
+    dispatch(selectRoom(room))
+  }
   
   return (
     <Box>
@@ -87,8 +93,8 @@ export default function Rooms() {
         </Typography>
         <Divider />
         <List sx={{ mb: 1, height:300, overflow: 'auto'}}>
-          {all_rooms && all_rooms.map(({ id, name }) => (
-            (<React.Fragment key={id}>
+          {all_rooms && all_rooms.map(({  name, id }) => (
+            (<React.Fragment key={id} onClick={handleSelect({name,id})}>
 
               <ListItemButton>
                 <ListItemAvatar>

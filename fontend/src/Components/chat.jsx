@@ -14,6 +14,8 @@ const color_primary = "#7D56C1";
 const color_secondary = "#3E2A61";
 
 function Chat({ socket, username, room }) {
+
+  
   
   const [currentMessage, setcurrentMessage] = useState("")
   const [messagesList, setMessagesList] = useState([])
