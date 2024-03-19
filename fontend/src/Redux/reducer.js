@@ -3,6 +3,7 @@ import ACTION_TYPES from "./actionsTypes";
 //Config initialState
 const initialState = {
   user: null,
+  rooms:[],
   error: false,
   errormsg: {},
 };
@@ -17,6 +18,8 @@ const reducer = (state = initialState, action) => {
         ...state,
         user:action.payload
       }
+    
+    
     
     case ACTION_TYPES.ERROR:
       return {

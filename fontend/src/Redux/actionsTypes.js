@@ -1,5 +1,6 @@
 const ACTION_TYPES = {
   SET_USER: "SET_USER",
+  CREATE_ROOM:"CREATE_ROOM",
   ERROR:"ERROR"
 }
     
