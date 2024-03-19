@@ -39,6 +39,16 @@ const rooms = [
     name: 'Hermanos',
     person: "H",
   },
+  {
+    id: 6,
+    name: 'Juegos',
+    person: "H",
+  },
+  {
+    id: 7,
+    name: 'Futbol',
+    person: "H",
+  },
 ];
 
 
@@ -78,7 +88,7 @@ export default function BottomAppBar() {
           Salas
         </Typography>
         <Divider />
-        <List sx={{ mb: 1 }}>
+        <List sx={{ mb: 1, maxHeight:300, overflow: 'auto'}}>
           {rooms.map(({ id, name, person }) => (
             <React.Fragment key={id}>
 
