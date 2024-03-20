@@ -6,8 +6,8 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 function Footer(props) {
   return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
+    <Typography variant="body1" color="text.secondary" align="center" {...props}>
+      {'Copyright © Ignacio'}
       <Link color="inherit" href="https://github.com/IgnacioFontaine">
         <GitHubIcon fontSize="small" />
       </Link>{' '}
@@ -35,6 +35,7 @@ export const SelfImage = () => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
+        alignItems:"center",
         alignContent: "center",
         height: "100%",
         p: 5,
@@ -43,13 +44,13 @@ export const SelfImage = () => {
         <Box>
           <WhatsAppIcon  sx={{ fontSize: 250 }} />
         </Box>
-        <Box>
+        <Box sx={{textAlign:"center"}}>
           <Typography variant="h1" sx={{mb:5}} fontFamily={"fantasy"} >Not Whatsapp</Typography>
-          <Typography variant="body1" fontFamily={"fantasy"} >
+          <Typography variant="h6" fontFamily={"fantasy"} >
             We are here for simple, short conversations <br />
             We are the solution whenever WhatsApp does not work!</Typography>
         </Box>
-        <Box  >
+        <Box sx={{mt:2}}  >
           <Footer />
         </Box>
       </Box>
