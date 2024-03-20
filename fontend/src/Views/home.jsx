@@ -14,13 +14,13 @@ import io from 'socket.io-client';
 const color_primary = "#7D56C1";
 const color_secondary = "#3E2A61";
 
-const socket = io.connect("http://localhost:3001")
+const socket = io.connect("http://localhost:3001");
+
 function Home() {
   const [username, setUsername] = useState('')
   const navigate = useNavigate()
   const user_current = useSelector((state) => state.notWhatsapp.user)
   const current_chat = useSelector((state) => state.notWhatsapp.select_room)
-  console.log(current_chat);
 
 
   useEffect(() => {
@@ -58,10 +58,12 @@ function Home() {
         borderColor: "gray",
         borderRadius: 4,
         mt:5
-      }}>
+          }}>
+          <Box sx={{display:"flex", alignItems:"center", gap:3, justifyContent:"center"}}> 
+            <Typography variant="h2" align="center" marginY={1} fontFamily={"fantasy"}  >Sing Chat </Typography>
+            <InfoPopover />
+          </Box>
       
-          <Typography variant="h2" align="center" marginY={1} fontFamily={"fantasy"}  >Sing Chat<InfoPopover /> </Typography>
-          
       <FormControl
         sx={{
         display: "flex",
@@ -87,11 +89,10 @@ function Home() {
       </FormControl>
         </Container >
         <Box marginY={5}>
-          
           {current_chat ? <Chat
             socket={socket}
             username={username}
-            room={current_chat.id}
+            room={Number(current_chat.id)}
             key={current_chat.id}
           ></Chat>:<NotChat />}
         </Box>

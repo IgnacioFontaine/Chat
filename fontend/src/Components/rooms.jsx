@@ -30,7 +30,6 @@ function NewRoom() {
       dispatch(newRoom({ name, id }));
       setName("");
       setId("")
-    
   }
 
   return (
@@ -50,7 +49,7 @@ function NewRoom() {
           label="ID"
           name='id'
           value={id}
-          onChange={event=>setId(event.target.value)}
+          onChange={event=>setId(Number(event.target.value))}
           type='number'
           variant="outlined"
           fullWidth
@@ -85,12 +84,12 @@ export default function Rooms() {
 
   const handleSelect = (room) => {
       dispatch(selectRoom(room))
-      socket.emit('join_room', room.id)
+      socket.emit('join_room', Number(room.id))
     
   }
   
   return (
-    <Box>
+    <Box sx={{mt:5}}>
       <Paper square sx={{ pb: '25px',width:400, borderRadius:2, backgroundColor:"#B94BFF", color:"black" }}>
         <Typography variant="h5" gutterBottom component="div" sx={{ p: 2, pb: 0, fontFamily:"fantasy" }}>
           Salas

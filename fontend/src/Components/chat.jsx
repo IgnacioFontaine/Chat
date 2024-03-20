@@ -20,11 +20,13 @@ function Chat({ socket, username, room }) {
   const [currentMessage, setcurrentMessage] = useState("")
   const [messagesList, setMessagesList] = useState([])
 
+  
+
   const sendMessage = async () => {
     if (username && currentMessage) {
       const info = {
         message: currentMessage,
-        room,
+        room, 
         author: username,
         time: new Date(Date.now()).getHours() + ":" + new Date(Date.now()).getMinutes(),
         id:Math.random()
