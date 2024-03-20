@@ -85,7 +85,7 @@ function Chat({ socket, username, room }) {
         width: "98.7%",
         borderRadius: 4
       }}>
-        <Grid container spacing={1} justifyContent={"space-evenly"} >
+        <Grid container justifyContent={"space-evenly"} >
           <Grid item xs={9.5} >
             <TextField
               size="small"
@@ -102,7 +102,7 @@ function Chat({ socket, username, room }) {
               fullWidth
               color="primary"
               variant="contained"
-              endIcon={<SendIcon />}
+              endIcon={<SendIcon fontSize="large" />}
               onClick={sendMessage}
               sx={{
                 bgcolor: `${color_secondary}`,
@@ -119,12 +119,12 @@ function Chat({ socket, username, room }) {
                 bgcolor: `${color_secondary}`,
                 height: "4.6vh",
                 width: "3vw",
-              color: "black",
+                color: "black",
                 boxShadow:5,
                 ":hover":
                   { bgcolor: `${color_secondary}`, color: "white" }
               }}>
-              <KeyboardVoiceIcon  />
+              <KeyboardVoiceIcon   />
             </Avatar>
           </Grid>
         </Grid>

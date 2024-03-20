@@ -17,8 +17,8 @@ function NotChat() {
         borderRadius: 4,
         mt:2
     }}>
-      <ChatIcon sx={{ fontSize: 350,alignItems:"center"}} />
-      <Typography variant='h5'
+      <ChatIcon sx={{ fontSize: 500,alignItems:"center"}} />
+      <Typography variant='h4'
         fontFamily={"fantasy"}
       sx={{textAlign:"center"}}
       >Enter a room and start chatting!</Typography>
