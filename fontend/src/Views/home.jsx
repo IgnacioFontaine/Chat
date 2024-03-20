@@ -41,23 +41,24 @@ function Home() {
   return (
     <Box style={{backgroundColor:"blueviolet"}}>
       <Container sx={{
-        height: "100vh",
-        width:"100vw",
+        height: "100%",
+        width:"100%",
         display: "flex",
         bgcolor: "transparent",
+        ml:0
       }} >
         <Container
       sx={{
         display: "flex",
         flexDirection: "column",
-        backgroundColor: "#2486",
-        height: "90vh",
-        width:"50vh",
         justifyContent: "flex-start",
+        backgroundColor: "#2486",
         border:"1px solid",
         borderColor: "gray",
         borderRadius: 4,
-        mt:5
+        mt: 2,
+        ml: 0
+        
           }}>
           <Box sx={{display:"flex", alignItems:"center", gap:3, justifyContent:"center"}}> 
             <Typography variant="h2" align="center" marginY={1} fontFamily={"fantasy"}  >Sing Chat </Typography>
@@ -88,7 +89,7 @@ function Home() {
         </Button>  
       </FormControl>
         </Container >
-        <Box marginY={5}>
+        <Box >
           {current_chat ? <Chat
             socket={socket}
             username={username}

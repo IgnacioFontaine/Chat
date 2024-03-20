@@ -33,7 +33,7 @@ function NewRoom() {
   }
 
   return (
-     <Box sx={{width:300}}>
+     <Box sx={{width:300, height:150}}>
         <TextField
           id="name"
           name='name'

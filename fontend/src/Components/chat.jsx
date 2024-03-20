@@ -52,13 +52,14 @@ function Chat({ socket, username, room }) {
       sx={{
         backgroundColor: "#2486",
         height: "90vh",
-        width:"50vh",
+        width:"85vh",
         display: "flex",
         flexDirection: "column",
         justifyContent: "flex-end",
         border:"1px solid",
         borderColor: "gray",
         borderRadius: 4,
+        mt:2
       }}
     >
       <Typography variant="h5" fontFamily={"fantasy"}
