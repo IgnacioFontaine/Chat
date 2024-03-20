@@ -66,9 +66,10 @@ function Chat({ socket, username, room }) {
       <Typography variant="h5" fontFamily={"fantasy"}
         sx={{
           backgroundColor: "#4566",
-          width: "100%",
+          width: "98.6%",
           textAlign: "center",
-          borderRadius: 3,
+          borderRadius: 4,
+          p:1
         }}
       >ID Sala: {room}</Typography>
       <Box sx={{ flexGrow: 1, overflow: "auto", p: 2, minHeight: "500px" }}>

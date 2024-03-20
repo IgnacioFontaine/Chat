@@ -104,7 +104,7 @@ export default function Rooms() {
     <Box sx={{mt:1}}>
       <Paper square sx={{ pb: '25px', width: 400, height:720,borderRadius: 2, backgroundColor: "#B94BFF", color: "black" }}>
         <Box sx={{ display: "flex", alignItems:"center" }}>
-          <Avatar sx={{backgroundColor:"blueviolet", color:"black", ml:2}} >{user_avatar}</Avatar>
+          <Avatar sx={{backgroundColor:"blueviolet", color:"black", ml:2 ,boxShadow:3}} >{user_avatar}</Avatar>
 
         <Typography variant="h5" gutterBottom component="div" sx={{ p: 2, pb: 0, fontFamily:"fantasy" }}>
             {username_email}
@@ -118,7 +118,7 @@ export default function Rooms() {
 
               <ListItemButton onClick={ ()=>handleSelect({name,id})}>
                 <ListItemAvatar>
-                  <Avatar alt="Profile Picture" sx={{backgroundColor:"blueviolet", color:"black",boxShadow:5}}>{name[0].toUpperCase()}</Avatar>
+                  <Avatar alt="Profile Picture" sx={{backgroundColor:"blueviolet", color:"black"}}>{name[0].toUpperCase()}</Avatar>
                 </ListItemAvatar>
                 <ListItemText primary={name} secondary={id}  />
               </ListItemButton>
