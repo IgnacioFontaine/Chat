@@ -80,11 +80,11 @@ function Chat({ socket, username, room }) {
       <Box sx={{
         p: 1,
         backgroundColor: "#4566",
-        width: "96%",
-        borderRadius: 3
+        width: "98.7%",
+        borderRadius: 4
       }}>
-        <Grid container spacing={0.5}>
-          <Grid item xs={9.5}>
+        <Grid container spacing={1} justifyContent={"space-evenly"} >
+          <Grid item xs={9.5} >
             <TextField
               size="small"
               fullWidth
@@ -95,7 +95,7 @@ function Chat({ socket, username, room }) {
               value={currentMessage}
             />
           </Grid>
-          <Grid item xs={2.5}>
+          <Grid item >
             <Button
               fullWidth
               color="primary"
@@ -105,7 +105,7 @@ function Chat({ socket, username, room }) {
               sx={{
                 bgcolor: `${color_secondary}`,
                 height: "4.6vh",
-                width:"4vw",
+                width: "2vw",
                 color: "black",
                 ":hover":
                   { bgcolor: `${color_secondary}`, color: "white" }
