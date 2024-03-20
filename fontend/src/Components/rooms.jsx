@@ -63,6 +63,7 @@ function NewRoom() {
                 mt:1,
                 bgcolor: `${color_secondary}`,
                 color: "black",
+                boxShadow:5,
                 ":hover":
                   { bgcolor: `${color_secondary}`, color: "white" }
               }}
@@ -101,7 +102,7 @@ export default function Rooms() {
   
   return (
     <Box sx={{mt:1}}>
-      <Paper square sx={{ pb: '25px', width: 400, height:700,borderRadius: 2, backgroundColor: "#B94BFF", color: "black" }}>
+      <Paper square sx={{ pb: '25px', width: 400, height:720,borderRadius: 2, backgroundColor: "#B94BFF", color: "black" }}>
         <Box sx={{ display: "flex", alignItems:"center" }}>
           <Avatar sx={{backgroundColor:"blueviolet", color:"black", ml:2}} >{user_avatar}</Avatar>
 
@@ -111,13 +112,13 @@ export default function Rooms() {
 
         </Box>
         <Divider />
-        <List sx={{ height:470, overflow: 'auto'}}>
+        <List sx={{ height:500, overflow: 'auto'}}>
           {all_rooms && all_rooms.map(({  name, id }) => (
             (<React.Fragment key={id} >
 
               <ListItemButton onClick={ ()=>handleSelect({name,id})}>
                 <ListItemAvatar>
-                  <Avatar alt="Profile Picture" sx={{backgroundColor:"blueviolet", color:"black"}}>{name[0].toUpperCase()}</Avatar>
+                  <Avatar alt="Profile Picture" sx={{backgroundColor:"blueviolet", color:"black",boxShadow:5}}>{name[0].toUpperCase()}</Avatar>
                 </ListItemAvatar>
                 <ListItemText primary={name} secondary={id}  />
               </ListItemButton>

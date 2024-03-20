@@ -65,7 +65,7 @@ function Home() {
               variant="contained"
               fontFamily={"unset"}
               sx={{
-                
+                boxShadow:5,
                 bgcolor: `${color_secondary}`,
                 color: "black",
                 ":hover":
