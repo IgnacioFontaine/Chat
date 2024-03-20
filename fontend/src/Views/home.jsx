@@ -58,7 +58,6 @@ function Home() {
         borderRadius: 4,
         mt: 2,
         ml: 0
-        
           }}>
           <Box sx={{display:"flex", alignItems:"center", gap:3, justifyContent:"center"}}> 
             <Typography variant="h2" align="center" marginY={1} fontFamily={"fantasy"}  >Sing Chat </Typography>

@@ -6,17 +6,18 @@ function NotChat() {
   return (
     <Box sx={{
         backgroundColor: "#2486",
-        height: "84vh",
-        width:"45vh",
+        height: "90vh",
+        width:"145vh",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
+        alignItems:"center",
         border:"1px solid",
         borderColor: "gray",
         borderRadius: 4,
-        padding:3
+        mt:2
     }}>
-      <ChatIcon sx={{ fontSize: 300 }} />
+      <ChatIcon sx={{ fontSize: 350,alignItems:"center"}} />
       <Typography variant='h5'
         fontFamily={"fantasy"}
       sx={{textAlign:"center"}}
