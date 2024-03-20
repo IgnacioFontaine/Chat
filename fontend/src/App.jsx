@@ -23,10 +23,10 @@ function App() {
   
   return (
     <Routes>
-          <Route path="/" element={<SingInView />} />
+          {/* <Route path="/" element={<SingInView />} /> */}
           <Route path="/singUp" element={<SingUpView />} />
           <Route path="/chat" element={<IsAuthGuard />} />
-          <Route path="/dev" element={<Dev />}  />
+          <Route path="/" element={<Dev />}  />
           <Route path="*" element={<IsAuthGuard />}  />
         </Routes>
   )

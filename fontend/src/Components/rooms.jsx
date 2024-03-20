@@ -81,9 +81,9 @@ function NewRoom() {
 }
 
 
-const socket = io.connect("http://localhost:3001")
+// const socket = io.connect("http://localhost:3001")
 
-export default function Rooms() {
+export default function Rooms({socket}) {
   const dispatch = useDispatch();
 
   const all_rooms = useSelector((state) => state.notWhatsapp.rooms);

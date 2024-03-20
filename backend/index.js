@@ -22,6 +22,11 @@ io.on('connection', (socket) => {
     console.log(`Usuario con ID: ${socket.id} se unió a la sala: ${data}`)
   })
 
+  socket.on('ingreso_sala', (data) => {
+    socket.join(data)
+    console.log(`Usuario: ${socket.id} se unió a la sala: ${data}`)
+  })
+
   socket.on('send_message', (data) => {
     console.log(`Mensaje enviado: ${data}`)
     const room = Number(data.room)
