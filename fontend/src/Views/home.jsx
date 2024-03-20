@@ -60,8 +60,7 @@ function Home() {
         ml: 0
           }}>
           <Box sx={{display:"flex", alignItems:"center", gap:3, justifyContent:"center"}}> 
-            <Typography variant="h2" align="center" marginY={1} fontFamily={"fantasy"}  >Sing Chat </Typography>
-            <InfoPopover />
+            <Typography variant="h3" align="center" marginY={1} fontFamily={"fantasy"}  >Not Whatsapp</Typography>
           </Box>
       
       <FormControl

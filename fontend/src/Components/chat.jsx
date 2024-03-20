@@ -9,6 +9,7 @@ import {
   Paper,
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
+import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
 
 
 const color_primary = "#7D56C1";
@@ -95,7 +96,7 @@ function Chat({ socket, username, room }) {
               value={currentMessage}
             />
           </Grid>
-          <Grid item >
+          <Grid item sx={{display:"flex", gap:2}}>
             <Button
               fullWidth
               color="primary"
@@ -105,13 +106,25 @@ function Chat({ socket, username, room }) {
               sx={{
                 bgcolor: `${color_secondary}`,
                 height: "4.6vh",
-                width: "2vw",
+                width: "1.8vw",
                 color: "black",
+                boxShadow:5,
                 ":hover":
                   { bgcolor: `${color_secondary}`, color: "white" }
               }}
             >
             </Button>
+            <Avatar sx={{
+                bgcolor: `${color_secondary}`,
+                height: "4.6vh",
+                width: "3vw",
+              color: "black",
+                boxShadow:5,
+                ":hover":
+                  { bgcolor: `${color_secondary}`, color: "white" }
+              }}>
+              <KeyboardVoiceIcon  />
+            </Avatar>
           </Grid>
         </Grid>
       </Box>
