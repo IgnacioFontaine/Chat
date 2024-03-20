@@ -6,14 +6,14 @@ import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
-import Avatar from '@mui/material/Avatar';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
-import { Divider } from '@mui/material';
+import { Divider, Avatar } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react'
 import { newRoom, selectRoom } from '../Redux/actions';
+
 import io from 'socket.io-client'
 
 
@@ -68,7 +68,7 @@ function NewRoom() {
           
             onClick={handleCreate}
         >
-          Add
+          Add Room
         </Button>  
     </Box>
   )
@@ -82,6 +82,12 @@ export default function Rooms() {
 
   const all_rooms = useSelector((state) => state.notWhatsapp.rooms);
 
+  const current_user = useSelector((state) => state.notWhatsapp.user);
+
+  const username_email = current_user.slice(0, current_user.indexOf("@"));
+
+  const user_avatar = username_email[0].toUpperCase()
+
   const handleSelect = (room) => {
       dispatch(selectRoom(room))
       socket.emit('join_room', Number(room.id))
@@ -90,7 +96,16 @@ export default function Rooms() {
   
   return (
     <Box sx={{mt:5}}>
-      <Paper square sx={{ pb: '25px',width:400, borderRadius:2, backgroundColor:"#B94BFF", color:"black" }}>
+      <Paper square sx={{ pb: '25px', width: 400, borderRadius: 2, backgroundColor: "#B94BFF", color: "black" }}>
+        <Box sx={{ display: "flex", alignItems:"center" }}>
+          <Avatar sx={{backgroundColor:"blueviolet", color:"black", ml:2}} >{user_avatar}</Avatar>
+
+        <Typography variant="h5" gutterBottom component="div" sx={{ p: 2, pb: 0, fontFamily:"fantasy" }}>
+            {username_email}
+        </Typography>
+
+        </Box>
+        <Divider />
         <Typography variant="h5" gutterBottom component="div" sx={{ p: 2, pb: 0, fontFamily:"fantasy" }}>
           Salas
         </Typography>
