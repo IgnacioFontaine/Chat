@@ -15,6 +15,7 @@ import { useState } from 'react'
 import { newRoom, selectRoom } from '../Redux/actions';
 
 import io from 'socket.io-client'
+import InfoPopover from './info';
 
 
 const color_primary = "#7D56C1";
@@ -54,7 +55,8 @@ function NewRoom() {
           variant="outlined"
           fullWidth
       />
-      <Button
+      <Box sx={{display:"flex", justifyContent:"space-around", alignContent:"center"}}>
+        <Button
               variant="contained"
               fontFamily={"unset"}
         sx={{
@@ -69,7 +71,10 @@ function NewRoom() {
             onClick={handleCreate}
         >
           Add Room
-        </Button>  
+        </Button>
+        <InfoPopover  />
+      </Box>
+        
     </Box>
   )
 }
@@ -105,10 +110,6 @@ export default function Rooms() {
         </Typography>
 
         </Box>
-        <Divider />
-        <Typography variant="h5" gutterBottom component="div" sx={{ p: 2, pb: 0, fontFamily:"fantasy" }}>
-          Salas
-        </Typography>
         <Divider />
         <List sx={{ mb: 1, height:300, overflow: 'auto'}}>
           {all_rooms && all_rooms.map(({  name, id }) => (

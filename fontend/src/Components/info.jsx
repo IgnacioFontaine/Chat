@@ -21,7 +21,7 @@ function InfoPopover() {
 
   return (
     <div>
-      <Button aria-describedby={id} variant="contained" onClick={handleClick} sx={{backgroundColor:"#3E2A61", color:"black",":hover":
+      <Button aria-describedby={id} variant="contained" onClick={handleClick} sx={{mt:1,backgroundColor:"#3E2A61", color:"black",":hover":
                   { bgcolor: `#3E2A61`, color: "white" }}}>
         <InfoIcon  />
       </Button>
