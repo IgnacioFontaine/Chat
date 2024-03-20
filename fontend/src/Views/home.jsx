@@ -59,23 +59,13 @@ function Home() {
         mt: 2,
         ml: 0
           }}>
-          <Box sx={{display:"flex", alignItems:"center", gap:3, justifyContent:"center"}}> 
+          <Box sx={{display:"flex", alignItems:"center", justifyContent:"center", gap:2}}> 
             <Typography variant="h3" align="center" marginY={1} fontFamily={"fantasy"}  >Not Whatsapp</Typography>
-          </Box>
-      
-      <FormControl
-        sx={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        gap:2
-        }}
-          >
-            <Rooms />
             <Button
               variant="contained"
               fontFamily={"unset"}
               sx={{
+                
                 bgcolor: `${color_secondary}`,
                 color: "black",
                 ":hover":
@@ -84,7 +74,16 @@ function Home() {
               onClick={handleOut}
         >
           Logout
-        </Button>  
+        </Button>
+          </Box>
+      <FormControl
+        sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        }}
+          >
+            <Rooms />  
       </FormControl>
         </Container >
         <Box >
