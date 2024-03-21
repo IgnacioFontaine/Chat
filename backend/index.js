@@ -2,6 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import { Server } from "socket.io";
 import { createServer } from 'node:http'
+import { log } from 'node:console';
 
 const app = express();
 app.use(cors());
@@ -28,8 +29,8 @@ io.on('connection', (socket) => {
   })
 
   socket.on('send_message', (data) => {
-    console.log(`Mensaje enviado: ${data}`)
-    socket.to(room).emit('recieve_message',data)
+    console.log(`Mensaje enviado:`, data)
+    socket.to(data.room).emit('recieve_message',data)
   })
 
   socket.on('disconnect', () => {

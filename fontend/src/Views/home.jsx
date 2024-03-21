@@ -14,7 +14,7 @@ import io from 'socket.io-client';
 const color_primary = "#7D56C1";
 const color_secondary = "#3E2A61";
 
-// const socket = io.connect("http://localhost:3001");
+const socket = io.connect("http://localhost:3001");
 
 function Home() {
   const [username, setUsername] = useState('')
@@ -22,16 +22,16 @@ function Home() {
   const user_current = useSelector((state) => state.notWhatsapp.user)
   const current_chat = useSelector((state) => state.notWhatsapp.select_room)
 
-  const username_email = user_current.slice(0, user_current.indexOf("@"));
-    setUsername(username_email)
-
-
-  // useEffect(() => {
-    
-  //   const username_email = user_current.slice(0, user_current.indexOf("@"));
+  // const username_email = user_current.slice(0, user_current.indexOf("@"));
   //   setUsername(username_email)
+
+
+  useEffect(() => {
     
-  // }, [user_current]);
+    const username_email = user_current.slice(0, user_current.indexOf("@"));
+    setUsername(username_email)
+    
+  }, [user_current]);
 
   function handleOut() {
     if (user_current) {
