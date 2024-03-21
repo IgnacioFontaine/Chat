@@ -2,7 +2,6 @@ import Chat from '../Components/chat'
 import NotChat from '../Components/notChat'
 import { Container, Box, Button, Typography, FormControl } from '@mui/material'
 import { useState } from 'react'
-import InfoPopover from '../Components/info'
 import { useSelector } from 'react-redux';
 import { auth } from "../firebase"
 import { useNavigate } from 'react-router-dom'
@@ -21,9 +20,6 @@ function Home() {
   const navigate = useNavigate()
   const user_current = useSelector((state) => state.notWhatsapp.user)
   const current_chat = useSelector((state) => state.notWhatsapp.select_room)
-
-  // const username_email = user_current.slice(0, user_current.indexOf("@"));
-  //   setUsername(username_email)
 
 
   useEffect(() => {

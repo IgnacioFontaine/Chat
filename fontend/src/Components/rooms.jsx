@@ -13,8 +13,6 @@ import { Divider, Avatar } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react'
 import { newRoom, selectRoom } from '../Redux/actions';
-
-import io from 'socket.io-client'
 import InfoPopover from './info';
 
 
@@ -80,9 +78,6 @@ function NewRoom() {
   )
 }
 
-
-// const socket = io.connect("http://localhost:3001")
-
 export default function Rooms({socket}) {
   const dispatch = useDispatch();
 
@@ -120,7 +115,7 @@ export default function Rooms({socket}) {
                 <ListItemAvatar>
                   <Avatar alt="Profile Picture" sx={{backgroundColor:"blueviolet", color:"black"}}>{name[0].toUpperCase()}</Avatar>
                 </ListItemAvatar>
-                <ListItemText primary={name} secondary={id}  />
+                <ListItemText primary={name.toUpperCase()} secondary={id}  />
               </ListItemButton>
             </React.Fragment>)
           ))}
