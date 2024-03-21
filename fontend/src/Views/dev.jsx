@@ -210,8 +210,7 @@ export default function Dev() {
           
         </Box>
         <Box id="Chat">
-          
-
+          <AnotherChat socket={socket} username={nombre} room={sala} />
         </Box>
       </Box>
     </>
