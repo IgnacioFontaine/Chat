@@ -96,7 +96,7 @@ export default function Rooms({socket}) {
 
   const handleSelect = (room) => {
       dispatch(selectRoom(room))
-      socket.emit('join_room', Number(room.id))
+      socket.emit('join_room', room.id)
     
   }
   
