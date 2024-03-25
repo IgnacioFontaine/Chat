@@ -32,8 +32,21 @@ export const deleteRoom = (id) => {
   return async (dispatch) => {
     try {
       dispatch({
-        type: ACTION_TYPES.DELETE_ROOM,
+        type: ACTION_TYPES.DELETE_ROOM_SUCCES,
         payload: id,
+      });
+    } catch (error) {
+      return dispatch({ type: ACTION_TYPES.ERROR, payload: error });
+    }
+  };
+}
+
+export const modifyRoom = ({id,updateName}) => {
+  return async (dispatch) => {
+    try {
+      dispatch({
+        type: ACTION_TYPES.MODIFY_ROOM_SUCCES,
+        payload: {id,updateName},
       });
     } catch (error) {
       return dispatch({ type: ACTION_TYPES.ERROR, payload: error });
