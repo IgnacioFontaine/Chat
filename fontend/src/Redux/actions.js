@@ -28,12 +28,12 @@ export const newRoom = (room) => {
 }
 
 
-export const deleteRoom = (room) => {
+export const deleteRoom = (id) => {
   return async (dispatch) => {
     try {
       dispatch({
         type: ACTION_TYPES.DELETE_ROOM,
-        payload: room,
+        payload: id,
       });
     } catch (error) {
       return dispatch({ type: ACTION_TYPES.ERROR, payload: error });

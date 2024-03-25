@@ -25,6 +25,17 @@ const reducer = (state = initialState, action) => {
         rooms:[...state.rooms, action.payload]
       }
     
+    case ACTION_TYPES.DELETE_ROOM_SUCCES:
+      return {
+        ...state,
+        rooms: state.rooms.filter(room => room.id == action.payload)
+      };
+    
+    case ACTION_TYPES.DELETE_ROOM_FAILURE:
+      return {
+        ...state
+      };
+    
     case ACTION_TYPES.SELECT_ROOM:
       return {
         ...state,
