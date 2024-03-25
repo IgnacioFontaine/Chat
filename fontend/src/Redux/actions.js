@@ -15,11 +15,24 @@ export const setUser = (user) => {
 };
 
 export const newRoom = (room) => {
-  
   return async (dispatch) => {
     try {
       dispatch({
         type: ACTION_TYPES.CREATE_ROOM,
+        payload: room,
+      });
+    } catch (error) {
+      return dispatch({ type: ACTION_TYPES.ERROR, payload: error });
+    }
+  };
+}
+
+
+export const deleteRoom = (room) => {
+  return async (dispatch) => {
+    try {
+      dispatch({
+        type: ACTION_TYPES.DELETE_ROOM,
         payload: room,
       });
     } catch (error) {
