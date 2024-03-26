@@ -155,7 +155,7 @@ const Message = ({ message, username }) => {
         }}
       >
         <Avatar sx={{ bgcolor: isMe ? "secondary.main" : "primary.main"  }} alt={message.author}>
-          {isMe ? "Me" : message.author[0]}
+          {isMe ? "Me" : message.author[0].toUpperCase()}
         </Avatar>
         <Paper
           variant="outlined"
