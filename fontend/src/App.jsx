@@ -13,6 +13,7 @@ function App() {
 
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
+      console.log(authUser.uid);
       if (authUser) {
         dispatch(setUser(authUser.email));
       }
