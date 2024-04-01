@@ -14,6 +14,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react'
 import { newRoom, selectRoom } from '../Redux/actions';
 import InfoPopover from './info';
+import { auth } from "../firebase"
+import { useNavigate } from 'react-router-dom'
 
 
 const color_primary = "#7D56C1";
@@ -80,6 +82,7 @@ function NewRoom() {
 
 export default function Rooms({socket}) {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   const all_rooms = useSelector((state) => state.notWhatsapp.rooms);
 
@@ -89,10 +92,19 @@ export default function Rooms({socket}) {
 
   const user_avatar = username_email[0].toUpperCase()
 
+  const justOut = handleOut;
+
   const handleSelect = (room) => {
       dispatch(selectRoom(room))
       socket.emit('join_room', room.id)
     
+  }
+
+  function handleOut() {
+    if (current_user) {
+      auth.signOut();
+      navigate("/")
+    }
   }
   
   return (
@@ -104,6 +116,24 @@ export default function Rooms({socket}) {
         <Typography variant="h5" gutterBottom component="div" sx={{ p: 2, pb: 0, fontFamily:"fantasy" }}>
             {username_email}
         </Typography>
+
+        <Button
+              variant="contained"
+              fontFamily={"unset"}
+            sx={{
+                justifyContent: "end",
+              alignContent: "end",
+                marginLeft:"140px",
+                boxShadow:5,
+                bgcolor: `${color_secondary}`,
+                color: "black",
+                ":hover":
+                  { bgcolor: `${color_secondary}`, color: "white" }
+              }}
+              onClick={justOut}
+        >
+          Logout
+        </Button>  
 
         </Box>
         <Divider />

@@ -1,9 +1,8 @@
 import Chat from '../Components/chat'
 import NotChat from '../Components/notChat'
-import { Container, Box, Button, Typography, FormControl } from '@mui/material'
+import { Container, Box, Typography, FormControl } from '@mui/material'
 import { useState } from 'react'
 import { useSelector } from 'react-redux';
-import { auth } from "../firebase"
 import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
 import Rooms from '../Components/rooms'
@@ -17,7 +16,6 @@ const socket = io.connect("http://localhost:3001");
 
 function Home() {
   const [username, setUsername] = useState('')
-  const navigate = useNavigate()
   const user_current = useSelector((state) => state.notWhatsapp.user)
   const current_chat = useSelector((state) => state.notWhatsapp.select_room)
 
@@ -28,13 +26,6 @@ function Home() {
     setUsername(username_email)
     
   }, [user_current]);
-
-  function handleOut() {
-    if (user_current) {
-      auth.signOut();
-      navigate("/")
-    }
-  }
 
   
   return (
@@ -60,20 +51,6 @@ function Home() {
           }}>
           <Box sx={{display:"flex", alignItems:"center", justifyContent:"center", gap:2}}> 
             <Typography variant="h3" align="center" marginY={1} fontFamily={"fantasy"}  >Not Whatsapp</Typography>
-            <Button
-              variant="contained"
-              fontFamily={"unset"}
-              sx={{
-                boxShadow:5,
-                bgcolor: `${color_secondary}`,
-                color: "black",
-                ":hover":
-                  { bgcolor: `${color_secondary}`, color: "white" }
-              }}
-              onClick={handleOut}
-        >
-          Logout
-        </Button>
           </Box>
       <FormControl
         sx={{
