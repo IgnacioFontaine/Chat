@@ -114,7 +114,7 @@ export default function Rooms({socket}) {
           <Avatar sx={{backgroundColor:"blueviolet", color:"black", ml:2 ,boxShadow:3}} >{user_avatar}</Avatar>
 
         <Typography variant="h5" gutterBottom component="div" sx={{ p: 2, pb: 0, fontFamily:"fantasy", mb:2 }}>
-            {username_email}
+            {username_email.toUpperCase()}
         </Typography>
 
         <Button

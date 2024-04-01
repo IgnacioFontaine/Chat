@@ -21,7 +21,6 @@ function Chat({ socket, username, room }) {
   const [currentMessage, setcurrentMessage] = useState("")
   const [messagesList, setMessagesList] = useState([])
 
-  
 
   const sendMessage = async () => {
     if (username && currentMessage) {
@@ -71,7 +70,7 @@ function Chat({ socket, username, room }) {
           borderRadius: 4,
           p:1
         }}
-      >ID Sala: {room}</Typography>
+      >Sala ID: {room}</Typography>
       <Box sx={{ flexGrow: 1, overflow: "auto", p: 2, minHeight: "500px" }}>
         
         {messagesList?.map((message) => (
