@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material'
-import ChatIcon from '@mui/icons-material/Chat';
+import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 
 function NotChat() {
   
@@ -17,7 +17,7 @@ function NotChat() {
         borderRadius: 4,
         mt:2
     }}>
-      <ChatIcon sx={{ fontSize: 500,alignItems:"center"}} />
+      <QuestionAnswerIcon sx={{ fontSize: 500, alignItems:"center"}} />
       <Typography variant='h4'
         fontFamily={"fantasy"}
       sx={{textAlign:"center"}}

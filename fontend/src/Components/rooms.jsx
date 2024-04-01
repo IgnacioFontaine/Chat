@@ -113,7 +113,7 @@ export default function Rooms({socket}) {
         <Box sx={{ display: "flex", alignItems:"center" }}>
           <Avatar sx={{backgroundColor:"blueviolet", color:"black", ml:2 ,boxShadow:3}} >{user_avatar}</Avatar>
 
-        <Typography variant="h5" gutterBottom component="div" sx={{ p: 2, pb: 0, fontFamily:"fantasy" }}>
+        <Typography variant="h5" gutterBottom component="div" sx={{ p: 2, pb: 0, fontFamily:"fantasy", mb:2 }}>
             {username_email}
         </Typography>
 
@@ -137,7 +137,7 @@ export default function Rooms({socket}) {
 
         </Box>
         <Divider />
-        <List sx={{ height:580, overflow: 'auto'}}>
+        <List sx={{ height:570, overflow: 'auto'}}>
           {all_rooms && all_rooms.map(({  name, id }) => (
             (<React.Fragment key={id} >
 
