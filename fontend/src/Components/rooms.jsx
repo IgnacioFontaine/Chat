@@ -123,7 +123,7 @@ export default function Rooms({socket}) {
             sx={{
                 justifyContent: "end",
               alignContent: "end",
-                marginLeft:"140px",
+                marginLeft:"130px",
                 boxShadow:5,
                 bgcolor: `${color_secondary}`,
                 color: "black",
