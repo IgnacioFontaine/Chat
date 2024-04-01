@@ -109,7 +109,7 @@ export default function Rooms({socket}) {
   
   return (
     <Box sx={{mt:1}}>
-      <Paper square sx={{ pb: '25px', width: 400, height:720,borderRadius: 2, backgroundColor: "#B94BFF", color: "black" }}>
+      <Paper square sx={{ pb: '25px', width: 400, height:800,borderRadius: 2, backgroundColor: "#B94BFF", color: "black" }}>
         <Box sx={{ display: "flex", alignItems:"center" }}>
           <Avatar sx={{backgroundColor:"blueviolet", color:"black", ml:2 ,boxShadow:3}} >{user_avatar}</Avatar>
 
@@ -137,7 +137,7 @@ export default function Rooms({socket}) {
 
         </Box>
         <Divider />
-        <List sx={{ height:500, overflow: 'auto'}}>
+        <List sx={{ height:580, overflow: 'auto'}}>
           {all_rooms && all_rooms.map(({  name, id }) => (
             (<React.Fragment key={id} >
 
