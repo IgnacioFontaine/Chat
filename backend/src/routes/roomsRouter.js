@@ -1,6 +1,6 @@
 //Router de Rooms
 const { Router } = require("express");
-const { getRoomsByUser } = require("");
+const { getRoomsByUser, createRoomDB } = require("");
 
 const router = Router();
 
