@@ -14,6 +14,22 @@ const getRoomsByUser = async (user) => {
   }
 };
 
+const createRoomDB = async (
+  name,
+  id_author
+) => {
+  try {
+    let newRoomDB = await Room.create({
+      name,
+      id_author
+    });
+    return newRoomDB;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
 module.exports = {
   getRoomsByUser,
+  createRoomDB
 };
