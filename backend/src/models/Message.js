@@ -3,7 +3,7 @@ const { DataTypes } = require("sequelize");
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define(
-    "room",
+    "message",
     {
       id: {
         type: DataTypes.UUID,
@@ -15,11 +15,15 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      id_room: {
+      message: {
+        type: DataTypes.STRING,
+      }
+
+      id_user: {
         type: DataTypes.STRING,
         allowNull: false,
       },
     },
-    { timestamps: false }
+    { timestamps: true }
   );
 };
