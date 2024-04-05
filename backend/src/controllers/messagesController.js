@@ -4,32 +4,36 @@ const { Message } = require("../db");
 const getMessagesByRoom = async (room) => {
   try {
     //Los mensajes de las salas en DB 
-    let roomsInDB = await Message.findAll({
-      where: { id_author: user },
+    let messagesInDB = await Message.findAll({
+      where: { id_room: room },
     });
 
-    return roomsInDB;
+    return messagesInDB;
   } catch (error) {
     throw new Error(error);
   }
 };
 
-const createRoomDB = async (
+const createMessageDB = async (
   name,
-  id_author
+  message,
+  author,
+  id_room
 ) => {
   try {
-    let newRoomDB = await Room.create({
+    let newMessageDB = await Message.create({
       name,
-      id_author
+      message,
+      author,
+      id_room
     });
-    return newRoomDB;
+    return newMessageDB;
   } catch (error) {
     throw new Error(error);
   }
 };
 
 module.exports = {
-  getRoomsByUser,
+  getMessagesByRoom,
   createMessageDB
 };
