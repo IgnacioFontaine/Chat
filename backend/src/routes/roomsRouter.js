@@ -4,11 +4,12 @@ const { getRoomsByUser } = require("");
 
 const router = Router();
 
-router.get("/", async (req, res) => {
+router.get("/:user", async (req, res) => {
   try {
     //Obtener plataformas
-    const rooms = await getRoomsByUser();
-    res.status(200).json(platforms);
+    const { user } = req.params;
+    const rooms = await getRoomsByUser(user);
+    res.status(200).json(rooms);
 
     //Manejo error
   } catch (error) {

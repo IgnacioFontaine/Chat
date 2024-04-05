@@ -15,7 +15,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      id_room: {
+      id_author: {
         type: DataTypes.STRING,
         allowNull: false,
       },
