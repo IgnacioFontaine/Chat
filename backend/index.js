@@ -2,6 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import { Server } from "socket.io";
 import { createServer } from 'node:http'
+const routes = require("./src/routes/index");
 
 const app = express();
 app.use(cors());
@@ -36,6 +37,8 @@ io.on('connection', (socket) => {
     console.log('User disconnect', socket.id)
   })
 });
+
+server.use("/", routes);
 
 const PORT = 3001;
 
