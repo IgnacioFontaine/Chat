@@ -43,6 +43,8 @@ sequelize.models = Object.fromEntries(capsEntries);
 const { Room, Message } = sequelize.models;
 
 // Relaciones
+Message.belongsTo(Room);
+Room.hasMany(Message);
 
 
 
