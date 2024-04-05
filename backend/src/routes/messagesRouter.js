@@ -20,14 +20,15 @@ router.get("/:room", async (req, res) => {
 //Crear Mensaje
 router.post("/", async (req, res) => {
   try {
-    const { name, message, id_author } =
+    const { name, message, author, id_room } =
       req.body;
 
     //Crearla
     const newMessage = await createMessageDB(
       name,
       message,
-      id_author
+      author,
+      id_room
     );
 
     //Retornarla

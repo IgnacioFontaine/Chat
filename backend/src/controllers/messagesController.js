@@ -1,10 +1,10 @@
-const { Room } = require("../db");
+const { Message } = require("../db");
 
 //Obtener Rooms
-const getRoomsByUser = async (user) => {
+const getMessagesByRoom = async (room) => {
   try {
-    //Los videojuegos en la base de datos
-    let roomsInDB = await Room.findAll({
+    //Los mensajes de las salas en DB 
+    let roomsInDB = await Message.findAll({
       where: { id_author: user },
     });
 
@@ -31,5 +31,5 @@ const createRoomDB = async (
 
 module.exports = {
   getRoomsByUser,
-  createRoomDB
+  createMessageDB
 };

@@ -18,7 +18,10 @@ module.exports = (sequelize) => {
       message: {
         type: DataTypes.STRING,
       },
-      id_author: {
+      author: {
+        type: DataTypes.STRING,
+      },
+      id_room: {
         type: DataTypes.STRING,
         allowNull: false,
       },
