@@ -1,4 +1,5 @@
-const { Room } = require("../db");
+import  Room  from "../db.js";
+
 
 //Obtener Rooms
 const getRoomsByUser = async (user) => {
@@ -29,7 +30,7 @@ const createRoomDB = async (
   }
 };
 
-module.exports = {
+export default {
   getRoomsByUser,
   createRoomDB
 };

@@ -1,15 +1,13 @@
 //Router de Rooms
 // const { Router } = require("express");
 import { Router } from "express";
-import { getMessagesByRoom, createMessageDB} from "../controllers/messagesController"
+import { getMessagesByRoom, createMessageDB} from "../controllers/messagesController.js"
 
 const router = Router();
 
 router.get("/", async (req, res) => {
   try {
-    //Obtener mensajes
-    // const { room } = req.params;
-    // const messages = await getMessagesByRoom(room);
+    
     res.status(200).send("Soy el router de menesajes")
 
     //Manejo error

@@ -1,7 +1,7 @@
 //Router de Rooms
 // const { Router } = require("express");
 import { Router } from "express";
-import {getRoomsByUser, createRoomDB} from "../controllers/roomsController"
+import { getRoomsByUser, createRoomDB} from "../controllers/roomsController.js"
 
 const router = Router();
 

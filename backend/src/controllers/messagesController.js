@@ -1,4 +1,4 @@
-const { Message } = require("../db");
+import  Message  from "../db.js";
 
 //Obtener Rooms
 const getMessagesByRoom = async (room) => {
@@ -33,7 +33,7 @@ const createMessageDB = async (
   }
 };
 
-module.exports = {
+export default {
   getMessagesByRoom,
   createMessageDB
 };
