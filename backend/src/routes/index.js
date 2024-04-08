@@ -11,4 +11,4 @@ router.use("/rooms", roomsRouter);
 router.use("/mesagges", messagesRoute);
 
 
-module.exports = router;
+module.exports  = router;

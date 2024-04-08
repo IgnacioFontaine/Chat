@@ -2,7 +2,8 @@ import express from 'express'
 import cors from 'cors'
 import { Server } from "socket.io";
 import { createServer } from 'node:http'
-const routes = require("./src/routes/index");
+// const routes = require("../backend/src/routes/index.js");
+// import { router } from "./src/routes/index.js"
 
 const app = express();
 app.use(cors());
@@ -38,7 +39,7 @@ io.on('connection', (socket) => {
   })
 });
 
-server.use("/", routes);
+// server.use("/", router);
 
 const PORT = 3001;
 
