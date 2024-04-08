@@ -4,6 +4,19 @@ const { getMessagesByRoom, createMessageDB } = require("");
 
 const router = Router();
 
+router.get("/", async (req, res) => {
+  try {
+    //Obtener mensajes
+    // const { room } = req.params;
+    // const messages = await getMessagesByRoom(room);
+    res.status(200).send("Soy el router de menesajes")
+
+    //Manejo error
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
 router.get("/:room", async (req, res) => {
   try {
     //Obtener mensajes

@@ -4,6 +4,16 @@ const { getRoomsByUser, createRoomDB } = require("");
 
 const router = Router();
 
+router.get("/", async (req, res) => {
+  try {
+    res.status(200).send("Soy el router de Salas")
+
+    //Manejo error
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
 router.get("/:user", async (req, res) => {
   try {
     //Obtener plataformas
