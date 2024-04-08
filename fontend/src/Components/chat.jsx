@@ -11,8 +11,7 @@ import {
 import SendIcon from "@mui/icons-material/Send";
 import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
 
-
-const color_primary = "#7D56C1";
+// const color_primary = "#7D56C1";
 const color_secondary = "#3E2A61";
 
 
