@@ -3,7 +3,7 @@ import cors from 'cors'
 import { Server } from "socket.io";
 import { createServer } from 'node:http'
 // const routes = require("../backend/src/routes/index.js");
-import  router  from "./src/routes/index.js"
+// import  router  from "./src/routes/index.js"
 
 const app = express();
 app.use(cors());
