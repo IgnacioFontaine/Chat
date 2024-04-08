@@ -1,6 +1,7 @@
 //Router de Rooms
-const { Router } = require("express");
-const { getMessagesByRoom, createMessageDB } = require("");
+// const { Router } = require("express");
+import { Router } from "express";
+import { getMessagesByRoom, createMessageDB} from "../controllers/messagesController"
 
 const router = Router();
 

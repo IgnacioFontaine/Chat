@@ -1,4 +1,5 @@
-const { Router } = require("express");
+// const { Router } = require("express");
+import { Router } from "express";
 
 const roomsRouter = require("./videogamesRouter.js");
 const messagesRoute = require("./videogameIdRouter");
@@ -11,4 +12,5 @@ router.use("/rooms", roomsRouter);
 router.use("/mesagges", messagesRoute);
 
 
-module.exports  = router;
+export default router;
+// module.exports  = router;
