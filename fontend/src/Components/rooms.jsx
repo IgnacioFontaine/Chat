@@ -9,15 +9,15 @@ import ListItemText from '@mui/material/ListItemText';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
+import ClearIcon from '@mui/icons-material/Clear';
 import { Divider, Avatar } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react'
-import { newFirebaseRoom, selectRoom, getFirebaseRooms } from '../Redux/actions';
+import { newFirebaseRoom, selectRoom, getFirebaseRooms, deleteFirestoreRoom } from '../Redux/actions';
 import InfoPopover from './info';
 import { auth } from "../firebase"
 import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
-
 
 const color_primary = "#7D56C1";
 const color_secondary = "#3E2A61";
@@ -129,8 +129,8 @@ export default function Rooms({socket}) {
 
         <Typography variant="h5" gutterBottom component="div" sx={{ p: 2, pb: 0, fontFamily:"fantasy", mb:2 }}>
             {username_email.toUpperCase()}
-        </Typography>
-
+          </Typography>
+          
         <Button
               variant="contained"
               fontFamily={"unset"}
@@ -159,7 +159,22 @@ export default function Rooms({socket}) {
                 <ListItemAvatar>
                   <Avatar alt="Profile Picture" sx={{backgroundColor:"blueviolet", color:"black"}}>{name[0].toUpperCase()}</Avatar>
                 </ListItemAvatar>
-                <ListItemText primary={name.toUpperCase()} secondary={id}  />
+                <ListItemText primary={name.toUpperCase()} secondary={id} />
+                <Button
+               variant="contained"
+              fontFamily={"unset"}
+            sx={{
+                justifyContent: "center",
+                height: "30px",
+                bgcolor: `${color_secondary}`,
+                color: "black",
+                ":hover":
+                  { bgcolor: `${color_secondary}`, color: "white" }
+              }}
+              onClick={()=>deleteFirestoreRoom(id)}
+        >
+          <ClearIcon sx={{fontSize:"medium"}}/>
+        </Button> 
               </ListItemButton>
             </React.Fragment>)
           ))}

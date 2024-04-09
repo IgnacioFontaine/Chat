@@ -76,7 +76,8 @@ export const deleteFirestoreRoom = (id) => {
   return async (dispatch) => {
     try {
       const query_delete = query(collection(db, "rooms"), where("id", "==", id));
-      await deleteDoc(query_delete);
+      console.log(query_delete);
+      // await deleteDoc(query_delete);
       
     } catch (error) {
       return dispatch({ type: ACTION_TYPES.ERROR, payload: error });
