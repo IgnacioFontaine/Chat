@@ -32,10 +32,9 @@ function NewRoom() {
 
     function handleCreate(event) {
       event.preventDefault();
-      dispatch(newRoom({ name, id }));
+      dispatch(newRoom({ name, id, user_id }));
       setName("");
       setId("")
-      // setUserId("")
   }
 
   return (

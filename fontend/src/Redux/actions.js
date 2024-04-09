@@ -47,20 +47,21 @@ export const newRoom = (room) => {
   };
 }
 
-// export const newFirebaseRoom = (room) => {
-//   return async (dispatch) => {
-//     try {
-//     const docRef = await addDoc(collection(db, "rooms"), {
-//     name: room.name,
-//     last: "Lovelace",
-//     born: 1815
-//   });
-//   console.log("Document written with ID: ", docRef.id);
-//   } catch (event) {
-//     console.error("Error adding document: ", event);
-//   }
-//   };
-// }
+export const newFirebaseRoom = (room) => {
+  return async (dispatch) => {
+    try {
+    const docRef = await addDoc(collection(db, "rooms"), {
+    name: room.name,
+    id: room.id,
+    room_user: room.user_id
+  });
+  console.log("Document written with ID: ", docRef.id);
+  } catch (event) {
+      console.error("Error adding document: ", event);
+      return dispatch({ type: ACTION_TYPES.ERROR, payload: event });
+  }
+  };
+}
 
 
 
