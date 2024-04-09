@@ -33,19 +33,19 @@ export const setUserUid = (uid) => {
   };
 };
 
-export const newRoom = (room) => {
-  return async (dispatch) => {
-    try {
-      console.log(room);
-      dispatch({
-        type: ACTION_TYPES.CREATE_ROOM,
-        payload: room,
-      });
-    } catch (error) {
-      return dispatch({ type: ACTION_TYPES.ERROR, payload: error });
-    }
-  };
-}
+// export const newRoom = (room) => {
+//   return async (dispatch) => {
+//     try {
+//       console.log(room);
+//       dispatch({
+//         type: ACTION_TYPES.CREATE_ROOM,
+//         payload: room,
+//       });
+//     } catch (error) {
+//       return dispatch({ type: ACTION_TYPES.ERROR, payload: error });
+//     }
+//   };
+// }
 
 export const newFirebaseRoom = (room) => {
   return async (dispatch) => {
@@ -69,20 +69,16 @@ export const getFirebaseRooms = (uid) => {
       const query_get = query(collection(db, "rooms"), where("room_user", "==", uid));
       const querySnapshot = await getDocs(query_get);
 
-      // Crear un array para almacenar los datos
-      const all_rooms = [];
+      const all_rooms_firebase = [];
 
-      // Iterar sobre cada documento y guardar su data en el array
       querySnapshot.forEach((doc) => {
-        all_rooms.push(doc.data());
+        all_rooms_firebase.push(doc.data());
       });
-
-      // Ahora 'all_rooms' contiene los datos de cada documento
-      console.log(all_rooms);
+      console.log(all_rooms_firebase);
       
       dispatch({
         type: ACTION_TYPES.GET_USER_ROOMS,
-        payload: all_rooms,
+        payload: all_rooms_firebase,
       });
   
   } catch (event) {

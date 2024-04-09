@@ -12,10 +12,11 @@ import AddIcon from '@mui/icons-material/Add';
 import { Divider, Avatar } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react'
-import { newFirebaseRoom, newRoom, selectRoom, getFirebaseRooms } from '../Redux/actions';
+import { newFirebaseRoom, selectRoom, getFirebaseRooms } from '../Redux/actions';
 import InfoPopover from './info';
 import { auth } from "../firebase"
 import { useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
 
 
 const color_primary = "#7D56C1";
@@ -32,7 +33,7 @@ function NewRoom() {
 
     function handleCreate(event) {
       event.preventDefault();
-      dispatch(newRoom({ name, id, user_id }));
+      // dispatch(newRoom({ name, id, user_id }));
       dispatch(newFirebaseRoom({ name, id, user_id }));
       dispatch(getFirebaseRooms(user_id));
       setName("");
@@ -88,9 +89,16 @@ function NewRoom() {
 
 export default function Rooms({socket}) {
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const current_uid = useSelector((state) => state.notWhatsapp.user_uid);
+  
+  useEffect(() => {
+    
+    dispatch(getFirebaseRooms(current_uid))
+    
+  }, []);
 
-  const all_rooms = useSelector((state) => state.notWhatsapp.rooms);
+  const all_rooms = useSelector((state) => state.notWhatsapp.rooms_firebase);
 
   const current_user = useSelector((state) => state.notWhatsapp.user);
 
