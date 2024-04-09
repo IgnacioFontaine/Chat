@@ -12,7 +12,7 @@ import AddIcon from '@mui/icons-material/Add';
 import { Divider, Avatar } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react'
-import { newRoom, selectRoom } from '../Redux/actions';
+import { newFirebaseRoom, newRoom, selectRoom } from '../Redux/actions';
 import InfoPopover from './info';
 import { auth } from "../firebase"
 import { useNavigate } from 'react-router-dom'
@@ -28,11 +28,12 @@ function NewRoom() {
   const current_uid = useSelector((state) => state.notWhatsapp.user_uid);
   const [name, setName] = useState("");
   const [id, setId] = useState("");
-  const [user_id, setUserId] = useState(current_uid);
+  const [user_id] = useState(current_uid);
 
     function handleCreate(event) {
       event.preventDefault();
       dispatch(newRoom({ name, id, user_id }));
+      dispatch(newFirebaseRoom({ name, id, user_id }));
       setName("");
       setId("")
   }
