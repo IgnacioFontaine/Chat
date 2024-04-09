@@ -166,12 +166,12 @@ export default function Rooms({socket}) {
             sx={{
                 justifyContent: "center",
                 height: "30px",
-                bgcolor: `${color_secondary}`,
+              bgcolor: `${color_secondary}`,
                 color: "black",
                 ":hover":
                   { bgcolor: `${color_secondary}`, color: "white" }
               }}
-              onClick={()=>deleteFirestoreRoom(id)}
+              onClick={deleteFirestoreRoom(id)}
         >
           <ClearIcon sx={{fontSize:"medium"}}/>
         </Button> 

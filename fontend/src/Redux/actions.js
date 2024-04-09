@@ -57,7 +57,6 @@ export const getFirebaseRooms = (uid) => {
       querySnapshot.forEach((doc) => {
         all_rooms_firebase.push(doc.data());
       });
-      console.log(all_rooms_firebase);
       
       dispatch({
         type: ACTION_TYPES.GET_USER_ROOMS,
@@ -77,7 +76,7 @@ export const deleteFirestoreRoom = (id) => {
     try {
       const query_delete = query(collection(db, "rooms"), where("id", "==", id));
       console.log(query_delete);
-      // await deleteDoc(query_delete);
+      const querySnapshot = await deleteDoc(query_delete);
       
     } catch (error) {
       return dispatch({ type: ACTION_TYPES.ERROR, payload: error });
