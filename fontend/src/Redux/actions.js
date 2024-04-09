@@ -63,11 +63,19 @@ export const newFirebaseRoom = (room) => {
   };
 }
 
-const getFirebaseRooms = (uid) => {
+export const getFirebaseRooms = (uid) => {
   return async (dispatch) => {
     try {
       const query_get = query(collection(db, "rooms"), where("room_user", "==", uid));
-      console.log(query_get);
+      const querySnapshot = await getDocs(query_get);
+      console.log(querySnapshot.forEach((doc) => {
+  console.log(doc.data());
+      }));
+      
+      dispatch({
+        type: ACTION_TYPES.GET_USER_ROOMS,
+        payload: id,
+      });
   
   } catch (event) {
       console.error("Error adding document: ", event);

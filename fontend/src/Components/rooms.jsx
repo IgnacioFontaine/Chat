@@ -12,7 +12,7 @@ import AddIcon from '@mui/icons-material/Add';
 import { Divider, Avatar } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react'
-import { newFirebaseRoom, newRoom, selectRoom } from '../Redux/actions';
+import { newFirebaseRoom, newRoom, selectRoom, getFirebaseRooms } from '../Redux/actions';
 import InfoPopover from './info';
 import { auth } from "../firebase"
 import { useNavigate } from 'react-router-dom'
@@ -34,6 +34,7 @@ function NewRoom() {
       event.preventDefault();
       dispatch(newRoom({ name, id, user_id }));
       dispatch(newFirebaseRoom({ name, id, user_id }));
+      dispatch(getFirebaseRooms(user_id));
       setName("");
       setId("")
   }
