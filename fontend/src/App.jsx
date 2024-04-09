@@ -4,7 +4,7 @@ import SingInView from "./Views/singIn";
 import { useEffect } from 'react';
 import { auth } from './firebase';
 import { useDispatch } from 'react-redux';
-import { setUser } from './Redux/actions';
+import { setUser, setUserUid } from './Redux/actions';
 import { IsAuthGuard } from "./Components/isAuth";
 
 function App() {
@@ -16,6 +16,7 @@ function App() {
       console.log(authUser.uid);
       if (authUser) {
         dispatch(setUser(authUser.email));
+        dispatch(setUserUid(authUser.uid));
       }
     })
   },[])
