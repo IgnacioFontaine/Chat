@@ -20,13 +20,15 @@ import { useNavigate } from 'react-router-dom'
 
 const color_primary = "#7D56C1";
 const color_secondary = "#3E2A61";
-// console.log(auth.onAuthStateChanged.authUser.uid);
+
+
 
 function NewRoom() {
   const dispatch = useDispatch();
+  const current_uid = useSelector((state) => state.notWhatsapp.user_uid);
   const [name, setName] = useState("");
   const [id, setId] = useState("");
-  // const [user_id, setUserId] = useState(auth.authUser.uid);
+  const [user_id, setUserId] = useState(current_uid);
 
     function handleCreate(event) {
       event.preventDefault();
