@@ -19,9 +19,24 @@ export const setUser = (user) => {
   };
 };
 
+export const setUserUid = (uid) => {
+  
+  return async (dispatch) => {
+    try {
+      dispatch({
+        type: ACTION_TYPES.SET_USER_UID,
+        payload: uid,
+      });
+    } catch (error) {
+      return dispatch({ type: ACTION_TYPES.ERROR, payload: error });
+    }
+  };
+};
+
 export const newRoom = (room) => {
   return async (dispatch) => {
     try {
+      console.log(room);
       dispatch({
         type: ACTION_TYPES.CREATE_ROOM,
         payload: room,
@@ -32,20 +47,20 @@ export const newRoom = (room) => {
   };
 }
 
-export const newFirebaseRoom = (room) => {
-  return async (dispatch) => {
-    try {
-    const docRef = await addDoc(collection(db, "rooms"), {
-    name: room.name,
-    last: "Lovelace",
-    born: 1815
-  });
-  console.log("Document written with ID: ", docRef.id);
-  } catch (event) {
-    console.error("Error adding document: ", event);
-  }
-  };
-}
+// export const newFirebaseRoom = (room) => {
+//   return async (dispatch) => {
+//     try {
+//     const docRef = await addDoc(collection(db, "rooms"), {
+//     name: room.name,
+//     last: "Lovelace",
+//     born: 1815
+//   });
+//   console.log("Document written with ID: ", docRef.id);
+//   } catch (event) {
+//     console.error("Error adding document: ", event);
+//   }
+//   };
+// }
 
 
 
