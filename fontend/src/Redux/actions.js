@@ -1,6 +1,6 @@
 import ACTION_TYPES from "./actionsTypes";
 import { db } from "../firebase"
-import { collection, addDoc, query, where, getDocs } from "firebase/firestore"; 
+import { collection, addDoc, query, where, getDocs, deleteDoc, doc } from "firebase/firestore"; 
 
 export const setUser = (user) => {
   
@@ -72,7 +72,17 @@ export const getFirebaseRooms = (uid) => {
   
 }
 
-
+export const deleteFirestoreRoom = (id) => {
+  return async (dispatch) => {
+    try {
+      const query_delete = query(collection(db, "rooms"), where("id", "==", id));
+      await deleteDoc(query_delete);
+      
+    } catch (error) {
+      return dispatch({ type: ACTION_TYPES.ERROR, payload: error });
+    }
+  };
+}
 
 export const deleteRoom = (id) => {
   return async (dispatch) => {
