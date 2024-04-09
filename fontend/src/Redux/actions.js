@@ -63,6 +63,19 @@ export const newFirebaseRoom = (room) => {
   };
 }
 
+const getFirebaseRooms = (uid) => {
+  return async (dispatch) => {
+    try {
+    
+  
+  } catch (event) {
+      console.error("Error adding document: ", event);
+      return dispatch({ type: ACTION_TYPES.ERROR, payload: event });
+  }
+  };
+  
+}
+
 
 
 export const deleteRoom = (id) => {
