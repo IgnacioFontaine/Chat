@@ -1,4 +1,9 @@
 import ACTION_TYPES from "./actionsTypes";
+import { db } from "../firebase"
+import { collection, addDoc } from "firebase/firestore"; 
+
+
+
 
 export const setUser = (user) => {
   
@@ -26,6 +31,22 @@ export const newRoom = (room) => {
     }
   };
 }
+
+export const newFirebaseRoom = (room) => {
+  return async (dispatch) => {
+    try {
+    const docRef = await addDoc(collection(db, "rooms"), {
+    name: room.name,
+    last: "Lovelace",
+    born: 1815
+  });
+  console.log("Document written with ID: ", docRef.id);
+  } catch (event) {
+    console.error("Error adding document: ", event);
+  }
+  };
+}
+
 
 
 export const deleteRoom = (id) => {
