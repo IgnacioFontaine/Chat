@@ -3,6 +3,7 @@ import ACTION_TYPES from "./actionsTypes";
 //Config initialState
 const initialState = {
   user: null,
+  user_uid: null,
   rooms: [],
   select_room:null,
   error: false,
@@ -17,6 +18,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         user:action.payload
+      }
+    
+    case ACTION_TYPES.SET_USER_UID:
+      return {
+        ...state,
+        user_uid:action.payload
       }
     
     case ACTION_TYPES.CREATE_ROOM:
