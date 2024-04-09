@@ -2,9 +2,6 @@ import ACTION_TYPES from "./actionsTypes";
 import { db } from "../firebase"
 import { collection, addDoc, query, where, getDocs } from "firebase/firestore"; 
 
-
-
-
 export const setUser = (user) => {
   
   return async (dispatch) => {
@@ -32,20 +29,6 @@ export const setUserUid = (uid) => {
     }
   };
 };
-
-// export const newRoom = (room) => {
-//   return async (dispatch) => {
-//     try {
-//       console.log(room);
-//       dispatch({
-//         type: ACTION_TYPES.CREATE_ROOM,
-//         payload: room,
-//       });
-//     } catch (error) {
-//       return dispatch({ type: ACTION_TYPES.ERROR, payload: error });
-//     }
-//   };
-// }
 
 export const newFirebaseRoom = (room) => {
   return async (dispatch) => {

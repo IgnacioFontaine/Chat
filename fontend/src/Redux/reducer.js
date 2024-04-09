@@ -4,7 +4,6 @@ import ACTION_TYPES from "./actionsTypes";
 const initialState = {
   user: null,
   user_uid: null,
-  rooms: [],
   rooms_firebase:[],
   select_room:null,
   error: false,
@@ -25,12 +24,6 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         user_uid:action.payload
-      }
-    
-    case ACTION_TYPES.CREATE_ROOM:
-      return {
-        ...state,
-        rooms:[...state.rooms, action.payload]
       }
     
     case ACTION_TYPES.DELETE_ROOM_SUCCES:
