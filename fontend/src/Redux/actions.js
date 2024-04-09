@@ -1,6 +1,6 @@
 import ACTION_TYPES from "./actionsTypes";
 import { db } from "../firebase"
-import { collection, addDoc } from "firebase/firestore"; 
+import { collection, addDoc, query, where, getDocs } from "firebase/firestore"; 
 
 
 
@@ -66,7 +66,8 @@ export const newFirebaseRoom = (room) => {
 const getFirebaseRooms = (uid) => {
   return async (dispatch) => {
     try {
-    
+      const query_get = query(collection(db, "rooms"), where("room_user", "==", uid));
+      console.log(query_get);
   
   } catch (event) {
       console.error("Error adding document: ", event);
