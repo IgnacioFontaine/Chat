@@ -68,13 +68,21 @@ export const getFirebaseRooms = (uid) => {
     try {
       const query_get = query(collection(db, "rooms"), where("room_user", "==", uid));
       const querySnapshot = await getDocs(query_get);
-      console.log(querySnapshot.forEach((doc) => {
-  console.log(doc.data());
-      }));
+
+      // Crear un array para almacenar los datos
+      const all_rooms = [];
+
+      // Iterar sobre cada documento y guardar su data en el array
+      querySnapshot.forEach((doc) => {
+        all_rooms.push(doc.data());
+      });
+
+      // Ahora 'all_rooms' contiene los datos de cada documento
+      console.log(all_rooms);
       
       dispatch({
         type: ACTION_TYPES.GET_USER_ROOMS,
-        payload: id,
+        payload: all_rooms,
       });
   
   } catch (event) {
