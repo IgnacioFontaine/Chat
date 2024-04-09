@@ -5,6 +5,7 @@ const initialState = {
   user: null,
   user_uid: null,
   rooms: [],
+  rooms_firebase:[],
   select_room:null,
   error: false,
   errormsg: {},
@@ -36,6 +37,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         rooms: state.rooms.filter(rooms => rooms.id !== action.payload)
+      };
+    
+    case ACTION_TYPES.GET_USER_ROOMS:
+      return {
+        ...state,
+        rooms_firebase: action.payload
       };
     
     case ACTION_TYPES.DELETE_ROOM_FAILURE:
