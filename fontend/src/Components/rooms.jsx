@@ -13,7 +13,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 import { Divider, Avatar } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react'
-import { newFirebaseRoom, selectRoom, getFirebaseRooms, deleteFirestoreRoom } from '../Redux/actions';
+import { newFirebaseRoom, selectRoom, getFirebaseRooms, deleteFirestoreRoom, getMessageByRoom } from '../Redux/actions';
 import InfoPopover from './info';
 import { auth } from "../firebase"
 import { useNavigate } from 'react-router-dom'
@@ -109,8 +109,9 @@ export default function Rooms({socket}) {
   const justOut = handleOut;
 
   const handleSelect = (room) => {
-      dispatch(selectRoom(room))
-      socket.emit('join_room', room.id)
+    dispatch(selectRoom(room))
+    dispatch(getMessageByRoom(room.id))
+    socket.emit('join_room', room.id)
     
   }
 

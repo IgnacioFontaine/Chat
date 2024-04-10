@@ -128,6 +128,8 @@ export const getMessageByRoom = (room) => {
       querySnapshot.forEach((doc) => {
         all_message_room.push(doc.data());
       });
+
+      console.log(all_message_room);
       
       dispatch({
         type: ACTION_TYPES.GET_MESSAGES_ROOM,
