@@ -1,6 +1,6 @@
 import ACTION_TYPES from "./actionsTypes";
 import { db } from "../firebase"
-import { collection, addDoc, query, where, getDocs, deleteDoc, doc } from "firebase/firestore"; 
+import { collection, addDoc, query, where, getDocs, deleteDoc, doc, updateDoc, arrayUnion } from "firebase/firestore"; 
 
 export const setUser = (user) => {
   
@@ -46,9 +46,21 @@ export const newFirebaseRoom = (room) => {
   };
 }
 
-export const newFirebaseMessage = () => {
+export const newFirebaseMessage = (message) => {
   return async (dispatch) => {
     try {
+      const newMessage = {
+      message: message.message,
+      room: message.room,
+      author: message.author,
+      time: message.time,
+      id: message.id 
+    };
+
+    // Actualiza el campo "messages" en el documento de la sala
+    await updateDoc(doc(db, "rooms", message.room), {
+      messages: arrayUnion(newMessage) // Usa arrayUnion para agregar el nuevo mensaje al array existente
+    });
 
   } catch (event) {
       console.error("Error adding document: ", event);
