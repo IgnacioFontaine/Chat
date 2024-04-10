@@ -46,21 +46,20 @@ export const newFirebaseRoom = (room) => {
   };
 }
 
+
 export const newFirebaseMessage = (message) => {
   return async (dispatch) => {
     try {
-      const newMessage = {
+
+      const docRef = await addDoc(collection(db, "message"),{
       message: message.message,
       room: message.room,
       author: message.author,
       time: message.time,
       id: message.id 
-    };
+    })
 
-    // Actualiza el campo "messages" en el documento de la sala
-    await updateDoc(doc(db, "rooms", message.room), {
-      messages: arrayUnion(newMessage) // Usa arrayUnion para agregar el nuevo mensaje al array existente
-    });
+    console.log("Document written with ID: ", docRef.id);
 
   } catch (event) {
       console.error("Error adding document: ", event);
@@ -68,6 +67,29 @@ export const newFirebaseMessage = (message) => {
   }
   };
 }
+
+// export const newFirebaseMessage = (message) => {
+//   return async (dispatch) => {
+//     try {
+//       const newMessage = {
+//       message: message.message,
+//       room: message.room,
+//       author: message.author,
+//       time: message.time,
+//       id: message.id 
+//     };
+
+//     // Actualiza el campo "messages" en el documento de la sala
+//     await updateDoc(doc(db, "rooms", message.room), {
+//       messages: arrayUnion(newMessage) // Usa arrayUnion para agregar el nuevo mensaje al array existente
+//     });
+
+//   } catch (event) {
+//       console.error("Error adding document: ", event);
+//       return dispatch({ type: ACTION_TYPES.ERROR, payload: event });
+//   }
+//   };
+// }
 
 export const getFirebaseRooms = (uid) => {
   return async (dispatch) => {

@@ -24,7 +24,6 @@ function Chat({ socket, username, room }) {
   const dispatch = useDispatch();
   
 
-
   const sendMessage = async () => {
     if (username && currentMessage) {
       const info = {
@@ -37,6 +36,7 @@ function Chat({ socket, username, room }) {
       console.log("Enviando mensaje: ", info);
 
       await socket.emit("send_message", info)
+      dispatch(newFirebaseMessage(info));
       setMessagesList((list) => [...list, info])
       setcurrentMessage("")
     }
