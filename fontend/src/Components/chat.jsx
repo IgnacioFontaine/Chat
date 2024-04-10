@@ -23,6 +23,20 @@ function Chat({ socket, username, room }) {
   const [messagesList, setMessagesList] = useState([])
   const dispatch = useDispatch();
   const all_message_room = useSelector((state) => state.notWhatsapp.messages_room);
+  console.log(all_message_room);
+
+  function convertirTiempoAMinutos(tiempo) {
+  const [horas, minutos] = tiempo.split(':').map(Number);
+  return horas * 60 + minutos;
+}
+
+// Ordenar los objetos por tiempo
+const all_messages_order = all_message_room.sort((a, b) => {
+  const tiempoA = convertirTiempoAMinutos(a.time);
+  const tiempoB = convertirTiempoAMinutos(b.time);
+  return tiempoA - tiempoB;
+});
+  
   
 
   const sendMessage = async () => {
@@ -50,7 +64,7 @@ function Chat({ socket, username, room }) {
     dispatch(getMessageByRoom(room))
     socket.on("recieve_message", handlerMessage)
     return ()=>socket.off("recieve_message", handlerMessage)
-  }, [socket])
+  }, [socket, messagesList])
   
   
   return (
@@ -79,7 +93,7 @@ function Chat({ socket, username, room }) {
       >Sala ID: {room}</Typography>
       <Box sx={{ flexGrow: 1, overflow: "auto", p: 2, minHeight: "500px" }}>
         
-        {all_message_room?.map((message) => (
+        {all_messages_order?.map((message) => (
           <Message key={message.id} message={message} username={username} />
         ))}
         
