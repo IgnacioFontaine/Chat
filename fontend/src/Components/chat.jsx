@@ -10,8 +10,8 @@ import {
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
-import { newFirebaseMessage } from "../Redux/actions";
-import { useDispatch } from 'react-redux';
+import { newFirebaseMessage, getMessageByRoom } from "../Redux/actions";
+import { useDispatch, useSelector } from 'react-redux';
 
 // const color_primary = "#7D56C1";
 const color_secondary = "#3E2A61";
@@ -22,6 +22,7 @@ function Chat({ socket, username, room }) {
   const [currentMessage, setcurrentMessage] = useState("")
   const [messagesList, setMessagesList] = useState([])
   const dispatch = useDispatch();
+  const all_message_room = useSelector((state) => state.notWhatsapp.messages_room);
   
 
   const sendMessage = async () => {
@@ -46,6 +47,7 @@ function Chat({ socket, username, room }) {
   useEffect(() => {
     const handlerMessage = data => setMessagesList((list) => [...list, data])
     
+    dispatch(getMessageByRoom(room))
     socket.on("recieve_message", handlerMessage)
     return ()=>socket.off("recieve_message", handlerMessage)
   }, [socket])
@@ -77,7 +79,7 @@ function Chat({ socket, username, room }) {
       >Sala ID: {room}</Typography>
       <Box sx={{ flexGrow: 1, overflow: "auto", p: 2, minHeight: "500px" }}>
         
-        {messagesList?.map((message) => (
+        {all_message_room?.map((message) => (
           <Message key={message.id} message={message} username={username} />
         ))}
         

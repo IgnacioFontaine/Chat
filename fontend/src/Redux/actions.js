@@ -129,8 +129,6 @@ export const getMessageByRoom = (room) => {
         all_message_room.push(doc.data());
       });
 
-      console.log(all_message_room);
-      
       dispatch({
         type: ACTION_TYPES.GET_MESSAGES_ROOM,
         payload: all_message_room,
