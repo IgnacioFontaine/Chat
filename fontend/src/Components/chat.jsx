@@ -22,8 +22,7 @@ function Chat({ socket, username, room }) {
   const [currentMessage, setcurrentMessage] = useState("")
   const [messagesList, setMessagesList] = useState([])
   const dispatch = useDispatch();
-  const all_message_room = useSelector((state) => state.notWhatsapp.messages_room);
-  console.log(all_message_room);
+  // const all_message_room = useSelector((state) => state.notWhatsapp.messages_room);
 
   function convertirTiempoAMinutos(tiempo) {
   const [horas, minutos] = tiempo.split(':').map(Number);
@@ -51,7 +50,7 @@ const all_messages_order = all_message_room.sort((a, b) => {
       console.log("Enviando mensaje: ", info);
 
       await socket.emit("send_message", info)
-      dispatch(newFirebaseMessage(info));
+      // dispatch(newFirebaseMessage(info));
       setMessagesList((list) => [...list, info])
       setcurrentMessage("")
     }
@@ -61,7 +60,7 @@ const all_messages_order = all_message_room.sort((a, b) => {
   useEffect(() => {
     const handlerMessage = data => setMessagesList((list) => [...list, data])
     
-    dispatch(getMessageByRoom(room))
+    // dispatch(getMessageByRoom(room))
     socket.on("recieve_message", handlerMessage)
     return ()=>socket.off("recieve_message", handlerMessage)
   }, [socket, messagesList])
@@ -93,7 +92,7 @@ const all_messages_order = all_message_room.sort((a, b) => {
       >Sala ID: {room}</Typography>
       <Box sx={{ flexGrow: 1, overflow: "auto", p: 2, minHeight: "500px" }}>
         
-        {all_messages_order?.map((message) => (
+        {messagesList?.map((message) => (
           <Message key={message.id} message={message} username={username} />
         ))}
         
