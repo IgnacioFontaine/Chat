@@ -116,6 +116,32 @@ export const getFirebaseRooms = (uid) => {
   
 }
 
+
+export const getMessageByRoom = (room) => {
+  return async (dispatch) => {
+    try {
+      const query_get = query(collection(db, "message"), where("room", "==", room));
+      const querySnapshot = await getDocs(query_get);
+
+      const all_message_room = [];
+
+      querySnapshot.forEach((doc) => {
+        all_message_room.push(doc.data());
+      });
+      
+      dispatch({
+        type: ACTION_TYPES.GET_MESSAGES_ROOM,
+        payload: all_message_room,
+      });
+  
+  } catch (event) {
+      console.error("Error: ", event);
+      return dispatch({ type: ACTION_TYPES.ERROR, payload: event });
+  }
+  };
+  
+}
+
 export const deleteFirestoreRoom = (id) => {
   return async (dispatch) => {
     try {
