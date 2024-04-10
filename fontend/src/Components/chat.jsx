@@ -10,6 +10,8 @@ import {
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
+import { newFirebaseMessage } from "../Redux/actions";
+import { useDispatch } from 'react-redux';
 
 // const color_primary = "#7D56C1";
 const color_secondary = "#3E2A61";
@@ -19,6 +21,8 @@ const color_secondary = "#3E2A61";
 function Chat({ socket, username, room }) {
   const [currentMessage, setcurrentMessage] = useState("")
   const [messagesList, setMessagesList] = useState([])
+  const dispatch = useDispatch();
+  
 
 
   const sendMessage = async () => {
@@ -31,6 +35,7 @@ function Chat({ socket, username, room }) {
         id:Math.random()
       }
       console.log("Enviando mensaje: ", info);
+
       await socket.emit("send_message", info)
       setMessagesList((list) => [...list, info])
       setcurrentMessage("")
