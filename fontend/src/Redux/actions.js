@@ -46,6 +46,22 @@ export const newFirebaseRoom = (room) => {
   };
 }
 
+export const newFirebaseMessage = (room_id, message) => {
+  return async (dispatch) => {
+    try {
+    const docRef = await addDoc(collection(db, "message"), {
+    name: room.name,
+    id: room.id,
+    room_id: room.user_id
+  });
+  console.log("Document written with ID: ", docRef.id);
+  } catch (event) {
+      console.error("Error adding document: ", event);
+      return dispatch({ type: ACTION_TYPES.ERROR, payload: event });
+  }
+  };
+}
+
 export const getFirebaseRooms = (uid) => {
   return async (dispatch) => {
     try {
