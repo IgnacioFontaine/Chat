@@ -25,13 +25,13 @@ function Home() {
 
   
   return (
-    <Box style={{backgroundColor:"blueviolet"}}>
+    <Box style={{height: "922px",
+        width:"100%"}}>
       <Container sx={{
         height: "100%",
         width:"100%",
         display: "flex",
         bgcolor: "transparent",
-        ml:0
       }} >
         <Container
       sx={{
@@ -39,8 +39,6 @@ function Home() {
         flexDirection: "column",
         justifyContent: "flex-start",
         backgroundColor: "#2486",
-        border:"1px solid",
-        borderColor: "gray",
         borderRadius: 1,
           }}>
       <FormControl

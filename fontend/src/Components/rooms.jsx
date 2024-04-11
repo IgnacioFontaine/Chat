@@ -124,8 +124,17 @@ export default function Rooms({socket}) {
   
   return (
     <Box >
-      <Paper square sx={{ width: 500, height:"100%",borderRadius: 0.5, backgroundColor: "#7F8C8D", color: "black" }}>
-        <Box sx={{ display: "flex", alignItems:"center" }}>
+      <Paper square sx={{
+        width: 650,
+        height: "100%",
+        borderRadius: 0.5,
+        backgroundColor: "#7F8C8D",
+        color: "black"
+      }}>
+        <Box sx={{
+          display: "flex",
+          alignItems: "center"
+        }}>
           <Avatar sx={{backgroundColor:"blueviolet", color:"black", ml:2 ,boxShadow:3}} >{user_avatar}</Avatar>
 
         <Typography variant="h5" gutterBottom component="div" sx={{ p: 2, pb: 0, fontFamily:"fantasy", mb:2 }}>
@@ -181,7 +190,7 @@ export default function Rooms({socket}) {
           ))}
         </List>
         <Divider />
-        <Box sx={{ml:5, mt:1}}>
+        <Box sx={{ml:1, mt:1}}>
             <NewRoom />
         </Box>
       </Paper>
