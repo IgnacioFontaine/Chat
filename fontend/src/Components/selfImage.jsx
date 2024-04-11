@@ -6,7 +6,8 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 function Footer(props) {
   return (
-    <Typography variant="body1" color="text.secondary" align="center" {...props}>
+    
+    <Typography variant="body1" color="text.secondary" align="center" {...props} sx={{ display: "flex", gap:"35px"}}>
       {'Copyright © Ignacio'}
       <Link color="inherit" href="https://github.com/IgnacioFontaine">
         <GitHubIcon fontSize="small" />
@@ -43,7 +44,7 @@ export const SelfImage = () => {
         pl:0
       }}>
         <Box>
-          <WhatsAppIcon  sx={{ fontSize: 250, color:"#3E2A61"}} />
+          <WhatsAppIcon  sx={{ fontSize: 250, color:"#3E2A61", filter: "drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5))"}} />
         </Box>
         <Box sx={{textAlign:"center",justifyContent:"center",alignItems:"center", mt:10}}>
           <Typography variant="h1" sx={{mb:5 , color:"#3E2A61", textShadow:"0 3px 3px black" }} fontFamily={"fantasy"} >Not Whatsapp</Typography>
