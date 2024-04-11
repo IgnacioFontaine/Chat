@@ -40,7 +40,7 @@ function NewRoom() {
   }
 
   return (
-    <Box sx={{ width: 600, height: 70 }}>
+    <Box sx={{ width: 600 }}>
       <Box sx={{ display:"flex", gap:"5px"}}>
         <TextField
           id="name"
@@ -50,7 +50,7 @@ function NewRoom() {
           label="Name"
           variant="outlined"
           autoComplete='off'
-          sx={{ width: 165, height: "100px"}}
+          sx={{ width: 180}}
         />
         <TextField
           id="id"
@@ -60,14 +60,14 @@ function NewRoom() {
           onChange={event=>setId(Number(event.target.value))}
           type='number'
           variant="outlined"
-          sx={{ width: 165}}
+          sx={{ width: 180}}
         />
          <Button
               variant="contained"
               fontFamily={"unset"}
           sx={{
             mt: 1.05,
-            ml:2,
+            ml:1,
                 borderRadius: "5%",
               height: "36px",
                 bgcolor: `${color_secondary}`,
@@ -126,10 +126,12 @@ export default function Rooms({socket}) {
     <Box >
       <Paper square sx={{
         width: 550,
-        height: "100%",
+        height: 915,
         borderRadius: 0.5,
         backgroundColor: "#7F8C8D",
-        color: "black"
+        color: "black",
+        mt: "-7px",
+        ml:"-30px"
       }}>
         <Box sx={{
           display: "flex",
@@ -146,8 +148,8 @@ export default function Rooms({socket}) {
               fontFamily={"unset"}
             sx={{
                 justifyContent: "end",
-              alignContent: "end",
-                marginLeft:"130px",
+                alignContent: "end",
+                marginLeft:"265px",
                 boxShadow:5,
                 bgcolor: `${color_secondary}`,
                 color: "black",
@@ -161,15 +163,16 @@ export default function Rooms({socket}) {
 
         </Box>
         <Divider />
-        <List sx={{ height:680, overflow: 'auto'}}>
+        <List sx={{ height:750, overflow: 'auto',}}>
           {all_rooms && all_rooms.map(({  name, id }) => (
             (<React.Fragment key={id} >
 
-              <ListItemButton onClick={ ()=>handleSelect({name,id})}>
+              <ListItemButton onClick={() => handleSelect({ name, id })}
+              sx={{borderBottom:"0.1px solid gray"}} >
                 <ListItemAvatar>
                   <Avatar alt="Profile Picture" sx={{backgroundColor:"blueviolet", color:"black"}}>{name[0].toUpperCase()}</Avatar>
                 </ListItemAvatar>
-                <ListItemText primary={name.toUpperCase()} secondary={id} />
+                <ListItemText primary={name.toUpperCase()} secondary={id}  />
                 <Button
                variant="contained"
               fontFamily={"unset"}
@@ -190,7 +193,7 @@ export default function Rooms({socket}) {
           ))}
         </List>
         <Divider />
-        <Box sx={{ml:1, mt:1}}>
+        <Box sx={{ml:1, mt:2}}>
             <NewRoom />
         </Box>
       </Paper>

@@ -75,8 +75,6 @@ const all_messages_order = all_message_room.sort((a, b) => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "flex-end",
-        border:"1px solid",
-        borderColor: "gray",
         borderRadius: 4,
         mt:2
       }}
