@@ -69,7 +69,7 @@ function NewRoom() {
             mt: 1.05,
             ml:1,
                 borderRadius: "5%",
-              height: "36px",
+                height: "36px",
                 bgcolor: `${color_secondary}`,
                 color: "black",
                 boxShadow:5,
@@ -126,7 +126,7 @@ export default function Rooms({socket}) {
     <Box >
       <Paper square sx={{
         width: 550,
-        height: 915,
+        height: 925,
         borderRadius: 0.5,
         backgroundColor: "#7F8C8D",
         color: "black",
@@ -163,7 +163,7 @@ export default function Rooms({socket}) {
 
         </Box>
         <Divider />
-        <List sx={{ height:750, overflow: 'auto',}}>
+        <List sx={{ height:775, overflow: 'auto',}}>
           {all_rooms && all_rooms.map(({  name, id }) => (
             (<React.Fragment key={id} >
 
@@ -193,7 +193,7 @@ export default function Rooms({socket}) {
           ))}
         </List>
         <Divider />
-        <Box sx={{ml:1, mt:2}}>
+        <Box sx={{ml:1, mt:1}}>
             <NewRoom />
         </Box>
       </Paper>

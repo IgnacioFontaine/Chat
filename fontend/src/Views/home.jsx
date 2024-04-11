@@ -28,7 +28,6 @@ function Home() {
     <Box sx={{
         height: "100%",
         width: "100%",
-        backgroundColor: "black",
         display: "flex",
         margin: "0px",
         pading:"0px"
@@ -43,7 +42,8 @@ function Home() {
         </Container >
         <Container sx={{
             height: "50%",
-          width: "100%",
+            width: "100%",
+            marginLeft:"-47px"
           }} >
           {current_chat ? <Chat
             socket={socket}
