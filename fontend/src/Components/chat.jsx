@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
+import backgraund_chat from "../assets/fondo_chat.png"
 
 // const color_primary = "#7D56C1";
 const color_secondary = "#3E2A61";
@@ -99,12 +100,12 @@ const all_messages_order = all_message_room.sort((a, b) => {
         flexDirection: "column",
         justifyContent: "flex-end",
         borderRadius: 1,
-        mt:-1
+        mt: -1,
       }}
     ><Box
       sx={{
           backgroundColor: "#898989",
-          width: "98.6%",
+          width: "100%",
           height:"67px",
           textAlign: "start",
           borderRadius: 0,
@@ -112,7 +113,13 @@ const all_messages_order = all_message_room.sort((a, b) => {
       > 
         <AvatarRoom name={selected_room.name} id={selected_room.id} />
     </Box>
-      <Box sx={{ flexGrow: 1, overflow: "auto", p: 2, minHeight: "500px" }}>
+      <Box sx={{
+        flexGrow: 1,
+        overflow: "auto",
+        p: 2,
+        minHeight: "500px",
+        backgroundImage: `../assets/fondo_chat.png`
+      }}>
         
         {messagesList?.map((message) => (
           <Message key={message.id} message={message} username={username} />
@@ -122,7 +129,7 @@ const all_messages_order = all_message_room.sort((a, b) => {
       <Box sx={{
         p: 1,
         backgroundColor: "#898989",
-        width: "98.7%",
+        width: "100%",
         height:"58px",
         borderRadius: 0
       }}>
@@ -136,6 +143,7 @@ const all_messages_order = all_message_room.sort((a, b) => {
               variant="outlined"
               onChange={event => setcurrentMessage(event.target.value)}
               value={currentMessage}
+              sx={{mt:0.5}}
             />
           </Grid>
           <Grid item sx={{display:"flex", gap:2}}>
@@ -147,21 +155,23 @@ const all_messages_order = all_message_room.sort((a, b) => {
               onClick={sendMessage}
               sx={{
                 bgcolor: `${color_secondary}`,
+                mt:0.5,
                 height: "4.6vh",
                 width: "1.8vw",
                 color: "black",
-                boxShadow:5,
+                boxShadow:3,
                 ":hover":
                   { bgcolor: `${color_secondary}`, color: "white" }
               }}
             >
             </Button>
             <Avatar sx={{
-                bgcolor: `${color_secondary}`,
+              bgcolor: `${color_secondary}`,
+              mt:0.5,
                 height: "4.6vh",
                 width: "3vw",
                 color: "black",
-                boxShadow:5,
+                boxShadow:3,
                 ":hover":
                   { bgcolor: `${color_secondary}`, color: "white" }
               }}>
