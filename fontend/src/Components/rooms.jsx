@@ -123,8 +123,8 @@ export default function Rooms({socket}) {
   }
   
   return (
-    <Box sx={{mt:1}}>
-      <Paper square sx={{ pb: '25px', width: 400, height:800,borderRadius: 2, backgroundColor: "#B94BFF", color: "black" }}>
+    <Box >
+      <Paper square sx={{ width: 500, height:"100%",borderRadius: 0.5, backgroundColor: "#7F8C8D", color: "black" }}>
         <Box sx={{ display: "flex", alignItems:"center" }}>
           <Avatar sx={{backgroundColor:"blueviolet", color:"black", ml:2 ,boxShadow:3}} >{user_avatar}</Avatar>
 
