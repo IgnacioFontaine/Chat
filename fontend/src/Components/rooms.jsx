@@ -40,7 +40,7 @@ function NewRoom() {
   }
 
   return (
-    <Box sx={{ width: 600 }}>
+    <Box sx={{ width: 600}}>
       <Box sx={{ display:"flex", gap:"5px"}}>
         <TextField
           id="name"
@@ -137,7 +137,8 @@ export default function Rooms({socket}) {
       }}>
         <Box sx={{
           display: "flex",
-          alignItems: "center"
+          alignItems: "center",
+          backgroundColor:"#828282"
         }}>
           <Avatar sx={{backgroundColor:"blueviolet", color:"black", ml:2 ,boxShadow:3}} >{user_avatar}</Avatar>
 
