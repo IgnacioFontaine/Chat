@@ -46,19 +46,25 @@ export default function SingInView() {
   }
 
   return (
-    <Box sx={{display:"flex"}}  >
-      <SelfImage />
-      <Container  sx={{
-        background: "linear-gradient(to left,#7D56C1 ,blueviolet)"
+    <Box display={"flex"} sx={{
+          gap:"150px"
+      }}   >
+      <SelfImage sx={{
+          width:"50%"
+      }}  />
+      <Container sx={{
+          width:"50%"
       }} > 
         <Box
           sx={{
-            marginTop: 8,
+            marginTop: 10,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            marginBottom: 10,
-            p: 5
+            marginBottom: -2,
+            p: 5,
+            borderRadius:1,
+            backgroundColor: "#898989",
           }}
         >
           <Avatar sx={{ m: 2, bgcolor: `${color_secondary}`, color:"black" }}>

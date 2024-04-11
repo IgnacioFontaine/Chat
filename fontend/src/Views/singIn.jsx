@@ -43,20 +43,26 @@ export default function SingInView() {
   }
 
   return (
-    <Box display={"flex"} >
-      <SelfImage />
+    <Box display={"flex"} sx={{
+          gap:"150px"
+      }}  >
+      <SelfImage sx={{
+          width:"50%"
+      }}  />
       <Container
         sx={{
-          width:"50%"
+          width: "50%",
       }} >
         <Box
           sx={{
-            marginTop: 8,
+            marginTop: 10,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            marginBottom: 10,
-            p: 5
+            marginBottom: -2,
+            p: 5,
+            borderRadius:1,
+            backgroundColor: "#898989",
           }}
         >
           <Avatar sx={{ m: 2, bgcolor: `${color_secondary}`, color:"black" }}>
@@ -65,7 +71,7 @@ export default function SingInView() {
           <Typography component="h1" variant="h3" fontFamily={"fantasy"}>
             Sign in
           </Typography>
-          <Box component="form" noValidate sx={{ mt: 5}}>
+          <Box component="form" noValidate sx={{mt: 5, color:"black"}}>
             <TextField
               margin="normal"
               required

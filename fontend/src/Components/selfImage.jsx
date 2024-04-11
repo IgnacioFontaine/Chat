@@ -37,7 +37,8 @@ export const SelfImage = () => {
         alignItems:"center",
         alignContent: "center",
         height: "100%",
-        width:"600px",
+        width: "600px",
+        ml:"100px",
         p: 5,
         pl:0
       }}>
