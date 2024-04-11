@@ -27,9 +27,8 @@ export const SelfImage = () => {
     <Box 
       sx={{
         display: {
-          xs: 'none', sm: 'flex', lg: 'flex', xl: 'flex'
+          xs: 'none', sm: 'flex-wrap', lg: 'flex', xl: 'flex'
         },
-        backgroundColor: "blueviolet"
       }}>
       <Box sx={{
         display: "flex",
@@ -38,15 +37,16 @@ export const SelfImage = () => {
         alignItems:"center",
         alignContent: "center",
         height: "100%",
+        width:"600px",
         p: 5,
         pl:0
       }}>
         <Box>
-          <WhatsAppIcon  sx={{ fontSize: 250 }} />
+          <WhatsAppIcon  sx={{ fontSize: 250, color:"#3E2A61" }} />
         </Box>
-        <Box sx={{textAlign:"center"}}>
-          <Typography variant="h1" sx={{mb:5}} fontFamily={"fantasy"} >Not Whatsapp</Typography>
-          <Typography variant="h6" fontFamily={"fantasy"} >
+        <Box sx={{textAlign:"center",justifyContent:"center",alignItems:"center", mt:10}}>
+          <Typography variant="h1" sx={{mb:5 , color:"#3E2A61" }} fontFamily={"fantasy"} >Not Whatsapp</Typography>
+          <Typography variant="h5" fontFamily={"fantasy"} sx={{ color:"#3E2A61" }} >
             We are here for simple, short conversations <br />
             We are the solution whenever WhatsApp does not work!</Typography>
         </Box>

@@ -1,4 +1,3 @@
-import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -48,7 +47,7 @@ export default function SingInView() {
       <SelfImage />
       <Container
         sx={{
-          background: "linear-gradient(to left,#7D56C1 ,blueviolet)"
+          width:"50%"
       }} >
         <Box
           sx={{
