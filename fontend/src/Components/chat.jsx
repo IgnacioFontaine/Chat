@@ -118,7 +118,7 @@ const all_messages_order = all_message_room.sort((a, b) => {
         overflow: "auto",
         p: 2,
         minHeight: "500px",
-        backgroundImage: `../assets/fondo_chat.png`
+          backgroundImage: `url(${backgraund_chat})`,
       }}>
         
         {messagesList?.map((message) => (
