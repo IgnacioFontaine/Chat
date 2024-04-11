@@ -1,16 +1,12 @@
 import Chat from '../Components/chat'
 import NotChat from '../Components/notChat'
-import { Container, Box, Typography, FormControl } from '@mui/material'
+import { Container, Box, FormControl } from '@mui/material'
 import { useState } from 'react'
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
 import Rooms from '../Components/rooms'
 import io from 'socket.io-client';
 
-
-const color_primary = "#7D56C1";
-const color_secondary = "#3E2A61";
 
 const socket = io.connect("http://localhost:3001");
 
@@ -45,9 +41,7 @@ function Home() {
         backgroundColor: "#2486",
         border:"1px solid",
         borderColor: "gray",
-        borderRadius: 4,
-        mt: 2,
-        ml: 0
+        borderRadius: 1,
           }}>
       <FormControl
         sx={{
