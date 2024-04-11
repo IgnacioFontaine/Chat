@@ -6,14 +6,12 @@ function NotChat() {
   return (
     <Box sx={{
         backgroundColor: "#2486",
-        height: "100%",
-        width:"100%",
+        height: "850px",
+        width:"1200px",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems:"center",
-        border:"1px solid",
-        borderColor: "gray",
         borderRadius: 1,
     }}>
       <QuestionAnswerIcon sx={{ fontSize: 500, alignItems:"center"}} />

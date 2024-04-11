@@ -25,41 +25,33 @@ function Home() {
 
   
   return (
-    <Box style={{height: "922px",
-        width:"100%"}}>
-      <Container sx={{
+    <Box sx={{
         height: "100%",
-        width:"100%",
+        width: "100%",
+        backgroundColor: "black",
         display: "flex",
-        bgcolor: "transparent",
+        margin: "0px",
+        pading:"0px"
       }} >
-        <Container
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "flex-start",
-        backgroundColor: "#2486",
-        borderRadius: 1,
+        <Container sx={{
+            height: "50%",
+          width: "100%",
           }}>
-      <FormControl
-        sx={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        }}
-          >
+        <FormControl>
             <Rooms socket={socket} />  
       </FormControl>
         </Container >
-        <Box >
+        <Container sx={{
+            height: "50%",
+          width: "100%",
+          }} >
           {current_chat ? <Chat
             socket={socket}
             username={username}
             room={Number(current_chat.id)}
             key={current_chat.id}
           ></Chat>:<NotChat />}
-        </Box>
-      </Container>
+        </Container>
     </Box>
   )
 }

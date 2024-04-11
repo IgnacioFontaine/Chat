@@ -23,7 +23,6 @@ const color_primary = "#7D56C1";
 const color_secondary = "#3E2A61";
 
 
-
 function NewRoom() {
   const dispatch = useDispatch();
   const current_uid = useSelector((state) => state.notWhatsapp.user_uid);
@@ -41,7 +40,8 @@ function NewRoom() {
   }
 
   return (
-     <Box sx={{width:300, height:150}}>
+    <Box sx={{ width: 600, height: 70 }}>
+      <Box sx={{ display:"flex", gap:"5px"}}>
         <TextField
           id="name"
           name='name'
@@ -50,7 +50,7 @@ function NewRoom() {
           label="Name"
           variant="outlined"
           autoComplete='off'
-          fullWidth
+          sx={{ width: 165, height: "100px"}}
         />
         <TextField
           id="id"
@@ -60,29 +60,29 @@ function NewRoom() {
           onChange={event=>setId(Number(event.target.value))}
           type='number'
           variant="outlined"
-          fullWidth
-      />
-      <Box sx={{display:"flex", justifyContent:"space-around", alignContent:"center"}}>
-        <Button
+          sx={{ width: 165}}
+        />
+         <Button
               variant="contained"
               fontFamily={"unset"}
-        sx={{
-                mt:1,
+          sx={{
+            mt: 1.05,
+            ml:2,
+                borderRadius: "5%",
+              height: "36px",
                 bgcolor: `${color_secondary}`,
                 color: "black",
                 boxShadow:5,
                 ":hover":
                   { bgcolor: `${color_secondary}`, color: "white" }
               }}
-              startIcon={<AddIcon />}
+              startIcon={<AddIcon/>}
           
             onClick={handleCreate}
         >
-          Add Room
         </Button>
         <InfoPopover  />
       </Box>
-        
     </Box>
   )
 }
@@ -125,7 +125,7 @@ export default function Rooms({socket}) {
   return (
     <Box >
       <Paper square sx={{
-        width: 650,
+        width: 550,
         height: "100%",
         borderRadius: 0.5,
         backgroundColor: "#7F8C8D",
@@ -161,7 +161,7 @@ export default function Rooms({socket}) {
 
         </Box>
         <Divider />
-        <List sx={{ height:570, overflow: 'auto'}}>
+        <List sx={{ height:680, overflow: 'auto'}}>
           {all_rooms && all_rooms.map(({  name, id }) => (
             (<React.Fragment key={id} >
 

@@ -34,11 +34,11 @@ function InfoPopover() {
         anchorEl={anchorEl}
         onClose={handleClose}
         anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left',
+          vertical: 'top',
+          horizontal: 'right',
         }}
       >
-        <Typography sx={{ p: 2, backgroundColor:"#3E2A61", color:"black" }} variant='body2'>
+        <Typography sx={{ p: 2, backgroundColor:"#3E2A61", color:"white" }} variant='body2'>
           Enter username & the same room as <br />whoever you want to communicate with, then just chat!
         </Typography>
       </Popover>
