@@ -12,4 +12,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   position: absolute;
+  
+}
+
+::-webkit-scrollbar {
+    display: none;
 }

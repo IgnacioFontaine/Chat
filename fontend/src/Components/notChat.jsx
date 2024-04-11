@@ -5,18 +5,24 @@ function NotChat() {
   
   return (
     <Box
-      // sx={{
-      //   backgroundColor: "#2486",
-      //   height: "850px",
-      //   width:"1200px",
-      //   display: "flex",
-      //   flexDirection: "column",
-      //   justifyContent: "center",
-      //   alignItems:"center",
-      //   borderRadius: 1,
-      // }}
+      sx={{
+        outline: "1px solid black",
+        backgroundColor:"#7F8C8D",
+        mt:"-8px",
+        width: "1318px",
+        height: "930px",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        position:"absolute"
+      }}
     >
-      <QuestionAnswerIcon sx={{ fontSize: 600, alignItems:"center"}} />
+      <QuestionAnswerIcon
+        sx={{
+          fontSize: 600,
+          alignItems: "center"
+        }} />
       <Typography variant='h4'
         fontFamily={"fantasy"}
       sx={{textAlign:"center"}}
