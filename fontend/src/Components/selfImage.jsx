@@ -42,11 +42,11 @@ export const SelfImage = () => {
         pl:0
       }}>
         <Box>
-          <WhatsAppIcon  sx={{ fontSize: 250, color:"#3E2A61" }} />
+          <WhatsAppIcon  sx={{ fontSize: 250, color:"#3E2A61"}} />
         </Box>
         <Box sx={{textAlign:"center",justifyContent:"center",alignItems:"center", mt:10}}>
-          <Typography variant="h1" sx={{mb:5 , color:"#3E2A61" }} fontFamily={"fantasy"} >Not Whatsapp</Typography>
-          <Typography variant="h5" fontFamily={"fantasy"} sx={{ color:"#3E2A61" }} >
+          <Typography variant="h1" sx={{mb:5 , color:"#3E2A61", textShadow:"0 3px 3px black" }} fontFamily={"fantasy"} >Not Whatsapp</Typography>
+          <Typography variant="h5" fontFamily={"fantasy"} sx={{ color:"#3E2A61", textShadow:"0 1px 1px black" }} >
             We are here for simple, short conversations <br />
             We are the solution whenever WhatsApp does not work!</Typography>
         </Box>
