@@ -94,13 +94,11 @@ export default function Rooms({socket}) {
   
   useEffect(() => {
     
-    // dispatch(getFirebaseRooms(current_uid))
+    dispatch(getFirebaseRooms(current_uid))
     
   }, []);
 
-  // const all_rooms = useSelector((state) => state.notWhatsapp.rooms_firebase);
-
-  const all_rooms = []
+  const all_rooms = useSelector((state) => state.notWhatsapp.rooms_firebase)
 
   const current_user = useSelector((state) => state.notWhatsapp.user);
 
@@ -138,7 +136,7 @@ export default function Rooms({socket}) {
         <Box sx={{
           display: "flex",
           alignItems: "center",
-          backgroundColor:"#828282"
+          backgroundColor:"#7C7C7C"
         }}>
           <Avatar sx={{backgroundColor:"blueviolet", color:"black", ml:2 ,boxShadow:3}} >{user_avatar}</Avatar>
 

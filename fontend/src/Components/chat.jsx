@@ -12,9 +12,31 @@ import SendIcon from "@mui/icons-material/Send";
 import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
 import { newFirebaseMessage, getMessageByRoom } from "../Redux/actions";
 import { useDispatch, useSelector } from 'react-redux';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import ListItemText from '@mui/material/ListItemText';
 
 // const color_primary = "#7D56C1";
 const color_secondary = "#3E2A61";
+
+const AvatarRoom = ({name, id}) => {
+  return (
+    <Box key={id}>
+      <ListItemButton sx={{
+        textAlign: "center",
+        mt: 1,
+                }} >
+                <ListItemAvatar>
+                  <Avatar alt="Profile Picture" sx={{backgroundColor:"blueviolet", color:"black"}}>{name[0]}</Avatar>
+                </ListItemAvatar>
+        <ListItemText sx={{
+          display: "flex",
+          gap: "10px",
+                }} primary={name}  />
+              </ListItemButton>
+    </Box>
+  )
+}
 
 
 
@@ -22,7 +44,8 @@ function Chat({ socket, username, room }) {
   const [currentMessage, setcurrentMessage] = useState("")
   const [messagesList, setMessagesList] = useState([])
   const dispatch = useDispatch();
-  // const all_message_room = useSelector((state) => state.notWhatsapp.messages_room);
+  const all_message_room = useSelector((state) => state.notWhatsapp.messages_room);
+  const selected_room = useSelector((state) => state.notWhatsapp.select_room);
 
   function convertirTiempoAMinutos(tiempo) {
   const [horas, minutos] = tiempo.split(':').map(Number);
@@ -50,7 +73,7 @@ const all_messages_order = all_message_room.sort((a, b) => {
       console.log("Enviando mensaje: ", info);
 
       await socket.emit("send_message", info)
-      // dispatch(newFirebaseMessage(info));
+      dispatch(newFirebaseMessage(info));
       setMessagesList((list) => [...list, info])
       setcurrentMessage("")
     }
@@ -60,7 +83,7 @@ const all_messages_order = all_message_room.sort((a, b) => {
   useEffect(() => {
     const handlerMessage = data => setMessagesList((list) => [...list, data])
     
-    // dispatch(getMessageByRoom(room))
+    dispatch(getMessageByRoom(room))
     socket.on("recieve_message", handlerMessage)
     return ()=>socket.off("recieve_message", handlerMessage)
   }, [socket, messagesList])
@@ -70,24 +93,25 @@ const all_messages_order = all_message_room.sort((a, b) => {
     <Box
       sx={{
         backgroundColor: "#2486",
-        height: "95vh",
+        height: "100vh",
         width:"145vh",
         display: "flex",
         flexDirection: "column",
         justifyContent: "flex-end",
-        borderRadius: 4,
-        mt:2
+        borderRadius: 1,
+        mt:-1
       }}
-    >
-      <Typography variant="h5" fontFamily={"fantasy"}
-        sx={{
-          backgroundColor: "#4566",
+    ><Box
+      sx={{
+          backgroundColor: "#898989",
           width: "98.6%",
-          textAlign: "center",
-          borderRadius: 4,
-          p:1
+          height:"67px",
+          textAlign: "start",
+          borderRadius: 0,
         }}
-      >Sala ID: {room}</Typography>
+      > 
+        <AvatarRoom name={selected_room.name} id={selected_room.id} />
+    </Box>
       <Box sx={{ flexGrow: 1, overflow: "auto", p: 2, minHeight: "500px" }}>
         
         {messagesList?.map((message) => (
@@ -97,9 +121,10 @@ const all_messages_order = all_message_room.sort((a, b) => {
       </Box>
       <Box sx={{
         p: 1,
-        backgroundColor: "#4566",
+        backgroundColor: "#898989",
         width: "98.7%",
-        borderRadius: 4
+        height:"58px",
+        borderRadius: 0
       }}>
         <Grid container justifyContent={"space-evenly"} >
           <Grid item xs={9.5} >
