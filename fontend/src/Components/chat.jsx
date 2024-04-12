@@ -83,7 +83,7 @@ const all_messages_order = all_message_room.sort((a, b) => {
     if (username && currentFile) {
       const info = {
         message: currentFile,
-        typeo: "file",
+        type: "file",
         room, 
         author: username,
         time: new Date(Date.now()).getHours() + ":" + new Date(Date.now()).getMinutes(),
@@ -91,31 +91,42 @@ const all_messages_order = all_message_room.sort((a, b) => {
       }
       console.log("Enviando mensaje: ", info);
 
-      await socket.emit("send_message", info)
+      await socket.emit("send_file", info)
       // dispatch(newFirebaseMessage(info));
-      setMessagesList((list) => [...list, info])
-      setcurrentFile()
+      // setMessagesList((list) => [...list, info])
+      // const reader = new FileReader();
+      // reader.onload = async (event) => {
+      //   await socket.emit('send_file', { nombre: currentFile.name, message: event.target.result});
+      // };
+      // reader.readAsDataURL(currentFile);
+      // setcurrentFile()
+      // setcurrentMessage("")
+      // console.log("Enviando archivo:", { currentFile});
     }
+    
   }
 
-  const sendFile = () => {
-    if (currentFile) {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        socket.emit('send_file', { nombre: currentFile.name, contenido: event.target.result});
-      };
-      reader.readAsDataURL(currentFile);
-    }
-  };
+  // const sendFile = () => {
+  //   if (currentFile) {
+  //     const reader = new FileReader();
+  //     reader.onload = (event) => {
+  //       socket.emit('send_file', { nombre: currentFile.name, contenido: event.target.result});
+  //     };
+  //     reader.readAsDataURL(currentFile);
+  //   }
+  // };
 
   
   useEffect(() => {
     const handlerMessage = data => setMessagesList((list) => [...list, data])
+
     
     dispatch(getMessageByRoom(room))
+    
     socket.on("recieve_message", handlerMessage)
     return ()=>socket.off("recieve_message", handlerMessage)
   }, [socket, messagesList])
+
   
   
   return (
