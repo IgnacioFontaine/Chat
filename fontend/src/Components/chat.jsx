@@ -87,29 +87,48 @@ const all_messages_order = all_message_room.sort((a, b) => {
       setcurrentMessage("")
       setcurrentFile()
     }
-    if (username && currentFile) {
-      const info = {
-        message: currentFile,
-        type: "file",
-        room, 
-        author: username,
-        time: new Date(Date.now()).getHours() + ":" + new Date(Date.now()).getMinutes(),
-        id:Math.random()
-      }
-      // console.log("Enviando mensaje: ", info);
 
-      // await socket.emit("send_file", info)
-      // dispatch(newFirebaseMessage(info));
-      setMessagesList((list) => [...list, info])
-      const reader = new FileReader();
-      reader.onload = async (event) => {
-        await socket.emit('send_file', { message: event.target.result});
-      };
-      reader.readAsDataURL(currentFile);
-      setcurrentFile()
-      setcurrentMessage("")
-      console.log("Enviando archivo:",  currentFile);
-    }
+    if (username && currentFile) {
+    const info = {
+      message: currentFile,
+      type: "file",
+      room,
+      author: username,
+      time: new Date(Date.now()).getHours() + ":" + new Date(Date.now()).getMinutes(),
+      id: Math.random()
+    };
+    setMessagesList((list) => [...list, info]);
+    const reader = new FileReader();
+    reader.onload = async (event) => {
+      await socket.emit('send_file', { message: event.target.result, info });
+    };
+    reader.readAsDataURL(currentFile);
+    setcurrentFile(null);
+    setcurrentMessage("");
+  }
+    // if (username && currentFile) {
+    //   const info = {
+    //     message: currentFile,
+    //     type: "file",
+    //     room, 
+    //     author: username,
+    //     time: new Date(Date.now()).getHours() + ":" + new Date(Date.now()).getMinutes(),
+    //     id:Math.random()
+    //   }
+    //   // console.log("Enviando mensaje: ", info);
+
+    //   // await socket.emit("send_file", info)
+    //   // dispatch(newFirebaseMessage(info));
+    //   setMessagesList((list) => [...list, info])
+    //   const reader = new FileReader();
+    //   reader.onload = async (event) => {
+    //     await socket.emit('send_file', { message: event.target.result});
+    //   };
+    //   reader.readAsDataURL(currentFile);
+    //   setcurrentFile()
+    //   setcurrentMessage("")
+    //   console.log("Enviando archivo:",  currentFile);
+    // }
     
   }
 

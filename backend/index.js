@@ -43,7 +43,6 @@ io.on('connection', (socket) => {
   });
 
   socket.on("send_file", ({ message, info }) => {
-  // Transmitir la imagen a todos los clientes, incluido el remitente
   io.to(info.room).emit("recieve_image", {
     ...info,
     message: message,
