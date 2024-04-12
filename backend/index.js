@@ -42,6 +42,14 @@ io.on('connection', (socket) => {
     socket.to(data.room).emit('recieve_message',data)
   });
 
+  socket.on("send_file", ({ message, info }) => {
+  // Transmitir la imagen a todos los clientes, incluido el remitente
+  io.to(info.room).emit("recieve_image", {
+    ...info,
+    message: message,
+  });
+});
+
   socket.on('disconnect', () => {
     console.log('User disconnect', socket.id)
   })
