@@ -62,12 +62,18 @@ const all_messages_order = all_message_room.sort((a, b) => {
   return tiempoA - tiempoB;
 });
   
+  function selectFile(event) {
+    setcurrentMessage(event.target.files[0].name)
+    setcurrentFile(event.target.files[0])
+  }
+  
   
 
   const sendMessage = async () => {
-    if (username && currentMessage) {
+    if (username && currentMessage && !currentFile) {
       const info = {
         message: currentMessage,
+        type: "text",
         room, 
         author: username,
         time: new Date(Date.now()).getHours() + ":" + new Date(Date.now()).getMinutes(),
@@ -79,6 +85,7 @@ const all_messages_order = all_message_room.sort((a, b) => {
       dispatch(newFirebaseMessage(info));
       setMessagesList((list) => [...list, info])
       setcurrentMessage("")
+      setcurrentFile()
     }
     if (username && currentFile) {
       const info = {
@@ -89,19 +96,19 @@ const all_messages_order = all_message_room.sort((a, b) => {
         time: new Date(Date.now()).getHours() + ":" + new Date(Date.now()).getMinutes(),
         id:Math.random()
       }
-      console.log("Enviando mensaje: ", info);
+      // console.log("Enviando mensaje: ", info);
 
-      await socket.emit("send_file", info)
+      // await socket.emit("send_file", info)
       // dispatch(newFirebaseMessage(info));
-      // setMessagesList((list) => [...list, info])
-      // const reader = new FileReader();
-      // reader.onload = async (event) => {
-      //   await socket.emit('send_file', { nombre: currentFile.name, message: event.target.result});
-      // };
-      // reader.readAsDataURL(currentFile);
-      // setcurrentFile()
-      // setcurrentMessage("")
-      // console.log("Enviando archivo:", { currentFile});
+      setMessagesList((list) => [...list, info])
+      const reader = new FileReader();
+      reader.onload = async (event) => {
+        await socket.emit('send_file', { message: event.target.result});
+      };
+      reader.readAsDataURL(currentFile);
+      setcurrentFile()
+      setcurrentMessage("")
+      console.log("Enviando archivo:",  currentFile);
     }
     
   }
@@ -121,13 +128,13 @@ const all_messages_order = all_message_room.sort((a, b) => {
     const handlerMessage = data => setMessagesList((list) => [...list, data])
 
     
-    dispatch(getMessageByRoom(room))
+    // dispatch(getMessageByRoom(room))
     
     socket.on("recieve_message", handlerMessage)
     return ()=>socket.off("recieve_message", handlerMessage)
   }, [socket, messagesList,selected_room])
 
-  
+  const image_message = []
   
   return (
     <Box
@@ -234,7 +241,7 @@ const all_messages_order = all_message_room.sort((a, b) => {
               <input
                 type="file"
                 placeholder="File"
-                onChange={(event) => setcurrentFile(event.target.files[0])}
+                onChange={selectFile}
                 style={{ color:"transparent" }} 
               />
             </Avatar>
@@ -261,7 +268,7 @@ function Image(props) {
   }, [props.blob]);
 
   return (
-    <img style={{width:150, height:"auto"}} src={imageSrc} alt={props.type} ></img>
+    <img style={{width:150, height:"auto"}} src={imageSrc} alt={"File"} ></img>
   )
 }
 
@@ -297,7 +304,12 @@ const Message = ({ message, username }) => {
             borderRadius: isMe ? "20px 20px 5px 20px" : "20px 20px 20px 5px",
           }}
         >
-          <Typography variant="body1">{message.message}</Typography>
+          {message.type === "text" ? (
+            <Typography variant="body1">{message.message}</Typography>
+          ) : (
+            <Image blob={message.message} />
+          )}
+          
           <Typography variant="caption"
             sx={{ display: "block",
         textAlign: "flex-start"}} >{message.time}</Typography>

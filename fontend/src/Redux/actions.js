@@ -1,6 +1,6 @@
 import ACTION_TYPES from "./actionsTypes";
 import { db } from "../firebase"
-import { collection, addDoc, query, where, getDocs, deleteDoc, doc, updateDoc, arrayUnion } from "firebase/firestore"; 
+import { collection, addDoc, query, where, getDocs, deleteDoc, doc } from "firebase/firestore"; 
 
 export const setUser = (user) => {
   
@@ -53,6 +53,7 @@ export const newFirebaseMessage = (message) => {
 
       const docRef = await addDoc(collection(db, "message"),{
       message: message.message,
+      type:message.type,  
       room: message.room,
       author: message.author,
       time: message.time,
