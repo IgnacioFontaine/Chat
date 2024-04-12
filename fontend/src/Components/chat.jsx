@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
+import AttachFileIcon from '@mui/icons-material/AttachFile';
 import { newFirebaseMessage, getMessageByRoom } from "../Redux/actions";
 import { useDispatch, useSelector } from 'react-redux';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -176,6 +177,18 @@ const all_messages_order = all_message_room.sort((a, b) => {
                   { bgcolor: `${color_secondary}`, color: "white" }
               }}>
               <KeyboardVoiceIcon   />
+            </Avatar>
+            <Avatar sx={{
+              bgcolor: `${color_secondary}`,
+              mt:0.5,
+                height: "4.6vh",
+                width: "3vw",
+                color: "black",
+                boxShadow:3,
+                ":hover":
+                  { bgcolor: `${color_secondary}`, color: "white" }
+              }}>
+              <AttachFileIcon   />
             </Avatar>
           </Grid>
         </Grid>
