@@ -98,23 +98,8 @@ const all_messages_order = all_message_room.sort((a, b) => {
     }
   }
 
-  const sendFile = async () => {
-    // if (username && currentMessage) {
-    //   const info = {
-    //     message: currentMessage,
-    //     room, 
-    //     author: username,
-    //     time: new Date(Date.now()).getHours() + ":" + new Date(Date.now()).getMinutes(),
-    //     id:Math.random()
-    //   }
-    //   console.log("Enviando mensaje: ", info);
-
-    //   await socket.emit("send_message", info)
-    //   dispatch(newFirebaseMessage(info));
-    //   setMessagesList((list) => [...list, info])
-    //   setcurrentMessage("")
-    // }
-    alert("Enviando imagen")
+  const selectFile = async () => {
+    
   }
 
   
@@ -224,15 +209,19 @@ const all_messages_order = all_message_room.sort((a, b) => {
                 ":hover":
                 { bgcolor: `${color_secondary}`, color: "white" }
                 
-              }}>
-              <AttachFileIcon
+            }}>
+              {/* <AttachFileIcon
                 name="file"
-                type="file"
                 variant="outlined"
-                onChange={event => setcurrentFile(event.target.value)}
-                value={currentMessage}
-                onClick={sendFile} />
+              /> */}
+              <input
+                type="file"
+                placeholder="File"
+                onChange={(event) => setcurrentFile(event.target.files[0])}
+                style={{ color:"transparent" }} 
+              />
             </Avatar>
+            
           </Grid>
         </Grid>
       </Box>
