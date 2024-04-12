@@ -44,6 +44,7 @@ const AvatarRoom = ({name, id}) => {
 
 function Chat({ socket, username, room }) {
   const [currentMessage, setcurrentMessage] = useState("")
+  const [currentFile, setcurrentFile] = useState()
   const [messagesList, setMessagesList] = useState([])
   const dispatch = useDispatch();
   const all_message_room = useSelector((state) => state.notWhatsapp.messages_room);
@@ -78,6 +79,22 @@ const all_messages_order = all_message_room.sort((a, b) => {
       dispatch(newFirebaseMessage(info));
       setMessagesList((list) => [...list, info])
       setcurrentMessage("")
+    }
+    if (username && currentFile) {
+      const info = {
+        message: currentFile,
+        typeo: "file",
+        room, 
+        author: username,
+        time: new Date(Date.now()).getHours() + ":" + new Date(Date.now()).getMinutes(),
+        id:Math.random()
+      }
+      console.log("Enviando mensaje: ", info);
+
+      await socket.emit("send_message", info)
+      // dispatch(newFirebaseMessage(info));
+      setMessagesList((list) => [...list, info])
+      setcurrentFile()
     }
   }
 
@@ -205,9 +222,16 @@ const all_messages_order = all_message_room.sort((a, b) => {
                 color: "black",
                 boxShadow:3,
                 ":hover":
-                  { bgcolor: `${color_secondary}`, color: "white" }
+                { bgcolor: `${color_secondary}`, color: "white" }
+                
               }}>
-              <AttachFileIcon  onClick={sendFile}  />
+              <AttachFileIcon
+                name="file"
+                type="file"
+                variant="outlined"
+                onChange={event => setcurrentFile(event.target.value)}
+                value={currentMessage}
+                onClick={sendFile} />
             </Avatar>
           </Grid>
         </Grid>

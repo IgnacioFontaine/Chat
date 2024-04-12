@@ -32,6 +32,12 @@ io.on('connection', (socket) => {
     socket.to(data.room).emit('recieve_message',data)
   })
 
+  socket.on('send_file', (data) => {
+    // Aquí puedes guardar el archivo o transmitirlo a otros clientes
+    console.log('Archivo recibido:', data);
+    // socket.to(data.room).emit('recieve_file',data)
+  });
+
   socket.on('disconnect', () => {
     console.log('User disconnect', socket.id)
   })
