@@ -98,9 +98,15 @@ const all_messages_order = all_message_room.sort((a, b) => {
     }
   }
 
-  const selectFile = async () => {
-    
-  }
+  const sendFile = () => {
+    if (currentFile) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        socket.emit('send_file', { nombre: currentFile.name, contenido: event.target.result});
+      };
+      reader.readAsDataURL(currentFile);
+    }
+  };
 
   
   useEffect(() => {
