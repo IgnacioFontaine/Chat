@@ -2,7 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import { Server } from "socket.io";
 import { createServer } from 'node:http'
-const multer = require('multer');
+import multer from 'multer'
 
 // Configura Multer para manejar la carga de archivos
 const upload = multer({ dest: 'uploads/' });
