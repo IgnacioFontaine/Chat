@@ -144,16 +144,30 @@ const all_messages_order = all_message_room.sort((a, b) => {
 
   
   useEffect(() => {
-    const handlerMessage = data => setMessagesList((list) => [...list, data])
+    //Comentada la forma vieja de envío de mensajes
+    // const handlerMessage = data => setMessagesList((list) => [...list, data])
 
     
     // dispatch(getMessageByRoom(room))
     
-    socket.on("recieve_message", handlerMessage)
-    return ()=>socket.off("recieve_message", handlerMessage)
-  }, [socket, messagesList,selected_room])
+    // socket.on("recieve_message", handlerMessage)
+    // return ()=>socket.off("recieve_message", handlerMessage)
 
-  const image_message = []
+    //Forma nueva:
+    const handleMessage = (data) => {
+    setMessagesList((list) => [...list, data]);
+  };
+
+  socket.on("recieve_message", handleMessage);
+
+  // Agregar manejo para la recepción de imágenes
+  socket.on("recieve_image", handleMessage);
+
+  return () => {
+    socket.off("recieve_message", handleMessage);
+    socket.off("recieve_image", handleMessage);
+  };
+  }, [socket, messagesList,selected_room])
   
   return (
     <Box
