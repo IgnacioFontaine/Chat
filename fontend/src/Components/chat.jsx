@@ -22,6 +22,7 @@ const color_secondary = "#3E2A61";
 
 
 function Chat({ socket, username, room }) {
+  const [messageIdCounter, setMessageIdCounter] = useState(0);
   const [currentMessage, setcurrentMessage] = useState("")
   const [currentFile, setcurrentFile] = useState()
   const [messagesList, setMessagesList] = useState([])
@@ -55,8 +56,9 @@ const all_messages_order = all_message_room.sort((a, b) => {
         room, 
         author: username,
         time: new Date(Date.now()).getHours() + ":" + new Date(Date.now()).getMinutes(),
-        id:crypto.randomUUID()
-      }
+        id: crypto.randomUUID()
+      };
+      setMessageIdCounter(prevCounter => prevCounter + 1);
       console.log("Enviando mensaje: ", info);
 
       await socket.emit("send_message", info)
@@ -64,6 +66,7 @@ const all_messages_order = all_message_room.sort((a, b) => {
       setMessagesList((list) => [...list, info])
       setcurrentMessage("")
       setcurrentFile()
+      
     }
 
     if (username && currentFile) {
@@ -74,14 +77,16 @@ const all_messages_order = all_message_room.sort((a, b) => {
       author: username,
       time: new Date(Date.now()).getHours() + ":" + new Date(Date.now()).getMinutes(),
       id: crypto.randomUUID()
-    };
-    setMessagesList((list) => [...list, info]);
+      };
+      setMessageIdCounter(prevCounter => prevCounter + 1);
+    
     const reader = new FileReader();
     reader.onload = async (event) => {
       await socket.emit('send_file', { message: event.target.result, info });
+      setMessagesList((list) => [...list, info]);
     };
     reader.readAsDataURL(currentFile);
-    dispatch(newFirebaseMessage(info));  
+    // dispatch(newFirebaseMessage(info));  
     setcurrentFile(null);
     setcurrentMessage("");
   }
@@ -129,7 +134,8 @@ const all_messages_order = all_message_room.sort((a, b) => {
     socket.off("recieve_message", handleMessage);
     socket.off("recieve_image", handleMessage);
   };
-  }, [socket, messagesList,selected_room, all_message_room])
+  }, [socket, messagesList, selected_room, all_message_room])
+  console.log(messagesList);
   
   return (
     <Box
@@ -162,7 +168,7 @@ const all_messages_order = all_message_room.sort((a, b) => {
           backgroundImage: `url(${backgraund_chat})`,
       }}>
         
-        {all_messages_order?.map((message) => (
+        {messagesList?.map((message) => (
           <Message key={message.id} message={message} username={username} />
         ))}
         
@@ -263,12 +269,14 @@ function Image(props) {
   }, [props.blob]);
 
   return (
-    <img style={{width:150, height:"auto"}} src={imageSrc} alt={"File"} ></img>
+    <img style={{width:150, height:"auto"}} src={imageSrc} alt={"File"}  ></img>
   )
 }
 
 const Message = ({ message, username }) => {
   const isMe = message.author === username;
+  // Verificar si el mensaje es de tipo "file"
+  const isFileMessage = message.type === "file";
 
   return (
     <Box
@@ -299,12 +307,11 @@ const Message = ({ message, username }) => {
             borderRadius: isMe ? "20px 20px 5px 20px" : "20px 20px 20px 5px",
           }}
         >
-          {message.type === "text" ? (
-            <Typography variant="body1">{message.message}</Typography>
-          ) : (
+          {isFileMessage ? (
             <Image blob={message.message} />
+          ) : (
+            <Typography variant="body1">{message.message}</Typography>
           )}
-          {/* <Image blob={message.message} /> */}
           
           <Typography variant="caption"
             sx={{ display: "block",
