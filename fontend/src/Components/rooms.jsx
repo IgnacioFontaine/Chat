@@ -175,20 +175,20 @@ export default function Rooms({socket}) {
                 </ListItemAvatar>
                 <ListItemText primary={name.toUpperCase()} secondary={id}  />
                 <Button
-               variant="contained"
-              fontFamily={"unset"}
-            sx={{
-                justifyContent: "center",
-                height: "30px",
-              bgcolor: `${color_secondary}`,
-                color: "black",
-                ":hover":
-                  { bgcolor: `${color_secondary}`, color: "white" }
-              }}
-              onClick={deleteFirestoreRoom(id)}
-        >
-          <ClearIcon sx={{fontSize:"medium"}}/>
-        </Button> 
+                    variant="contained"
+                    fontFamily={"unset"}
+                    sx={{
+                        justifyContent: "center",
+                        height: "30px",
+                        bgcolor: `${color_secondary}`,
+                        color: "black",
+                        ":hover":
+                          { bgcolor: `${color_secondary}`, color: "white" }
+                      }}
+                    // onClick={dispatch(deleteFirestoreRoom(id)) }
+                >
+                    <ClearIcon sx={{fontSize:"medium"}}/>
+                </Button> 
               </ListItemButton>
             </React.Fragment>)
           ))}

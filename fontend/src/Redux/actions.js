@@ -147,11 +147,12 @@ export const deleteFirestoreRoom = (roomId) => {
   return async (dispatch) => {
     try {
         // Obtén una referencia al documento
-        const roomRef = this.db.collection('rooms').doc(roomId);
+        const roomRef = query(collection(db, "message"), where("id", "==", roomId))
 
+        console.log("Se eliminaría la sala:", roomRef);
         // Elimina el documento
-        roomRef.delete()
-        console.error("Eliminado con éxito");
+        // roomRef.delete()
+        // console.log("Eliminado con éxito");
         dispatch({
           type: ACTION_TYPES.DELETE_ROOM_SUCCES,
           payload: roomId,
