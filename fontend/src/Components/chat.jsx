@@ -13,32 +13,11 @@ import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import { newFirebaseMessage, getMessageByRoom } from "../Redux/actions";
 import { useDispatch, useSelector } from 'react-redux';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import ListItemText from '@mui/material/ListItemText';
 import backgraund_chat from "../assets/fondo_chat.png"
+import { AvatarRoom } from "./avatarRoom";
 
 // const color_primary = "#7D56C1";
 const color_secondary = "#3E2A61";
-
-const AvatarRoom = ({name, id}) => {
-  return (
-    <Box key={id}>
-      <ListItemButton sx={{
-        textAlign: "center",
-        mt: 1,
-                }} >
-                <ListItemAvatar>
-                  <Avatar alt="Profile Picture" sx={{backgroundColor:"blueviolet", color:"black"}}>{name[0]}</Avatar>
-                </ListItemAvatar>
-        <ListItemText sx={{
-          display: "flex",
-          gap: "10px",
-                }} primary={name}  />
-              </ListItemButton>
-    </Box>
-  )
-}
 
 
 
@@ -68,6 +47,9 @@ const all_messages_order = all_message_room.sort((a, b) => {
   }
   
   
+  
+
+
 
   const sendMessage = async () => {
     if (username && currentMessage && !currentFile) {
@@ -95,7 +77,7 @@ const all_messages_order = all_message_room.sort((a, b) => {
       room,
       author: username,
       time: new Date(Date.now()).getHours() + ":" + new Date(Date.now()).getMinutes(),
-      id: Math.random()
+      id: crypto.randomUUID()
     };
     setMessagesList((list) => [...list, info]);
     const reader = new FileReader();
@@ -103,6 +85,7 @@ const all_messages_order = all_message_room.sort((a, b) => {
       await socket.emit('send_file', { message: event.target.result, info });
     };
     reader.readAsDataURL(currentFile);
+    // dispatch(newFirebaseMessage(info));  
     setcurrentFile(null);
     setcurrentMessage("");
   }
@@ -132,36 +115,19 @@ const all_messages_order = all_message_room.sort((a, b) => {
     
   }
 
-  // const sendFile = () => {
-  //   if (currentFile) {
-  //     const reader = new FileReader();
-  //     reader.onload = (event) => {
-  //       socket.emit('send_file', { nombre: currentFile.name, contenido: event.target.result});
-  //     };
-  //     reader.readAsDataURL(currentFile);
-  //   }
-  // };
 
   
   useEffect(() => {
-    //Comentada la forma vieja de envío de mensajes
-    // const handlerMessage = data => setMessagesList((list) => [...list, data])
-
-    
-    // dispatch(getMessageByRoom(room))
-    
-    // socket.on("recieve_message", handlerMessage)
-    // return ()=>socket.off("recieve_message", handlerMessage)
-
-    //Forma nueva:
     const handleMessage = (data) => {
-    setMessagesList((list) => [...list, data]);
-  };
+      setMessagesList((list) => [...list, data]);
+    };
 
-  socket.on("recieve_message", handleMessage);
+    socket.on("recieve_message", handleMessage);
 
   // Agregar manejo para la recepción de imágenes
-  socket.on("recieve_image", handleMessage);
+    socket.on("recieve_image", handleMessage);
+    
+    // dispatch(getMessageByRoom(room))
 
   return () => {
     socket.off("recieve_message", handleMessage);
@@ -337,11 +303,12 @@ const Message = ({ message, username }) => {
             borderRadius: isMe ? "20px 20px 5px 20px" : "20px 20px 20px 5px",
           }}
         >
-          {message.type === "text" ? (
+          {/* {message.type === "text" ? (
             <Typography variant="body1">{message.message}</Typography>
           ) : (
             <Image blob={message.message} />
-          )}
+          )} */}
+          <Image blob={message.message} />
           
           <Typography variant="caption"
             sx={{ display: "block",
