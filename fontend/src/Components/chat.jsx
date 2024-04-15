@@ -22,7 +22,6 @@ const color_secondary = "#3E2A61";
 
 
 function Chat({ socket, username, room }) {
-  const [messageIdCounter, setMessageIdCounter] = useState(0);
   const [currentMessage, setcurrentMessage] = useState("")
   const [currentFile, setcurrentFile] = useState()
   const [messagesList, setMessagesList] = useState([])
@@ -58,7 +57,6 @@ const all_messages_order = all_message_room.sort((a, b) => {
         time: new Date(Date.now()).getHours() + ":" + new Date(Date.now()).getMinutes(),
         id: crypto.randomUUID()
       };
-      setMessageIdCounter(prevCounter => prevCounter + 1);
       console.log("Enviando mensaje: ", info);
 
       await socket.emit("send_message", info)
@@ -78,11 +76,11 @@ const all_messages_order = all_message_room.sort((a, b) => {
       time: new Date(Date.now()).getHours() + ":" + new Date(Date.now()).getMinutes(),
       id: crypto.randomUUID()
       };
-      setMessageIdCounter(prevCounter => prevCounter + 1);
-    
+
     const reader = new FileReader();
     reader.onload = async (event) => {
       await socket.emit('send_file', { message: event.target.result, info });
+      // console.log({ message: event.target.result, info });
       setMessagesList((list) => [...list, info]);
     };
     reader.readAsDataURL(currentFile);
@@ -90,30 +88,7 @@ const all_messages_order = all_message_room.sort((a, b) => {
     setcurrentFile(null);
     setcurrentMessage("");
   }
-    // if (username && currentFile) {
-    //   const info = {
-    //     message: currentFile,
-    //     type: "file",
-    //     room, 
-    //     author: username,
-    //     time: new Date(Date.now()).getHours() + ":" + new Date(Date.now()).getMinutes(),
-    //     id:Math.random()
-    //   }
-    //   // console.log("Enviando mensaje: ", info);
 
-    //   // await socket.emit("send_file", info)
-    //   // dispatch(newFirebaseMessage(info));
-    //   setMessagesList((list) => [...list, info])
-    //   const reader = new FileReader();
-    //   reader.onload = async (event) => {
-    //     await socket.emit('send_file', { message: event.target.result});
-    //   };
-    //   reader.readAsDataURL(currentFile);
-    //   setcurrentFile()
-    //   setcurrentMessage("")
-    //   console.log("Enviando archivo:",  currentFile);
-    // }
-    
   }
 
 
@@ -277,6 +252,7 @@ const Message = ({ message, username }) => {
   const isMe = message.author === username;
   // Verificar si el mensaje es de tipo "file"
   const isFileMessage = message.type === "file";
+  const id_message = crypto.randomUUID()
 
   return (
     <Box
@@ -285,7 +261,7 @@ const Message = ({ message, username }) => {
         justifyContent: isMe ? "flex-end" :"flex-start",
         mb: 2,
       }}
-      key={message.id}
+      key={id_message}
     >
       <Box
         sx={{
@@ -310,7 +286,7 @@ const Message = ({ message, username }) => {
           {isFileMessage ? (
             <Image blob={message.message} />
           ) : (
-            <Typography variant="body1">{message.message}</Typography>
+            <Typography variant="body1" >{message.message}</Typography>
           )}
           
           <Typography variant="caption"
