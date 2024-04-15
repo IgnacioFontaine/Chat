@@ -45,10 +45,6 @@ const all_messages_order = all_message_room.sort((a, b) => {
     setcurrentMessage(event.target.files[0].name)
     setcurrentFile(event.target.files[0])
   }
-  
-  
-  
-
 
 
   const sendMessage = async () => {
@@ -59,7 +55,7 @@ const all_messages_order = all_message_room.sort((a, b) => {
         room, 
         author: username,
         time: new Date(Date.now()).getHours() + ":" + new Date(Date.now()).getMinutes(),
-        id:Math.random()
+        id:crypto.randomUUID()
       }
       console.log("Enviando mensaje: ", info);
 
@@ -85,7 +81,7 @@ const all_messages_order = all_message_room.sort((a, b) => {
       await socket.emit('send_file', { message: event.target.result, info });
     };
     reader.readAsDataURL(currentFile);
-    // dispatch(newFirebaseMessage(info));  
+    dispatch(newFirebaseMessage(info));  
     setcurrentFile(null);
     setcurrentMessage("");
   }
@@ -133,7 +129,7 @@ const all_messages_order = all_message_room.sort((a, b) => {
     socket.off("recieve_message", handleMessage);
     socket.off("recieve_image", handleMessage);
   };
-  }, [socket, messagesList,selected_room])
+  }, [socket, messagesList,selected_room, all_message_room])
   
   return (
     <Box
@@ -166,7 +162,7 @@ const all_messages_order = all_message_room.sort((a, b) => {
           backgroundImage: `url(${backgraund_chat})`,
       }}>
         
-        {messagesList?.map((message) => (
+        {all_messages_order?.map((message) => (
           <Message key={message.id} message={message} username={username} />
         ))}
         
@@ -303,12 +299,12 @@ const Message = ({ message, username }) => {
             borderRadius: isMe ? "20px 20px 5px 20px" : "20px 20px 20px 5px",
           }}
         >
-          {/* {message.type === "text" ? (
+          {message.type === "text" ? (
             <Typography variant="body1">{message.message}</Typography>
           ) : (
             <Image blob={message.message} />
-          )} */}
-          <Image blob={message.message} />
+          )}
+          {/* <Image blob={message.message} /> */}
           
           <Typography variant="caption"
             sx={{ display: "block",
