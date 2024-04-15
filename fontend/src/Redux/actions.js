@@ -143,17 +143,27 @@ export const getMessageByRoom = (room) => {
   
 }
 
-export const deleteFirestoreRoom = (id) => {
+export const deleteFirestoreRoom = (roomId) => {
   return async (dispatch) => {
     try {
-      const query_delete = query(collection(db, "rooms"), where("id", "==", id));
-      const queryDelete = await deleteDoc(doc(query_delete));
-      
-    } catch (error) {
-      return dispatch({ type: ACTION_TYPES.ERROR, payload: error });
-    }
-  };
+        // Obtén una referencia al documento
+        const roomRef = this.db.collection('rooms').doc(roomId);
+
+        // Elimina el documento
+        roomRef.delete()
+        console.error("Eliminado con éxito");
+        dispatch({
+          type: ACTION_TYPES.DELETE_ROOM_SUCCES,
+          payload: roomId,
+        });
+      } catch (error) {
+        console.error("Error al eliminar el documento: ", error);
+        return dispatch({ type: ACTION_TYPES.ERROR, payload: error });
+      }
+    };
 }
+
+
 
 export const deleteRoom = (id) => {
   return async (dispatch) => {

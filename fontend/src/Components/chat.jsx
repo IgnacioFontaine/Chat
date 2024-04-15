@@ -3,10 +3,8 @@ import {
   Box,
   TextField,
   Button,
-  Typography,
   Avatar,
   Grid,
-  Paper,
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
@@ -15,11 +13,10 @@ import { newFirebaseMessage, getMessageByRoom } from "../Redux/actions";
 import { useDispatch, useSelector } from 'react-redux';
 import backgraund_chat from "../assets/fondo_chat.png"
 import { AvatarRoom } from "./avatarRoom";
+import { Message } from "./message";
 
 // const color_primary = "#7D56C1";
 const color_secondary = "#3E2A61";
-
-
 
 function Chat({ socket, username, room }) {
   const [currentMessage, setcurrentMessage] = useState("")
@@ -80,7 +77,6 @@ const all_messages_order = all_message_room.sort((a, b) => {
     const reader = new FileReader();
     reader.onload = async (event) => {
       await socket.emit('send_file', { message: event.target.result, info });
-      // console.log({ message: event.target.result, info });
       setMessagesList((list) => [...list, info]);
     };
     reader.readAsDataURL(currentFile);
@@ -98,9 +94,8 @@ const all_messages_order = all_message_room.sort((a, b) => {
       setMessagesList((list) => [...list, data]);
     };
 
+    //Manejo recepción
     socket.on("recieve_message", handleMessage);
-
-  // Agregar manejo para la recepción de imágenes
     socket.on("recieve_image", handleMessage);
     
     // dispatch(getMessageByRoom(room))
