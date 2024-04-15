@@ -15,7 +15,7 @@ function Image(props) {
   }, [props.blob]);
 
   return (
-    <img style={{width:150, height:"auto"}} src={imageSrc} alt={"File"}  ></img>
+    <img style={{width:150, height:"auto"}} src={imageSrc} alt={"File"}></img>
   )
 }
 
@@ -27,12 +27,10 @@ export const Message = ({ message, username }) => {
 
   //Renderizar el tiempo
   const timestamp = new Date(message.time);
-
   const day = timestamp.getDate();
-  const month = timestamp.getMonth() + 1; // Los meses en JavaScript son base 0 (enero = 0)
+  const month = timestamp.getMonth() + 1;
   const hours = timestamp.getHours();
   const minutes = timestamp.getMinutes();
-
   const formattedTime = `${day}/${month} ${hours}:${minutes}`;
 
   return (
@@ -51,7 +49,7 @@ export const Message = ({ message, username }) => {
           alignItems: "center",
         }}
       >
-        <Avatar sx={{ bgcolor: isMe ? "secondary.main" : "primary.main"  }} alt={message.author}>
+        <Avatar sx={{ bgcolor: isMe ? "#3E2A61" : "primary.main"  }} alt={message.author}>
           {isMe ? "Me" : message.author[0].toUpperCase()}
         </Avatar>
         <Paper
@@ -60,19 +58,21 @@ export const Message = ({ message, username }) => {
             p: 2,
             ml: isMe ? 0 : 1,
             mr: isMe ? 1 : 0,
-            backgroundColor: isMe ? "secondary.light" : "primary.light" ,
+            backgroundColor: isMe ? "#3E2A61" : "primary.light" ,
             borderRadius: isMe ? "20px 20px 5px 20px" : "20px 20px 20px 5px",
           }}
         >
           {isFileMessage ? (
             <Image blob={message.message} />
           ) : (
-            <Typography variant="body1" >{message.message}</Typography>
+            <Typography variant="body1" color={"whitesmoke"} >{message.message}</Typography>
           )}
           
-          <Typography variant="caption"
+          <Typography
+            variant="caption"
+            color={"whitesmoke"}
             sx={{ display: "block",
-        textAlign: "flex-start"}} >{formattedTime}</Typography>
+            textAlign: "flex-start"}} >{formattedTime}</Typography>
         </Paper>
       </Box>
     </Box>
