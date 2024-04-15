@@ -14,6 +14,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import backgraund_chat from "../assets/fondo_chat.png"
 import { AvatarRoom } from "./avatarRoom";
 import { Message } from "./message";
+import { format } from "@formkit/tempo"
+
+
 
 // const color_primary = "#7D56C1";
 const color_secondary = "#3E2A61";
@@ -25,6 +28,10 @@ function Chat({ socket, username, room }) {
   const dispatch = useDispatch();
   const all_message_room = useSelector((state) => state.notWhatsapp.messages_room);
   const selected_room = useSelector((state) => state.notWhatsapp.select_room);
+
+  // 👇 Try changing this to "fr"
+  const l = "en"
+  const t = new Date()
 
   function convertirTiempoAMinutos(tiempo) {
   const [horas, minutos] = tiempo.split(':').map(Number);
@@ -51,8 +58,8 @@ const all_messages_order = all_message_room.sort((a, b) => {
         type: "text",
         room, 
         author: username,
-        time: new Date(Date.now()).getHours() + ":" + new Date(Date.now()).getMinutes(),
-        id: crypto.randomUUID()
+        time: format(t, "YYYY-MM-DDTHH:mm:ss", l),
+        id: crypto.randomUUID(),
       };
       console.log("Enviando mensaje: ", info);
 
@@ -61,7 +68,6 @@ const all_messages_order = all_message_room.sort((a, b) => {
       setMessagesList((list) => [...list, info])
       setcurrentMessage("")
       setcurrentFile()
-      
     }
 
     if (username && currentFile) {
