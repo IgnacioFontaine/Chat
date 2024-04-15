@@ -16,16 +16,14 @@ import { AvatarRoom } from "./avatarRoom";
 import { Message } from "./message";
 import { format } from "@formkit/tempo"
 
-
-
 // const color_primary = "#7D56C1";
 const color_secondary = "#3E2A61";
 
 function Chat({ socket, username, room }) {
-  const [currentMessage, setcurrentMessage] = useState("")
+  const dispatch = useDispatch();
   const [currentFile, setcurrentFile] = useState()
   const [messagesList, setMessagesList] = useState([])
-  const dispatch = useDispatch();
+  const [currentMessage, setcurrentMessage] = useState("")
   const all_message_room = useSelector((state) => state.notWhatsapp.messages_room);
   const selected_room = useSelector((state) => state.notWhatsapp.select_room);
 
@@ -33,16 +31,19 @@ function Chat({ socket, username, room }) {
   const l = "en"
   const t = new Date()
 
-  function convertirTiempoAMinutos(tiempo) {
-  const [horas, minutos] = tiempo.split(':').map(Number);
-  return horas * 60 + minutos;
-}
+  // Ordena los mensajes primero por fecha y luego por hora
+const sortedMessages = all_message_room.sort((a, b) => {
+  const dateA = new Date(a.time);
+  const dateB = new Date(b.time);
 
-// Ordenar los objetos por tiempo
-const all_messages_order = all_message_room.sort((a, b) => {
-  const tiempoA = convertirTiempoAMinutos(a.time);
-  const tiempoB = convertirTiempoAMinutos(b.time);
-  return tiempoA - tiempoB;
+  // Compara las fechas
+  if (dateA.toDateString() === dateB.toDateString()) {
+    // Si las fechas son iguales, compara las horas
+    return dateA.getHours() - dateB.getHours();
+  } else {
+    // Si las fechas son diferentes, ordena por fecha
+    return dateA - dateB;
+  }
 });
   
   function selectFile(event) {
@@ -76,7 +77,7 @@ const all_messages_order = all_message_room.sort((a, b) => {
       type: "file",
       room,
       author: username,
-      time: new Date(Date.now()).getHours() + ":" + new Date(Date.now()).getMinutes(),
+      time: format(t, "YYYY-MM-DDTHH:mm:ss", l),
       id: crypto.randomUUID()
       };
 
