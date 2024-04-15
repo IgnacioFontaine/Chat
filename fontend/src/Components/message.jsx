@@ -25,6 +25,16 @@ export const Message = ({ message, username }) => {
   const isFileMessage = message.type === "file";
   const id_message = crypto.randomUUID()
 
+  //Renderizar el tiempo
+  const timestamp = new Date(message.time);
+
+  const day = timestamp.getDate();
+  const month = timestamp.getMonth() + 1; // Los meses en JavaScript son base 0 (enero = 0)
+  const hours = timestamp.getHours();
+  const minutes = timestamp.getMinutes();
+
+  const formattedTime = `${day}/${month} ${hours}:${minutes}`;
+
   return (
     <Box
       sx={{
@@ -62,7 +72,7 @@ export const Message = ({ message, username }) => {
           
           <Typography variant="caption"
             sx={{ display: "block",
-        textAlign: "flex-start"}} >{message.time}</Typography>
+        textAlign: "flex-start"}} >{formattedTime}</Typography>
         </Paper>
       </Box>
     </Box>
