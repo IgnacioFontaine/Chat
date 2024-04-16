@@ -5,6 +5,7 @@ import {
   Button,
   Avatar,
   Grid,
+  Input
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
@@ -18,6 +19,24 @@ import { format } from "@formkit/tempo"
 
 // const color_primary = "#7D56C1";
 const color_secondary = "#3E2A61";
+
+const CustomFileInput = ({ onChange }) => {
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    onChange(file);
+  };
+
+  return (
+    <Input
+      type="file"
+      disableUnderline
+      // inputProps={{ style: { display: "none" } }}
+      onChange={handleFileChange}
+      endAdornment={<AttachFileIcon />}
+    />
+  );
+};
+
 
 function Chat({ socket, username, room }) {
   const dispatch = useDispatch();
@@ -80,16 +99,7 @@ const sortedMessages = all_message_room.sort((a, b) => {
       time: format(t, "YYYY-MM-DDTHH:mm:ss", l),
       id: crypto.randomUUID()
       };
-
-    // const reader = new FileReader();
-    // reader.onload = async (event) => {
-    //   await socket.emit('send_file', { message: event.target.result, info });
-      
-    // };
-      // reader.readAsDataURL(currentFile);
-      // await socket.emit('send_file', { message: event.target.result, info });
     setMessagesList((list) => [...list, info]);
-      // dispatch(newFirebaseMessage(info))
     dispatch(newFirebaseFile(info))  
     setcurrentFile(null);
     setcurrentMessage("");
@@ -213,20 +223,24 @@ const sortedMessages = all_message_room.sort((a, b) => {
                 boxShadow:3,
                 ":hover":
                 { bgcolor: `${color_secondary}`, color: "white" }
+              // onClick={selectFile}
+                
                 
             }}>
               {/* <AttachFileIcon
+              type="input"
                 name="file"
                 variant="outlined"
               /> */}
               <input
                 type="file"
                 placeholder="File"
+                name="file"
                 onChange={selectFile}
                 style={{ color:"transparent" }} 
-              />
+              ></input>
+              <CustomFileInput />
             </Avatar>
-            
           </Grid>
         </Grid>
       </Box>
