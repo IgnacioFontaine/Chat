@@ -87,9 +87,10 @@ const sortedMessages = all_message_room.sort((a, b) => {
       
     // };
       // reader.readAsDataURL(currentFile);
-      await socket.emit('send_file', { message: event.target.result, info });
+      // await socket.emit('send_file', { message: event.target.result, info });
     setMessagesList((list) => [...list, info]);
-    // dispatch(newFirebaseMessage(info))  
+      // dispatch(newFirebaseMessage(info))
+    dispatch(newFirebaseFile(info))  
     setcurrentFile(null);
     setcurrentMessage("");
   }
