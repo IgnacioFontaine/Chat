@@ -1,6 +1,7 @@
 import ACTION_TYPES from "./actionsTypes";
 import { db } from "../firebase"
-import { collection, addDoc, query, where, getDocs, deleteDoc, doc } from "firebase/firestore"; 
+import { collection, addDoc, query, where, getDocs,getFirestore, deleteDoc, doc } from "firebase/firestore";
+import { getStorage, ref, uploadBytes } from "firebase/storage";
 
 export const setUser = (user) => {
   
