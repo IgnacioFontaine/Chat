@@ -5,6 +5,7 @@ import {
   Button,
   Avatar,
   Grid,
+  InputAdornment,
   Input
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
@@ -19,23 +20,6 @@ import { format } from "@formkit/tempo"
 
 // const color_primary = "#7D56C1";
 const color_secondary = "#3E2A61";
-
-const CustomFileInput = ({ onChange }) => {
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    onChange(file);
-  };
-
-  return (
-    <Input
-      type="file"
-      disableUnderline
-      // inputProps={{ style: { display: "none" } }}
-      onChange={handleFileChange}
-      endAdornment={<AttachFileIcon />}
-    />
-  );
-};
 
 
 function Chat({ socket, username, room }) {
@@ -223,23 +207,47 @@ const sortedMessages = all_message_room.sort((a, b) => {
                 boxShadow:3,
                 ":hover":
                 { bgcolor: `${color_secondary}`, color: "white" }
-              // onClick={selectFile}
-                
-                
             }}>
+              {/* <InputAdornment
+                name="file"
+                onChange={selectFile}
+              >
+                <AttachFileIcon
+                name="file"
+                variant="outlined"
+                sx={{
+                bgcolor: `${color_secondary}`,
+                ":hover":
+                    { bgcolor: `${color_secondary}`, color: "white" }
+                
+            }}  
+
+              />
+              </InputAdornment> */}
               {/* <AttachFileIcon
               type="input"
                 name="file"
                 variant="outlined"
               /> */}
-              <input
+              {/* <input
                 type="file"
                 placeholder="File"
                 name="file"
                 onChange={selectFile}
                 style={{ color:"transparent" }} 
-              ></input>
-              <CustomFileInput />
+              ></input> */}
+              {/* <CustomFileInput /> */}
+              <Input
+                type="file"
+                disableUnderline
+                onChange={selectFile}
+                aria-label="none"
+                sx={{
+                  bgcolor: `${color_secondary}`,
+                  ":hover":
+                    { bgcolor: `${color_secondary}`, color: "white" }
+                }}
+              />
             </Avatar>
           </Grid>
         </Grid>
