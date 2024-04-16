@@ -44,10 +44,10 @@ io.on('connection', (socket) => {
 
   socket.on("send_file", ({ message, info }) => {
   io.to(info.room).emit("recieve_image", {
-    ...info,
-    message: message,
+      ...info,
+      message: message,
+    });
   });
-});
 
   socket.on('disconnect', () => {
     console.log('User disconnect', socket.id)

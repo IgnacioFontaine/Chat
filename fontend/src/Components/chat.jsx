@@ -81,14 +81,15 @@ const sortedMessages = all_message_room.sort((a, b) => {
       id: crypto.randomUUID()
       };
 
-    const reader = new FileReader();
-    reader.onload = async (event) => {
+    // const reader = new FileReader();
+    // reader.onload = async (event) => {
+    //   await socket.emit('send_file', { message: event.target.result, info });
+      
+    // };
+      // reader.readAsDataURL(currentFile);
       await socket.emit('send_file', { message: event.target.result, info });
-      setMessagesList((list) => [...list, info]);
-    };
-    reader.readAsDataURL(currentFile);
-      // dispatch(newFirebaseMessage(info));
-    dispatch(newFirebaseFile(info))  
+    setMessagesList((list) => [...list, info]);
+    // dispatch(newFirebaseMessage(info))  
     setcurrentFile(null);
     setcurrentMessage("");
   }
