@@ -63,8 +63,7 @@ export const Message = ({ message, username }) => {
           }}
         >
           {isFileMessage ? (
-            // <Image blob={message.message} />
-            <Typography variant="body1" color={"whitesmoke"} >Es una imagen</Typography>
+            <Image blob={message.message} />
           ) : (
             <Typography variant="body1" color={"whitesmoke"} >{message.message}</Typography>
           )}
