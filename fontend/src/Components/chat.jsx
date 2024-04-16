@@ -219,6 +219,18 @@ const sortedMessages = all_message_room.sort((a, b) => {
                     { bgcolor: `${color_secondary}`, color: "white" }
                 }}
               />
+              {/* <Input
+                  type="file"
+                  disableUnderline
+                  inputProps={{ style: { display: "none" } }}
+                  
+                  endAdornment={
+                    <InputAdornment position="end"
+                    onChange={selectFile}>
+                      <AttachFileIcon />
+                    </InputAdornment>
+                  }
+                /> */}
             </Avatar>
           </Grid>
         </Grid>
