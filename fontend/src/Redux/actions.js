@@ -69,6 +69,28 @@ export const newFirebaseMessage = (message) => {
   };
 }
 
+export const newFirebaseFile = (message) => {
+  return async (dispatch) => {
+    try {
+
+      const docRef = await addDoc(collection(db, "message"),{
+      message: message.message,
+      type:message.type,  
+      room: message.room,
+      author: message.author,
+      time: message.time,
+      id: message.id 
+    })
+
+    console.log("Document written with ID: ", docRef.id);
+
+  } catch (event) {
+      console.error("Error adding document: ", event);
+      return dispatch({ type: ACTION_TYPES.ERROR, payload: event });
+  }
+  };
+}
+
 // export const newFirebaseMessage = (message) => {
 //   return async (dispatch) => {
 //     try {
