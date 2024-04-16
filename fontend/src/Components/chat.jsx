@@ -208,35 +208,6 @@ const sortedMessages = all_message_room.sort((a, b) => {
                 ":hover":
                 { bgcolor: `${color_secondary}`, color: "white" }
             }}>
-              {/* <InputAdornment
-                name="file"
-                onChange={selectFile}
-              >
-                <AttachFileIcon
-                name="file"
-                variant="outlined"
-                sx={{
-                bgcolor: `${color_secondary}`,
-                ":hover":
-                    { bgcolor: `${color_secondary}`, color: "white" }
-                
-            }}  
-
-              />
-              </InputAdornment> */}
-              {/* <AttachFileIcon
-              type="input"
-                name="file"
-                variant="outlined"
-              /> */}
-              {/* <input
-                type="file"
-                placeholder="File"
-                name="file"
-                onChange={selectFile}
-                style={{ color:"transparent" }} 
-              ></input> */}
-              {/* <CustomFileInput /> */}
               <Input
                 type="file"
                 disableUnderline
