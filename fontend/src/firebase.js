@@ -20,6 +20,6 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 // const storage = getStorage(app, "gs://my-custom-bucket");
-const storage = getStorage(app);
+const storage = getStorage(app, "gs://notwhatsapp-b1189.appspot.com");
 
 export { auth, db, storage };
