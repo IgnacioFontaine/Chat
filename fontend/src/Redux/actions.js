@@ -73,7 +73,7 @@ export const newFirebaseMessage = (message) => {
 export const newFirebaseFile = (message) => {
   return async (dispatch) => {
     try {
-      const db = getFirestore();
+      // const db = getFirestore();
       const storage = getStorage();
 
       // Upload file to Firebase Storage

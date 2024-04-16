@@ -9,7 +9,7 @@ import {
 import SendIcon from "@mui/icons-material/Send";
 import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
-import { newFirebaseMessage, getMessageByRoom } from "../Redux/actions";
+import { newFirebaseMessage, getMessageByRoom, newFirebaseFile } from "../Redux/actions";
 import { useDispatch, useSelector } from 'react-redux';
 import backgraund_chat from "../assets/fondo_chat.png"
 import { AvatarRoom } from "./avatarRoom";
@@ -87,7 +87,8 @@ const sortedMessages = all_message_room.sort((a, b) => {
       setMessagesList((list) => [...list, info]);
     };
     reader.readAsDataURL(currentFile);
-    // dispatch(newFirebaseMessage(info));  
+      // dispatch(newFirebaseMessage(info));
+    dispatch(newFirebaseFile(info))  
     setcurrentFile(null);
     setcurrentMessage("");
   }
