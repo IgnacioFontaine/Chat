@@ -1,7 +1,7 @@
 import ACTION_TYPES from "./actionsTypes";
 import { db } from "../firebase"
-import { collection, addDoc, query, where, getDocs,getFirestore, deleteDoc, doc } from "firebase/firestore";
-import { getStorage, ref, uploadBytes } from "firebase/storage";
+import { collection, addDoc, query, where, getDocs, getFirestore , deleteDoc, doc } from "firebase/firestore";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 export const setUser = (user) => {
   
@@ -73,47 +73,34 @@ export const newFirebaseMessage = (message) => {
 export const newFirebaseFile = (message) => {
   return async (dispatch) => {
     try {
+      const db = getFirestore();
+      const storage = getStorage();
 
-      const docRef = await addDoc(collection(db, "message"),{
-      message: message.message,
-      type:message.type,  
-      room: message.room,
-      author: message.author,
-      time: message.time,
-      id: message.id 
-    })
+      // Upload file to Firebase Storage
+      const storageRef = ref(storage, `files/${message.id}`);
+      await uploadBytes(storageRef, message.message);
 
-    console.log("Document written with ID: ", docRef.id);
+      // Get download URL of the uploaded file
+      const downloadURL = await getDownloadURL(storageRef);
 
-  } catch (event) {
-      console.error("Error adding document: ", event);
-      return dispatch({ type: ACTION_TYPES.ERROR, payload: event });
-  }
+      // Save message data in Firestore with file URL
+      const docRef = await addDoc(collection(db, "message"), {
+        message: downloadURL,
+        type: message.type,
+        room: message.room,
+        author: message.author,
+        time: message.time,
+        id: message.id
+      });
+
+      console.log("Document written with ID: ", docRef.id);
+    } catch (error) {
+      console.error("Error adding document: ", error);
+      return dispatch({ type: ACTION_TYPES.ERROR, payload: error });
+    }
   };
-}
+};
 
-// export const newFirebaseMessage = (message) => {
-//   return async (dispatch) => {
-//     try {
-//       const newMessage = {
-//       message: message.message,
-//       room: message.room,
-//       author: message.author,
-//       time: message.time,
-//       id: message.id 
-//     };
-
-//     // Actualiza el campo "messages" en el documento de la sala
-//     await updateDoc(doc(db, "rooms", message.room), {
-//       messages: arrayUnion(newMessage) // Usa arrayUnion para agregar el nuevo mensaje al array existente
-//     });
-
-//   } catch (event) {
-//       console.error("Error adding document: ", event);
-//       return dispatch({ type: ACTION_TYPES.ERROR, payload: event });
-//   }
-//   };
-// }
 
 export const getFirebaseRooms = (uid) => {
   return async (dispatch) => {
