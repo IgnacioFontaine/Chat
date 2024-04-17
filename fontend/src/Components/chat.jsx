@@ -90,7 +90,6 @@ const sortedMessages = all_message_room.sort((a, b) => {
 
   }
 
-
   
   useEffect(() => {
     const handleMessage = (data) => {
@@ -108,8 +107,6 @@ const sortedMessages = all_message_room.sort((a, b) => {
     socket.off("recieve_image", handleMessage);
   };
   }, [socket, messagesList, selected_room, all_message_room])
-  // console.log(messagesList);
-  // console.log(all_message_room);
 
   
   return (
