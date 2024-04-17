@@ -69,7 +69,7 @@ const sortedMessages = all_message_room.sort((a, b) => {
 
       await socket.emit("send_message", info)
       dispatch(newFirebaseMessage(info));
-      setMessagesList((list) => [...list, info])
+       setMessagesList((list) => [...list, info])
       setcurrentMessage("")
       setcurrentFile()
     }
@@ -83,12 +83,11 @@ const sortedMessages = all_message_room.sort((a, b) => {
       time: format(t, "YYYY-MM-DDTHH:mm:ss", l),
       id: crypto.randomUUID()
       };
-    setMessagesList((list) => [...list, info]);
+     setMessagesList((list) => [...list, info]);
     dispatch(newFirebaseFile(info))  
     setcurrentFile(null);
     setcurrentMessage("");
   }
-
   }
 
   
@@ -101,13 +100,31 @@ const sortedMessages = all_message_room.sort((a, b) => {
     socket.on("recieve_message", handleMessage);
     socket.on("recieve_image", handleMessage);
     
-    // dispatch(getMessageByRoom(room))
+     dispatch(getMessageByRoom(room))
 
   return () => {
     socket.off("recieve_message", handleMessage);
     socket.off("recieve_image", handleMessage);
   };
-  }, [socket, messagesList, selected_room, all_message_room])
+  }, [socket, messagesList, selected_room])
+  console.log(all_message_room);
+
+  // useEffect(() => {
+  //   const handleMessage = (data) => {
+  //      setMessagesList((list) => [...list, data]);
+  //    };
+
+  //   //Manejo recepción
+  //   socket.on("recieve_message", handleMessage);
+  //   socket.on("recieve_image", handleMessage);
+    
+  //   dispatch(getMessageByRoom(selected_room))
+
+  // return () => {
+  //   socket.off("recieve_message", handleMessage);
+  //   socket.off("recieve_image", handleMessage);
+  // };
+  // }, [socket, selected_room, messagesList])
 
   
   return (
@@ -141,7 +158,7 @@ const sortedMessages = all_message_room.sort((a, b) => {
           backgroundImage: `url(${backgraund_chat})`,
       }}>
         
-        {messagesList?.map((message) => (
+        {sortedMessages?.map((message) => (
           <Message key={message.id} message={message} username={username} />
         ))}
         
