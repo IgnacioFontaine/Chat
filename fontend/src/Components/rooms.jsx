@@ -53,7 +53,10 @@ function NewRoom() {
           label="Name"
           variant="outlined"
           autoComplete='off'
-          sx={{ width: 180 , color:"white", borderColor:"white"}}
+          sx={{ width: 180, 
+            bgcolor: `#7C7C7C`,
+            borderRadius:"5%"
+          }}
         />
         <TextField
           id="id"
@@ -63,7 +66,10 @@ function NewRoom() {
           onChange={event=>setId(Number(event.target.value))}
           type='number'
           variant="outlined"
-          sx={{ width: 180}}
+          sx={{ width: 180, 
+            bgcolor: `#7C7C7C`,
+            borderRadius:"5%"
+          }}
         />
          <Button
               variant="contained"
