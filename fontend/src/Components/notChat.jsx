@@ -11,7 +11,7 @@ function NotChat() {
         backgroundColor: "#7F8C8D",
         backgroundImage: `url(${backgraund_chat})`,
         mt:"-8px",
-        width: "1318px",
+        width: "1358px",
         height: "930px",
         display: "flex",
         flexDirection: "column",
