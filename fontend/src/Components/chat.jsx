@@ -5,7 +5,8 @@ import {
   Button,
   Avatar,
   Grid,
-  Input
+  Input,
+  IconButton
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
@@ -208,14 +209,14 @@ const sortedMessages = all_message_room.sort((a, b) => {
             }}>
               <Input
                 type="file"
+                placeholder="File"
                 disableUnderline
                 onChange={selectFile}
-                aria-label="none"
-                sx={{
-                  bgcolor: `${color_secondary}`,
-                  ":hover":
-                    { bgcolor: `${color_secondary}`, color: "white" }
-                }}
+                endAdornment={
+                  <IconButton>
+                    <AttachFileIcon />
+                  </IconButton>
+                  }
               />
               {/* <Input
                   type="file"

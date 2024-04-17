@@ -31,7 +31,7 @@ export const AvatarRoom = ({ name, id }) => {
                       color: "black",
                         border:"1px solid gray",
                         ":hover":
-                          { bgcolor: `transparent`, color: "#3E2A61" }
+                          { bgcolor: `transparent`, color: "white" }
                       }}
                     // onClick={dispatch(deleteFirestoreRoom(id)) }
                 >
