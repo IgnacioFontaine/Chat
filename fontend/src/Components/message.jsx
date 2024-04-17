@@ -3,16 +3,16 @@ import { useEffect, useState } from "react";
 
 
 function Image(message) {
-  // const [imageSrc, setImageSrc] = useState("")
+  const [imageSrc, setImageSrc] = useState("")
 
-  // useEffect(() => {
-  //   const reader = new FileReader();
-  //   reader.readAsDataURL(props.blob);
-  //   reader.onloadend = function () {
-  //     setImageSrc(reader.result);
-  //   }
+  useEffect(() => {
+    const reader = new FileReader();
+    reader.readAsDataURL(props.blob);
+    reader.onloadend = function () {
+      setImageSrc(reader.result);
+    }
     
-  // }, [props.blob]);
+  }, [props.blob]);
 
   return (
     <img style={{width:150, height:"auto"}} src={message.message} alt={"File"}></img>
@@ -63,7 +63,8 @@ export const Message = ({ message, username }) => {
           }}
         >
           {isFileMessage ? (
-            <Image message={message} />
+            // <Image message={message} />
+            <img src={message.message} alt="Imagen adjunta" />
           ) : (
             <Typography variant="body1" color={"whitesmoke"} >{message.message}</Typography>
           )}

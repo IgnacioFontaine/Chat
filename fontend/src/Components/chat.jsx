@@ -5,7 +5,6 @@ import {
   Button,
   Avatar,
   Grid,
-  InputAdornment,
   Input
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
@@ -102,7 +101,7 @@ const sortedMessages = all_message_room.sort((a, b) => {
     socket.on("recieve_message", handleMessage);
     socket.on("recieve_image", handleMessage);
     
-    dispatch(getMessageByRoom(room))
+    // dispatch(getMessageByRoom(room))
 
   return () => {
     socket.off("recieve_message", handleMessage);
@@ -110,7 +109,8 @@ const sortedMessages = all_message_room.sort((a, b) => {
   };
   }, [socket, messagesList, selected_room, all_message_room])
   // console.log(messagesList);
-  console.log(all_message_room);
+  // console.log(all_message_room);
+
   
   return (
     <Box
@@ -143,7 +143,7 @@ const sortedMessages = all_message_room.sort((a, b) => {
           backgroundImage: `url(${backgraund_chat})`,
       }}>
         
-        {sortedMessages?.map((message) => (
+        {messagesList?.map((message) => (
           <Message key={message.id} message={message} username={username} />
         ))}
         
