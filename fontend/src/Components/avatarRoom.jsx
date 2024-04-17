@@ -6,6 +6,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 
 
 const color_secondary = "#3E2A61";
+
 export const AvatarRoom = ({ name, id }) => {
   return (
     <Box key={id}>
@@ -26,10 +27,11 @@ export const AvatarRoom = ({ name, id }) => {
                     sx={{
                         justifyContent: "center",
                         height: "30px",
-                        bgcolor: `${color_secondary}`,
-                        color: "black",
+                        bgcolor: `transparent`,
+                      color: "black",
+                        border:"1px solid gray",
                         ":hover":
-                          { bgcolor: `${color_secondary}`, color: "white" }
+                          { bgcolor: `transparent`, color: "#3E2A61" }
                       }}
                     // onClick={dispatch(deleteFirestoreRoom(id)) }
                 >
