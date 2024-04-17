@@ -19,9 +19,8 @@ export const AvatarRoom = ({ name, id }) => {
         <ListItemText sx={{
           display: "flex",
           gap: "10px",
-                }} primary={name}  />
-      </ListItemButton>
-      <Button
+        }} primary={name} />
+        <Button
                     variant="contained"
                     fontFamily={"unset"}
                     sx={{
@@ -36,6 +35,8 @@ export const AvatarRoom = ({ name, id }) => {
                 >
                     <ClearIcon sx={{fontSize:"medium"}}/>
                 </Button> 
+      </ListItemButton>
+      
     </Box>
   )
 }
