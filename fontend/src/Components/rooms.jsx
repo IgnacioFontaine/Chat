@@ -9,7 +9,6 @@ import ListItemText from '@mui/material/ListItemText';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
-import ClearIcon from '@mui/icons-material/Clear';
 import { Divider, Avatar } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react'
@@ -174,21 +173,6 @@ export default function Rooms({socket}) {
                   <Avatar alt="Profile Picture" sx={{backgroundColor:"blueviolet", color:"black"}}>{name[0].toUpperCase()}</Avatar>
                 </ListItemAvatar>
                 <ListItemText primary={name.toUpperCase()} secondary={id}  />
-                <Button
-                    variant="contained"
-                    fontFamily={"unset"}
-                    sx={{
-                        justifyContent: "center",
-                        height: "30px",
-                        bgcolor: `${color_secondary}`,
-                        color: "black",
-                        ":hover":
-                          { bgcolor: `${color_secondary}`, color: "white" }
-                      }}
-                    // onClick={dispatch(deleteFirestoreRoom(id)) }
-                >
-                    <ClearIcon sx={{fontSize:"medium"}}/>
-                </Button> 
               </ListItemButton>
             </React.Fragment>)
           ))}
