@@ -17,6 +17,7 @@ import InfoPopover from './info';
 import { auth } from "../firebase"
 import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
+import AccordionNewRoom from './acordionNewRoom';
 
 const color_primary = "#7D56C1";
 const color_secondary = "#3E2A61";
@@ -179,7 +180,8 @@ export default function Rooms({socket}) {
         </List>
         <Divider />
         <Box sx={{ml:1, mt:1}}>
-            <NewRoom />
+          {/* <NewRoom /> */}
+          <AccordionNewRoom />
         </Box>
       </Paper>
     </Box>

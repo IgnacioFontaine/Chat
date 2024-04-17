@@ -54,7 +54,6 @@ const sortedMessages = all_message_room.sort((a, b) => {
     setcurrentFile(event.target.files[0])
   }
 
-
   const sendMessage = async () => {
     if (username && currentMessage && !currentFile) {
       const info = {
