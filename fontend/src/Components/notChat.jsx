@@ -1,5 +1,6 @@
 import { Box, Typography } from '@mui/material'
 import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
+import backgraund_chat from "../assets/fondo_chat.png"
 
 function NotChat() {
   
@@ -7,7 +8,8 @@ function NotChat() {
     <Box
       sx={{
         outline: "1px solid black",
-        backgroundColor:"#7F8C8D",
+        backgroundColor: "#7F8C8D",
+        backgroundImage: `url(${backgraund_chat})`,
         mt:"-8px",
         width: "1318px",
         height: "930px",

@@ -53,7 +53,7 @@ function NewRoom() {
           label="Name"
           variant="outlined"
           autoComplete='off'
-          sx={{ width: 180}}
+          sx={{ width: 180 , color:"white", borderColor:"white"}}
         />
         <TextField
           id="id"
@@ -95,17 +95,21 @@ function AccordionNewRoom() {
     <Box>
       <Accordion>
         <AccordionSummary
-          expandIcon={<ArrowDownwardIcon />}
-          
+          expandIcon={<ArrowDownwardIcon
+            sx={{
+                ":hover":
+                  { color: "white" }
+              }}
+          />}          
           aria-controls="panel1-content"
           id="panel1-header"
           sx={{
-            height: "36px",
-                bgcolor: `${color_secondary}`,
+                height: "36px",
+                bgcolor: `#7C7C7C`,
                 color: "black",
-                boxShadow:5,
+                boxShadow:1,
                 ":hover":
-                  { bgcolor: `${color_secondary}`, color: "white" }
+                  { bgcolor: `#7C7C7C`, color: "white" }
               }}
         >
           <Typography>New Room</Typography>
@@ -117,7 +121,7 @@ function AccordionNewRoom() {
                 color: "black",
                 boxShadow:5,
                 ":hover":
-                  { bgcolor: `${color_secondary}`, color: "white" }
+              { bgcolor: `${color_secondary}`, color: "white" },
               }}
         >
           <NewRoom />
@@ -221,11 +225,6 @@ export default function Rooms({socket}) {
             </React.Fragment>)
           ))}
         </List>
-        {/* <Divider /> */}
-        {/* <Box sx={{ml:1, mt:1}}>
-          <NewRoom />
-          <AccordionNewRoom />
-        </Box> */}
       </Paper>
     </Box>
   );
