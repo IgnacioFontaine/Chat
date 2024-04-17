@@ -155,21 +155,22 @@ export const getMessageByRoom = (room) => {
 
 export const deleteFirestoreRoom = (roomId) => {
   return async (dispatch) => {
-    try {
-        // Obtén una referencia al documento
-        const roomRef = query(collection(db, "message"), where("id", "==", roomId))
+        try {
+        const roomsCollection = db.collection('rooms');
+        // Busca el documento con el ID proporcionado
+        const querySnapshot = await roomsCollection.where('id', '==', roomId).get();
 
-        console.log("Se eliminaría la sala:", roomRef);
-        // Elimina el documento
-        // roomRef.delete()
-        // console.log("Eliminado con éxito");
-        dispatch({
-          type: ACTION_TYPES.DELETE_ROOM_SUCCES,
-          payload: roomId,
-        });
+        // Verifica si se encontró algún documento con el ID
+        if (!querySnapshot.empty) {
+          // Elimina el primer documento encontrado (suponiendo que solo hay uno)
+          const docRef = querySnapshot.docs[0].ref;
+          await docRef.delete();
+          console.log('Documento eliminado correctamente.');
+        } else {
+          console.log('No se encontró ningún documento con el ID proporcionado.');
+        }
       } catch (error) {
-        console.error("Error al eliminar el documento: ", error);
-        return dispatch({ type: ACTION_TYPES.ERROR, payload: error });
+        console.error('Error al intentar eliminar el documento:', error);
       }
     };
 }
