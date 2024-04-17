@@ -107,24 +107,6 @@ const sortedMessages = all_message_room.sort((a, b) => {
     socket.off("recieve_image", handleMessage);
   };
   }, [socket, messagesList, selected_room])
-  console.log(all_message_room);
-
-  // useEffect(() => {
-  //   const handleMessage = (data) => {
-  //      setMessagesList((list) => [...list, data]);
-  //    };
-
-  //   //Manejo recepción
-  //   socket.on("recieve_message", handleMessage);
-  //   socket.on("recieve_image", handleMessage);
-    
-  //   dispatch(getMessageByRoom(selected_room))
-
-  // return () => {
-  //   socket.off("recieve_message", handleMessage);
-  //   socket.off("recieve_image", handleMessage);
-  // };
-  // }, [socket, selected_room, messagesList])
 
   
   return (
