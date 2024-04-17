@@ -102,14 +102,15 @@ const sortedMessages = all_message_room.sort((a, b) => {
     socket.on("recieve_message", handleMessage);
     socket.on("recieve_image", handleMessage);
     
-    // dispatch(getMessageByRoom(room))
+    dispatch(getMessageByRoom(room))
 
   return () => {
     socket.off("recieve_message", handleMessage);
     socket.off("recieve_image", handleMessage);
   };
   }, [socket, messagesList, selected_room, all_message_room])
-  console.log(messagesList);
+  // console.log(messagesList);
+  console.log(all_message_room);
   
   return (
     <Box
@@ -142,7 +143,7 @@ const sortedMessages = all_message_room.sort((a, b) => {
           backgroundImage: `url(${backgraund_chat})`,
       }}>
         
-        {messagesList?.map((message) => (
+        {sortedMessages?.map((message) => (
           <Message key={message.id} message={message} username={username} />
         ))}
         
