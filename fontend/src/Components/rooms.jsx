@@ -7,6 +7,10 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
 import TextField from '@mui/material/TextField';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
 import { Divider, Avatar } from '@mui/material';
@@ -17,7 +21,6 @@ import InfoPopover from './info';
 import { auth } from "../firebase"
 import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
-import AccordionNewRoom from './acordionNewRoom';
 
 const color_primary = "#7D56C1";
 const color_secondary = "#3E2A61";
@@ -85,6 +88,43 @@ function NewRoom() {
       </Box>
     </Box>
   )
+}
+
+function AccordionNewRoom() {
+  return (
+    <Box>
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ArrowDownwardIcon />}
+          
+          aria-controls="panel1-content"
+          id="panel1-header"
+          sx={{
+            height: "36px",
+                bgcolor: `${color_secondary}`,
+                color: "black",
+                boxShadow:5,
+                ":hover":
+                  { bgcolor: `${color_secondary}`, color: "white" }
+              }}
+        >
+          <Typography>New Room</Typography>
+        </AccordionSummary>
+        <AccordionDetails
+          sx={{
+                height: "50px",
+                bgcolor: `${color_secondary}`,
+                color: "black",
+                boxShadow:5,
+                ":hover":
+                  { bgcolor: `${color_secondary}`, color: "white" }
+              }}
+        >
+          <NewRoom />
+        </AccordionDetails>
+      </Accordion>
+    </Box>
+  );
 }
 
 export default function Rooms({socket}) {
@@ -181,11 +221,11 @@ export default function Rooms({socket}) {
             </React.Fragment>)
           ))}
         </List>
-        <Divider />
-        <Box sx={{ml:1, mt:1}}>
-          {/* <NewRoom /> */}
-          {/* <AccordionNewRoom /> */}
-        </Box>
+        {/* <Divider /> */}
+        {/* <Box sx={{ml:1, mt:1}}>
+          <NewRoom />
+          <AccordionNewRoom />
+        </Box> */}
       </Paper>
     </Box>
   );
