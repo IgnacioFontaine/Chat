@@ -163,6 +163,9 @@ export default function Rooms({socket}) {
         </Button>  
 
         </Box>
+        <Box>
+          <AccordionNewRoom />
+        </Box>
         <Divider />
         <List sx={{ height:775, overflow: 'auto',}}>
           {all_rooms && all_rooms.map(({  name, id }) => (
@@ -181,7 +184,7 @@ export default function Rooms({socket}) {
         <Divider />
         <Box sx={{ml:1, mt:1}}>
           {/* <NewRoom /> */}
-          <AccordionNewRoom />
+          {/* <AccordionNewRoom /> */}
         </Box>
       </Paper>
     </Box>

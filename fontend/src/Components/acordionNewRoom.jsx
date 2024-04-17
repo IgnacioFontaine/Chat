@@ -78,10 +78,11 @@ export default function AccordionNewRoom() {
       <Accordion>
         <AccordionSummary
           expandIcon={<ArrowDownwardIcon />}
+          
           aria-controls="panel1-content"
           id="panel1-header"
           sx={{
-                height: "36px",
+            height: "36px",
                 bgcolor: `${color_secondary}`,
                 color: "black",
                 boxShadow:5,
@@ -93,7 +94,7 @@ export default function AccordionNewRoom() {
         </AccordionSummary>
         <AccordionDetails
           sx={{
-                height: "36px",
+                height: "50px",
                 bgcolor: `${color_secondary}`,
                 color: "black",
                 boxShadow:5,
