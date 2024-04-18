@@ -1,9 +1,9 @@
-import TextField from '@mui/material/TextField';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import InfoPopover from './info';
+import AddIcon from '@mui/icons-material/Add';
+import { useDispatch, useState, useSelector } from 'react-redux';
+import { newFirebaseRoom, getFirebaseRooms } from '../Redux/actions';
+import { Box, Typography, Button, TextField, AccordionDetails, AccordionSummary, Accordion } from "@mui/material"
 
 const color_secondary = "#3E2A61";
 
