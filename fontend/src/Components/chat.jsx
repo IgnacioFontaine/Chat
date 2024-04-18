@@ -208,6 +208,7 @@ const sortedMessages = all_message_room.sort((a, b) => {
               <Input
                 type="file"
                 placeholder="File"
+                accept="image/*"
                 disableUnderline
                 onChange={selectFile}
                 endAdornment={

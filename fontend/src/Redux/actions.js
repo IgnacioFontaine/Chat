@@ -156,14 +156,8 @@ export const deleteFirestoreRoom = (roomId) => {
           const querySnapshotGet = await getDocs(querySnapshot);
 
         // Busca mensajes con el ID proporcionado
-         const query_get = query(collection(db, "message"), where("room", "==", roomId));
-         const queryMessage = await getDocs(query_get);
-
-          //Eliminarlos
-           queryMessage.forEach(async(doc) => {
-             await deleteDoc(doc)
-          console.log('Eliminado mensaje:', doc);
-         });
+        //  const query_get = query(collection(db, "message"), where("room", "==", roomId));
+        //  const queryMessage = await getDocs(query_get);
 
         // Verifica si se encontró algún documento con el ID
         if (!querySnapshotGet.empty) {
@@ -172,6 +166,12 @@ export const deleteFirestoreRoom = (roomId) => {
 
           await deleteDoc(docRef);
           console.log('Documento eliminado correctamente.');
+          //Eliminar mensajes
+
+          //   queryMessage.forEach(async(doc) => {
+          //      await deleteDoc(doc)
+          //   console.log('Eliminado mensaje:', doc);
+          //  });
         } else {
           console.log('No se encontró ningún documento con el ID proporcionado.');
         }
