@@ -1,11 +1,11 @@
-import * as React from 'react';
 import { Divider, Avatar, Button,Box, Paper, Typography, List, ListItemText, ListItemAvatar, ListItemButton } from '@mui/material';
-import { useDispatch, useSelector } from 'react-redux';
 import { selectRoom, getFirebaseRooms, getMessageByRoom } from '../Redux/actions';
-import { auth } from "../firebase"
-import { useNavigate } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import AccordionNewRoom from './newRoom';
+import { auth } from "../firebase";
+import { useEffect } from 'react';
+import * as React from 'react';
 
 const color_secondary = "#3E2A61";
 

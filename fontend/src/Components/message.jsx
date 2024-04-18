@@ -1,6 +1,5 @@
 import { Avatar, Box, Paper, Typography } from "@mui/material";
 
-
 export const Message = ({ message, username }) => {
   const isMe = message.author === username;
   // Verificar si el mensaje es de tipo "file"

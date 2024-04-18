@@ -1,9 +1,8 @@
-import { Box, Typography } from '@mui/material'
 import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 import backgraund_chat from "../assets/fondo_chat.png"
+import { Box, Typography } from '@mui/material'
 
 function NotChat() {
-  
   return (
     <Box
       sx={{

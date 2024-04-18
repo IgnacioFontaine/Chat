@@ -1,12 +1,11 @@
-import { Box, Typography, Link } from '@mui/material';
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
-import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import { Box, Typography, Link } from '@mui/material';
+import GitHubIcon from '@mui/icons-material/GitHub';
 
 
 function Footer(props) {
   return (
-    
     <Typography variant="body1" color="text.secondary" align="center" {...props} sx={{ display: "flex", gap:"35px"}}>
       {'Copyright © Ignacio'}
       <Link color="inherit" href="https://github.com/IgnacioFontaine">
@@ -23,7 +22,6 @@ function Footer(props) {
 
 
 export const SelfImage = () => {
-  
   return (
     <Box 
       sx={{
