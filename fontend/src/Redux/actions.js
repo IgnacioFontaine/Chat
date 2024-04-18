@@ -1,10 +1,9 @@
 import ACTION_TYPES from "./actionsTypes";
 import { db } from "../firebase"
-import { collection, addDoc, query, where, getDocs, getFirestore , deleteDoc, doc } from "firebase/firestore";
+import { collection, addDoc, query, where, getDocs, getFirestore , deleteDoc, doc, deleteField } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 export const setUser = (user) => {
-  
   return async (dispatch) => {
     try {
       dispatch({
@@ -18,7 +17,6 @@ export const setUser = (user) => {
 };
 
 export const setUserUid = (uid) => {
-  
   return async (dispatch) => {
     try {
       dispatch({
@@ -51,7 +49,6 @@ export const newFirebaseRoom = (room) => {
 export const newFirebaseMessage = (message) => {
   return async (dispatch) => {
     try {
-
       const docRef = await addDoc(collection(db, "message"),{
       message: message.message,
       type:message.type,  
@@ -124,7 +121,6 @@ export const getFirebaseRooms = (uid) => {
       return dispatch({ type: ACTION_TYPES.ERROR, payload: event });
   }
   };
-  
 }
 
 
@@ -150,26 +146,24 @@ export const getMessageByRoom = (room) => {
       return dispatch({ type: ACTION_TYPES.ERROR, payload: event });
   }
   };
-  
 }
 
 export const deleteFirestoreRoom = (roomId) => {
-  return async (dispatch) => {
+  return async () => {
         try {
         // const roomsCollection = db.collection('rooms');
         // Busca el documento con el ID proporcionado
           const querySnapshot = query(collection(db, "rooms"), where("id", "==", roomId))
           const querySnapshotGet = await getDocs(querySnapshot);
-          console.log("El id es:", roomId);
-          console.log("----------");
-          console.log(querySnapshotGet.docs[0].ref);
-          console.log("----------");
 
         // Verifica si se encontró algún documento con el ID
         if (!querySnapshotGet.empty) {
           // Elimina el primer documento encontrado (suponiendo que solo hay uno)
           const docRef = querySnapshotGet.docs[0].ref;
-          await docRef.delete();
+          // await docRef.delete();
+          // await docRef.deleteDoc();
+          // await docRef.deleteField();
+          await deleteDoc(docRef);
           console.log('Documento eliminado correctamente.');
         } else {
           console.log('No se encontró ningún documento con el ID proporcionado.');
@@ -209,7 +203,6 @@ export const modifyRoom = ({id,updateName}) => {
 }
 
 export const selectRoom = (room) => {
-
   return async (dispatch) => {
     try {
       dispatch({
