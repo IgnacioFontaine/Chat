@@ -1,9 +1,10 @@
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import InfoPopover from './info';
 import AddIcon from '@mui/icons-material/Add';
-import { useDispatch, useState, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { newFirebaseRoom, getFirebaseRooms } from '../Redux/actions';
 import { Box, Typography, Button, TextField, AccordionDetails, AccordionSummary, Accordion } from "@mui/material"
+import { useState } from 'react';
 
 const color_secondary = "#3E2A61";
 

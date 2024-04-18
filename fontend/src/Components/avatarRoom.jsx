@@ -1,12 +1,8 @@
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import ListItemText from '@mui/material/ListItemText';
-import { Avatar, Box, Button } from '@mui/material';
-import ClearIcon from '@mui/icons-material/Clear';
+import { Avatar, Box, Button, ListItemAvatar, ListItemText, ListItemButton } from '@mui/material';
 import { deleteFirestoreRoom, selectRoom, getFirebaseRooms } from '../Redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
+import ClearIcon from '@mui/icons-material/Clear';
 
-const color_secondary = "#3E2A61";
 
 export const AvatarRoom = ({ name, id }) => {
   const dispatch = useDispatch()
@@ -47,7 +43,6 @@ export const AvatarRoom = ({ name, id }) => {
                     <ClearIcon sx={{fontSize:"medium"}}/>
                 </Button> 
       </ListItemButton>
-      
     </Box>
   )
 }

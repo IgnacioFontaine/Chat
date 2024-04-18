@@ -1,22 +1,13 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Paper from '@mui/material/Paper';
-import List from '@mui/material/List';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import ListItemText from '@mui/material/ListItemText';
-import Button from '@mui/material/Button';
-import { Divider, Avatar } from '@mui/material';
+import { Divider, Avatar, Button,Box, Paper, Typography, List, ListItemText, ListItemAvatar, ListItemButton } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react'
-import { newFirebaseRoom, selectRoom, getFirebaseRooms, getMessageByRoom } from '../Redux/actions';
-
+import { selectRoom, getFirebaseRooms, getMessageByRoom } from '../Redux/actions';
 import { auth } from "../firebase"
 import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
+import AccordionNewRoom from './newRoom';
 
-
+const color_secondary = "#3E2A61";
 
 export default function Rooms({socket}) {
   const dispatch = useDispatch();
