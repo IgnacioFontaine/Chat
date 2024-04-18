@@ -160,7 +160,10 @@ export const deleteFirestoreRoom = (roomId) => {
         // Busca el documento con el ID proporcionado
           const querySnapshot = query(collection(db, "rooms"), where("id", "==", roomId))
           const querySnapshotGet = await getDocs(querySnapshot);
-          console.log(querySnapshotGet);
+          console.log("El id es:", roomId);
+          console.log("----------");
+          console.log(querySnapshotGet.docs[0].ref);
+          console.log("----------");
 
         // Verifica si se encontró algún documento con el ID
         if (!querySnapshotGet.empty) {
