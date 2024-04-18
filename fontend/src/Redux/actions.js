@@ -98,6 +98,26 @@ export const newFirebaseFile = (message) => {
   };
 };
 
+export const newFirebaseAudio = (message) => {
+  return async (dispatch) => {
+    try {
+      // Save message data in Firestore with file URL
+      const docRef = await addDoc(collection(db, "message"), {
+        message: message.audio,
+        type: message.type,
+        room: message.room,
+        author: message.author,
+        time: message.time,
+        id: message.id
+      });
+      console.log("Audio written with ID: ", docRef.id);
+
+    } catch (error) {
+      console.error("Error adding document: ", error);
+      return dispatch({ type: ACTION_TYPES.ERROR, payload: error });
+    }
+  };
+};
 
 export const getFirebaseRooms = (uid) => {
   return async (dispatch) => {
