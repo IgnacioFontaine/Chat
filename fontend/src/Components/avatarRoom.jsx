@@ -40,7 +40,7 @@ export const AvatarRoom = ({ name, id }) => {
                         ":hover":
                           { bgcolor: `transparent`, color: "white" }
                       }}
-                    // onClick={dispatch(deleteFirestoreRoom(id)) }
+                    onClick={handleDelete}
                 >
                     <ClearIcon sx={{fontSize:"medium"}}/>
                 </Button> 
