@@ -45,7 +45,7 @@ export const Message = ({ message, username }) => {
           }}
         >
           {isFileMessage ? (
-            <img src={message.message} alt="Imagen adjunta" />
+            <img src={message.message} alt="Imagen adjunta" style={{maxHeight:"400px"}} />
           ) : (
             <Typography variant="body1" color={"whitesmoke"} >{message.message}</Typography>
           )}
