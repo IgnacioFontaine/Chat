@@ -1,11 +1,16 @@
 import { Box, Typography, Input} from "@mui/material"
 import CardProfile from "./cardProfile";
 import { setFirebaseUserPic } from "../Redux/actions";
+import { useState } from "react";
 
 function Profile() {
-  
+  const [currentFile, setCurrentFile] = useState()
+
   function selectFile(event) {
-    setcurrentFile(event.target.files[0])
+    setCurrentFile(event.target.files[0])
+  }
+  const handleSetFile = () => {
+    
   }
   
   return (
