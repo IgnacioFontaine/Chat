@@ -3,10 +3,10 @@ import { selectRoom, getFirebaseRooms, getMessageByRoom } from '../Redux/actions
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import AccordionNewRoom from './newRoom';
+import AccordionProfile from './profile';
 import { auth } from "../firebase";
 import { useEffect } from 'react';
 import * as React from 'react';
-import Profile from './profile';
 
 const color_secondary = "#3E2A61";
 
@@ -84,10 +84,9 @@ export default function Rooms({socket}) {
         >
           Logout
         </Button>  
-
         </Box>
         <Box>
-          <Profile />
+          <AccordionProfile />
           <AccordionNewRoom />
         </Box>
         <Divider />

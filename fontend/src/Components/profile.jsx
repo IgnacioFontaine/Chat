@@ -1,7 +1,7 @@
 import { Box, Typography, Input, Button,  AccordionDetails, AccordionSummary, Accordion  } from "@mui/material"
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import { setFirebaseUserPic } from "../Redux/actions";
 import { useDispatch } from "react-redux";
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import { useState } from "react";
 
 const color_secondary = "#3E2A61";
