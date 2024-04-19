@@ -1,4 +1,4 @@
-import { Box, Typography, Input, Button} from "@mui/material"
+import { Box, Typography, Input, Button,  AccordionDetails, AccordionSummary, Accordion  } from "@mui/material"
 import { setFirebaseUserPic } from "../Redux/actions";
 import { useDispatch } from "react-redux";
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
@@ -24,12 +24,12 @@ function Profile() {
   return (
     <Box>
       <Box>
-              <Input
-                type="file"
-                placeholder="File"
-                accept="image/*"
-                disableUnderline
-                onChange={selectFile}
+         <Input
+          type="file"
+          placeholder="File"
+          accept="image/*"
+          disableUnderline
+          onChange={selectFile}
         />
         <Button
           sx={{
