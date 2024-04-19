@@ -1,5 +1,6 @@
-import { Box, Typography} from "@mui/material"
+import { Box, Typography, Input} from "@mui/material"
 import CardProfile from "./cardProfile";
+import { setFirebaseUserPic } from "../Redux/actions";
 
 function Profile() {
   
@@ -8,6 +9,16 @@ function Profile() {
       <CardProfile />
       <Typography>New image</Typography>
       <Typography>New Name</Typography>
+      <Box>
+        
+              <Input
+                type="file"
+                placeholder="File"
+                accept="image/*"
+                disableUnderline
+                onChange={selectFile}
+              />
+      </Box>
     </Box>
   );
 }
