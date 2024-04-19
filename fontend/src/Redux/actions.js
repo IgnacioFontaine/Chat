@@ -201,6 +201,20 @@ export const deleteFirestoreRoom = (roomId) => {
     };
 }
 
+export const setFirebaseUserPic = (userPic) => {
+  return async (dispatch) => {
+    try {
+
+      console.log("Foto de perfil actializada:", userPic);
+  
+  } catch (event) {
+      console.error("Error adding document: ", event);
+      return dispatch({ type: ACTION_TYPES.ERROR, payload: event });
+  }
+  };
+}
+
+
 export const createFirebaseUser = (user) => {
   return async (dispatch) => {
     try {
