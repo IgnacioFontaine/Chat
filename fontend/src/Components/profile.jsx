@@ -1,12 +1,13 @@
 import { Box, Typography} from "@mui/material"
-
+import CardProfile from "./cardProfile";
 
 function Profile() {
   
-
   return (
     <Box>
-      <Typography>Name</Typography>
+      <CardProfile />
+      <Typography>New image</Typography>
+      <Typography>New Name</Typography>
     </Box>
   );
 }
