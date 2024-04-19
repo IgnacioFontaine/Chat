@@ -1,7 +1,7 @@
 import { Box, Typography, Input, Button} from "@mui/material"
 import { setFirebaseUserPic } from "../Redux/actions";
 import { useDispatch } from "react-redux";
-import CardProfile from "./cardProfile";
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import { useState } from "react";
 
 const color_secondary = "#3E2A61";
@@ -22,11 +22,7 @@ function Profile() {
   }
   
   return (
-    //Esto podría ser un acordeón tmb
     <Box>
-      {/* <CardProfile />
-      <Typography>New image</Typography>
-      <Typography>New Name</Typography> */}
       <Box>
               <Input
                 type="file"
@@ -53,4 +49,46 @@ function Profile() {
   );
 }
 
-export default Profile;
+
+function AccordionProfile() {
+  return (
+    <Box>
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ArrowDownwardIcon
+            sx={{
+                ":hover":
+                  { color: "white" }
+              }}
+          />}          
+          aria-controls="panel1-content"
+          id="panel1-header"
+          sx={{
+                height: "36px",
+                bgcolor: `#7C7C7C`,
+                color: "black",
+                boxShadow:1,
+                ":hover":
+                  { bgcolor: `#7C7C7C`, color: "white" }
+              }}
+        >
+          <Typography>Profile</Typography>
+        </AccordionSummary>
+        <AccordionDetails
+          sx={{
+                height: "50px",
+                bgcolor: `${color_secondary}`,
+                color: "black",
+                boxShadow:5,
+                ":hover":
+              { bgcolor: `${color_secondary}`, color: "white" },
+              }}
+        >
+          <Profile />
+        </AccordionDetails>
+      </Accordion>
+    </Box>
+  );
+}
+
+export default AccordionProfile;
