@@ -201,7 +201,18 @@ export const deleteFirestoreRoom = (roomId) => {
     };
 }
 
+export const createFirebaseUser = (user) => {
+  return async (dispatch) => {
+    try {
 
+      console.log("Usuario creado exitosamente:", user);
+  
+  } catch (event) {
+      console.error("Error adding document: ", event);
+      return dispatch({ type: ACTION_TYPES.ERROR, payload: event });
+  }
+  };
+}
 
 // export const deleteRoom = (id) => {
 //   return async (dispatch) => {
