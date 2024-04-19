@@ -4,6 +4,10 @@ import { setFirebaseUserPic } from "../Redux/actions";
 
 function Profile() {
   
+  function selectFile(event) {
+    setcurrentFile(event.target.files[0])
+  }
+  
   return (
     <Box>
       <CardProfile />
