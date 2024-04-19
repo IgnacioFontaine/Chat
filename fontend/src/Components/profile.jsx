@@ -1,16 +1,22 @@
-import { Box, Typography, Input} from "@mui/material"
-import CardProfile from "./cardProfile";
+import { Box, Typography, Input, Button} from "@mui/material"
 import { setFirebaseUserPic } from "../Redux/actions";
+import { useDispatch } from "react-redux";
+import CardProfile from "./cardProfile";
 import { useState } from "react";
 
 function Profile() {
   const [currentFile, setCurrentFile] = useState()
+  const dispatch = useDispatch()
 
   function selectFile(event) {
     setCurrentFile(event.target.files[0])
   }
   const handleSetFile = () => {
-    
+    if (currentFile) {
+      dispatch(setFirebaseUserPic(currentFile))
+    } else {
+      alert("Not image selected")
+    }
   }
   
   return (
@@ -26,7 +32,10 @@ function Profile() {
                 accept="image/*"
                 disableUnderline
                 onChange={selectFile}
-              />
+        />
+        <Button
+          onClick={handleSetFile}
+        ></Button>
       </Box>
     </Box>
   );
