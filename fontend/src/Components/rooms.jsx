@@ -6,6 +6,7 @@ import AccordionNewRoom from './newRoom';
 import { auth } from "../firebase";
 import { useEffect } from 'react';
 import * as React from 'react';
+import Profile from './profile';
 
 const color_secondary = "#3E2A61";
 
@@ -86,6 +87,7 @@ export default function Rooms({socket}) {
 
         </Box>
         <Box>
+          <Profile />
           <AccordionNewRoom />
         </Box>
         <Divider />

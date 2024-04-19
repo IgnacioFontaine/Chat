@@ -4,6 +4,8 @@ import { useDispatch } from "react-redux";
 import CardProfile from "./cardProfile";
 import { useState } from "react";
 
+const color_secondary = "#3E2A61";
+
 function Profile() {
   const [currentFile, setCurrentFile] = useState()
   const dispatch = useDispatch()
@@ -20,12 +22,12 @@ function Profile() {
   }
   
   return (
+    //Esto podría ser un acordeón tmb
     <Box>
-      <CardProfile />
+      {/* <CardProfile />
       <Typography>New image</Typography>
-      <Typography>New Name</Typography>
+      <Typography>New Name</Typography> */}
       <Box>
-        
               <Input
                 type="file"
                 placeholder="File"
@@ -34,8 +36,18 @@ function Profile() {
                 onChange={selectFile}
         />
         <Button
+          sx={{
+                bgcolor: `${color_secondary}`,
+                mt:0.5,
+                height: "4.6vh",
+                width: "1.8vw",
+                color: "black",
+                boxShadow:3,
+                ":hover":
+                  { bgcolor: `${color_secondary}`, color: "white" }
+              }}
           onClick={handleSetFile}
-        ></Button>
+        />
       </Box>
     </Box>
   );
