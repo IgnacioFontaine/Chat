@@ -47,7 +47,7 @@ function Profile() {
                   { bgcolor: `${color_secondary}`, color: "white" }
               }}
           onClick={handleSetFile}
-        />
+        >Set</Button>
       </Box>
     </Box>
   );
