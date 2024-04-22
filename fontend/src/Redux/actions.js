@@ -102,17 +102,27 @@ export const newFirebaseFile = (message) => {
 export const newFirebaseAudio = (message) => {
   return async (dispatch) => {
     try {
+      const db = getFirestore();
+      const storage = getStorage();
+
+      // Upload file to Firebase Storage
+      const storageRef = ref(storage, `audio/${message.id}`);
+      await uploadBytes(storageRef, message.message);
+
+      // Get download URL of the uploaded file
+      const downloadURL = await getDownloadURL(storageRef);
+
       // Save message data in Firestore with file URL
-      const docRef = await addDoc(collection(db, "message"), {
-        message: message.audio,
+      const docRef = await addDoc(collection(db, "audio"), {
+        message: downloadURL,
         type: message.type,
         room: message.room,
         author: message.author,
         time: message.time,
         id: message.id
       });
-      console.log("Audio written with ID: ", docRef.id);
 
+      console.log("Document written with ID: ", docRef.id);
     } catch (error) {
       console.error("Error adding document: ", error);
       return dispatch({ type: ACTION_TYPES.ERROR, payload: error });

@@ -1,4 +1,5 @@
 import { Avatar, Box, Paper, Typography } from "@mui/material";
+import AudioRepro from "./audioRepro";
 
 export const Message = ({ message, username }) => {
   const isMe = message.author === username;
@@ -43,11 +44,12 @@ export const Message = ({ message, username }) => {
             borderRadius: isMe ? "20px 20px 5px 20px" : "20px 20px 20px 5px",
           }}
         >
-          {isFileMessage ? (
+          {/* {isFileMessage ? (
             <img src={message.message} alt="Imagen adjunta" style={{maxHeight:"400px"}} />
           ) : (
             <Typography variant="body1" color={"whitesmoke"} >{message.message}</Typography>
-          )}
+          )} */}
+          <AudioRepro />
           
           <Typography
             variant="caption"
