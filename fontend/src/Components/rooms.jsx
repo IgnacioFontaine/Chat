@@ -14,7 +14,9 @@ export default function Rooms({socket}) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const current_uid = useSelector((state) => state.notWhatsapp.user_uid);
-  
+  const profile_pic = auth.currentUser
+  console.log(profile_pic);
+
   useEffect(() => {
     
     dispatch(getFirebaseRooms(current_uid))

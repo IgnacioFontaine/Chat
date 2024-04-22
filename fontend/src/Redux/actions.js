@@ -1,7 +1,7 @@
 import ACTION_TYPES from "./actionsTypes";
 import { db } from "../firebase"
 import { collection, addDoc, query, where, getDocs, getFirestore , deleteDoc } from "firebase/firestore";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { getStorage, ref, uploadBytes, getDownloadURL,  } from "firebase/storage";
 import { getAuth, updateProfile } from "firebase/auth";
 
 export const setUser = (user) => {
@@ -218,7 +218,7 @@ export const setFirebaseUserPic = (userPic) => {
 export const getUserProfilePic = (userPic) => {
   const auth = getAuth();
   const user = auth.currentUser;
-
+  
   if (user) {
     // Si el usuario tiene una foto de perfil, actualiza la URL de la foto
     const newPhotoURL = `${userPic}`; // Reemplaza con la URL de la nueva foto
