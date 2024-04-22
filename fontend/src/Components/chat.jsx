@@ -1,5 +1,5 @@
-import { newFirebaseMessage, getMessageByRoom, newFirebaseFile } from "../Redux/actions";
-import { Box, TextField, Button, Avatar, Grid, Input, IconButton } from "@mui/material";
+import { newFirebaseMessage, getMessageByRoom, newFirebaseFile, newFirebaseAudio } from "../Redux/actions";
+import { Box, TextField, Button, Avatar, Grid, Input, IconButton, InputAdornment } from "@mui/material";
 import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,6 +15,7 @@ const color_secondary = "#3E2A61";
 
 function Chat({ socket, username, room }) {
   const dispatch = useDispatch();
+  const [currentAudioFile, setcurrentAudioFile] = useState()
   const [currentFile, setcurrentFile] = useState()
   const [messagesList, setMessagesList] = useState([])
   const [currentMessage, setcurrentMessage] = useState("")
@@ -45,8 +46,13 @@ const sortedMessages = all_message_room.sort((a, b) => {
     setcurrentFile(event.target.files[0])
   }
 
+  function selectAudioFile(event) {
+    setcurrentMessage(event.target.files[0].name)
+    setcurrentAudioFile(event.target.files[0])
+  }
+
   const sendMessage = async () => {
-    if (username && currentMessage && !currentFile) {
+    if (username && currentMessage && !currentFile && !currentAudioFile) {
       const info = {
         message: currentMessage,
         type: "text",
@@ -64,7 +70,7 @@ const sortedMessages = all_message_room.sort((a, b) => {
       setcurrentFile()
     }
 
-    if (username && currentFile) {
+    if (username && currentFile ) {
     const info = {
       message: currentFile,
       type: "file",
@@ -76,6 +82,21 @@ const sortedMessages = all_message_room.sort((a, b) => {
      setMessagesList((list) => [...list, info]);
     dispatch(newFirebaseFile(info))  
     setcurrentFile(null);
+    setcurrentMessage("");
+    }
+    
+    if (username && currentAudioFile) {
+    const info = {
+      message: currentFile,
+      type: "audio",
+      room,
+      author: username,
+      time: format(t, "YYYY-MM-DDTHH:mm:ss", l),
+      id: crypto.randomUUID()
+      };
+     setMessagesList((list) => [...list, info]);
+     dispatch(newFirebaseAudio(info))  
+    setcurrentAudioFile(null);
     setcurrentMessage("");
   }
   }
@@ -97,6 +118,22 @@ const sortedMessages = all_message_room.sort((a, b) => {
     socket.off("recieve_image", handleMessage);
   };
   }, [socket, messagesList, selected_room])
+
+  const AudioInput = () => {
+  return (
+    <Input
+      type="file"
+      accept="audio/mp3"
+      disableUnderline
+      onChange={selectAudioFile}
+      startAdornment={
+        <InputAdornment position="start" >
+          <KeyboardVoiceIcon />
+        </InputAdornment>
+      }
+    />
+  );
+};
 
   
   return (
@@ -184,7 +221,8 @@ const sortedMessages = all_message_room.sort((a, b) => {
                 ":hover":
                   { bgcolor: `${color_secondary}`, color: "white" }
               }}>
-              <KeyboardVoiceIcon   />
+              {/* <KeyboardVoiceIcon /> */}
+              <AudioInput />
             </Avatar>
             <Avatar sx={{
               bgcolor: `${color_secondary}`,
