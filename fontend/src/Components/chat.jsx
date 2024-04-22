@@ -30,7 +30,7 @@ function Chat({ socket, username, room }) {
 const sortedMessages = all_message_room.sort((a, b) => {
   const dateA = new Date(a.time);
   const dateB = new Date(b.time);
-
+  
   // Compara las fechas
   if (dateA.toDateString() === dateB.toDateString()) {
     // Si las fechas son iguales, compara las horas
@@ -40,6 +40,7 @@ const sortedMessages = all_message_room.sort((a, b) => {
     return dateA - dateB;
   }
 });
+  console.log( sortedMessages);
   
   function selectFile(event) {
     setcurrentMessage(event.target.files[0].name)

@@ -113,7 +113,7 @@ export const newFirebaseAudio = (message) => {
       const downloadURL = await getDownloadURL(storageRef);
 
       // Save message data in Firestore with file URL
-      const docRef = await addDoc(collection(db, "audio"), {
+      const docRef = await addDoc(collection(db, "message"), {
         message: downloadURL,
         type: message.type,
         room: message.room,
