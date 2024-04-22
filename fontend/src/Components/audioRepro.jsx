@@ -1,13 +1,11 @@
-import { Box, Typography } from "@mui/material"
-import sound from "../assets/chat.mp3"
+import { Box } from "@mui/material"
 
-function AudioRepro() {
-  const url = sound;
+function AudioRepro({sound}) {
 
   return (
     <Box>
-      <audio controls style={{}}>
-        <source src={url} type="audio/mpeg"></source>
+      <audio controls >
+        <source src={sound} type="audio/mpeg"></source>
       </audio>
     </Box>
   );

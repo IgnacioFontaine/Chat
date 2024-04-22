@@ -5,6 +5,8 @@ export const Message = ({ message, username }) => {
   const isMe = message.author === username;
   // Verificar si el mensaje es de tipo "file"
   const isFileMessage = message.type === "file";
+  const isTextoMessage = message.type === "texto";
+  const isAudioMessage = message.type === "audio";
   const id_message = crypto.randomUUID()
 
   //Renderizar el tiempo
@@ -44,12 +46,15 @@ export const Message = ({ message, username }) => {
             borderRadius: isMe ? "20px 20px 5px 20px" : "20px 20px 20px 5px",
           }}
         >
-          {/* {isFileMessage ? (
+          {isFileMessage?? (
             <img src={message.message} alt="Imagen adjunta" style={{maxHeight:"400px"}} />
-          ) : (
+          )}
+          {isTextoMessage ?? (
             <Typography variant="body1" color={"whitesmoke"} >{message.message}</Typography>
-          )} */}
-          <AudioRepro />
+          )}
+          {isAudioMessage?? (
+            <AudioRepro sound={message.message} /> 
+          )}
           
           <Typography
             variant="caption"
