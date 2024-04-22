@@ -14,7 +14,7 @@ export default function Rooms({socket}) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const current_uid = useSelector((state) => state.notWhatsapp.user_uid);
-  const profile_pic = auth.currentUser
+  const profile_pic = auth.currentUser.photoURL
   console.log(profile_pic);
 
   useEffect(() => {
@@ -63,7 +63,7 @@ export default function Rooms({socket}) {
           alignItems: "center",
           backgroundColor:"#7C7C7C"
         }}>
-          <Avatar sx={{backgroundColor:"blueviolet", color:"black", ml:2 ,boxShadow:3}} >{user_avatar}</Avatar>
+          <Avatar sx={{backgroundColor:"blueviolet", color:"black", ml:2 ,boxShadow:3}} >{profile_pic ?? user_avatar}</Avatar>
 
         <Typography variant="h5" gutterBottom component="div" sx={{ p: 2, pb: 0, fontFamily:"fantasy", mb:2 }}>
             {username_email.toUpperCase()}
