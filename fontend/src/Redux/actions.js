@@ -237,51 +237,6 @@ export const setUidUserPic = (userPic) => {
   
 }
 
-
-export const getFirebaseUserPic = () => {
-  return async (dispatch) => {
-    try {
-      const auth = getAuth();
-      const user = auth.currentUser.uid
-      const querySnapshot = query(collection(db, "profile"), where("user_id", "==", user))
-      const querySnapshotGet = await getDocs(querySnapshot);
-
-      dispatch({
-        type: ACTION_TYPES.GET_PROFILE_PIC,
-        payload: querySnapshotGet,
-      });
-
-  
-  } catch (event) {
-      console.error("Error adding document: ", event);
-      return dispatch({ type: ACTION_TYPES.ERROR, payload: event });
-  }
-  };
-}
-
-export const getUserProfilePic = (userPic) => {
-  const auth = getAuth();
-  const user = auth.currentUser;
-
-  if (user) {
-    // Si el usuario tiene una foto de perfil, actualiza la URL de la foto
-    const newPhotoURL = `${userPic}`; // Reemplaza con la URL de la nueva foto
-      user.updateProfile({
-           photoURL: newPhotoURL,
-      })
-        
-        .then(() => {
-          console.log("Foto de perfil actualizada correctamente");
-          console.log( user.photoURL);
-       })
-       .catch((error) => {
-       console.error("Error al actualizar la foto de perfil:", error);
-       });
-     } else {
-    console.log("No hay usuario autenticado");
-    }
-}
-
 export const createFirebaseUser = (user) => {
   return async (dispatch) => {
     try {

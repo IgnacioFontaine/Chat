@@ -39,12 +39,6 @@ const reducer = (state = initialState, action) => {
         rooms_firebase: action.payload
       };
     
-    case ACTION_TYPES.GET_PROFILE_PIC:
-      return {
-        ...state,
-        user_pic: action.payload
-      };
-    
     case ACTION_TYPES.GET_MESSAGES_ROOM:
       return {
         ...state,
