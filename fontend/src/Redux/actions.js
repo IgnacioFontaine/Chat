@@ -224,9 +224,9 @@ export const setUidUserPic = (userPic) => {
         user_id: user
       });
 
-      // updateProfile(user, {
-      //   photoURL: downloadURL,
-      // })
+      updateProfile(user, {
+        photoURL: downloadURL,
+      })
 
       // console.log("Profile pic set: ", docRef.id);
     } catch (error) {
@@ -246,10 +246,10 @@ export const getFirebaseUserPic = () => {
       const querySnapshot = query(collection(db, "profile"), where("user_id", "==", user))
       const querySnapshotGet = await getDocs(querySnapshot);
 
-      // dispatch({
-      //   type: ACTION_TYPES.GET_PROFILE_PIC,
-      //   payload: querySnapshotGet,
-      // });
+      dispatch({
+        type: ACTION_TYPES.GET_PROFILE_PIC,
+        payload: querySnapshotGet,
+      });
 
   
   } catch (event) {
