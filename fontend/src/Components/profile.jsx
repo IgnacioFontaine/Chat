@@ -1,6 +1,6 @@
 import { Box, Typography, Input, Button,  AccordionDetails, AccordionSummary, Accordion  } from "@mui/material"
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import { setFirebaseUserPic } from "../Redux/actions";
+import { setUidUserPic } from "../Redux/actions";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 
@@ -15,7 +15,7 @@ function Profile() {
   }
   const handleSetFile = () => {
     if (currentFile) {
-      dispatch(setFirebaseUserPic(currentFile))
+      dispatch(setUidUserPic(currentFile))
     } else {
       alert("Not image selected")
     }

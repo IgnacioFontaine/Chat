@@ -202,48 +202,55 @@ export const deleteFirestoreRoom = (roomId) => {
     };
 }
 
-export const setFirebaseUserPic = (userPic) => {
-  return async (dispatch) => {
-    try {
-
-      console.log("Foto de perfil actializada:", userPic);
+export const setUidUserPic = (userPic) => {
   
-  } catch (event) {
-      console.error("Error adding document: ", event);
-      return dispatch({ type: ACTION_TYPES.ERROR, payload: event });
-  }
-  };
-}
-
-export const getUidUserPic = (userPic) => {
-  const auth = getAuth();
-  const user = auth.currentUser.uid
-
-  if (user) {
-    // Si el usuario tiene una foto de perfil, actualiza la URL de la foto
-    const newPhotoURL = `${userPic}`; // Reemplaza con la URL de la nueva foto
-      user.updateProfile({
-           photoURL: newPhotoURL,
-      })
-        
-        .then(() => {
-          console.log("Foto de perfil actualizada correctamente");
-          console.log( user.photoURL);
-       })
-       .catch((error) => {
-       console.error("Error al actualizar la foto de perfil:", error);
-       });
-     } else {
-    console.log("No hay usuario autenticado");
-    }
-}
-
-
-export const setFirebaseUserPic = (userPic) => {
   return async (dispatch) => {
     try {
+      const auth = getAuth();
+      const user = auth.currentUser
+      const db = getFirestore();
+      const storage = getStorage();
 
-      console.log("Foto de perfil actializada:", userPic);
+      // Upload file to Firebase Storage
+      const storageRef = ref(storage, `files/${user}`);
+      await uploadBytes(storageRef, userPic);
+
+      // Get download URL of the uploaded file
+      const downloadURL = await getDownloadURL(storageRef);
+
+      // Save message data in Firestore with file URL
+      const docRef = await addDoc(collection(db, "profile"), {
+        profile_pic: downloadURL,
+        user_id: user
+      });
+
+      // updateProfile(user, {
+      //   photoURL: downloadURL,
+      // })
+
+      // console.log("Profile pic set: ", docRef.id);
+    } catch (error) {
+      console.error("Error adding document: ", error);
+      return dispatch({ type: ACTION_TYPES.ERROR, payload: error });
+    }
+  };
+  
+}
+
+
+export const getFirebaseUserPic = () => {
+  return async (dispatch) => {
+    try {
+      const auth = getAuth();
+      const user = auth.currentUser.uid
+      const querySnapshot = query(collection(db, "profile"), where("user_id", "==", user))
+      const querySnapshotGet = await getDocs(querySnapshot);
+
+      // dispatch({
+      //   type: ACTION_TYPES.GET_PROFILE_PIC,
+      //   payload: querySnapshotGet,
+      // });
+
   
   } catch (event) {
       console.error("Error adding document: ", event);
