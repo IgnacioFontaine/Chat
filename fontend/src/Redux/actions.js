@@ -1,8 +1,8 @@
-import ACTION_TYPES from "./actionsTypes";
-import { db } from "../firebase"
 import { collection, addDoc, query, where, getDocs, getFirestore , deleteDoc } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL,  } from "firebase/storage";
 import { getAuth, updateProfile } from "firebase/auth";
+import ACTION_TYPES from "./actionsTypes";
+import { db } from "../firebase"
 
 export const setUser = (user) => {
   return async (dispatch) => {

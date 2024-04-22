@@ -1,26 +1,17 @@
-import { useEffect, useState } from "react"
-import {
-  Box,
-  TextField,
-  Button,
-  Avatar,
-  Grid,
-  Input,
-  IconButton
-} from "@mui/material";
-import SendIcon from "@mui/icons-material/Send";
+import { newFirebaseMessage, getMessageByRoom, newFirebaseFile } from "../Redux/actions";
+import { Box, TextField, Button, Avatar, Grid, Input, IconButton } from "@mui/material";
 import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
-import { newFirebaseMessage, getMessageByRoom, newFirebaseFile } from "../Redux/actions";
 import { useDispatch, useSelector } from 'react-redux';
 import backgraund_chat from "../assets/fondo_chat.png"
+import SendIcon from "@mui/icons-material/Send";
+import { useEffect, useState } from "react"
 import { AvatarRoom } from "./avatarRoom";
-import { Message } from "./message";
 import { format } from "@formkit/tempo"
+import { Message } from "./message";
 
-// const color_primary = "#7D56C1";
+
 const color_secondary = "#3E2A61";
-
 
 function Chat({ socket, username, room }) {
   const dispatch = useDispatch();

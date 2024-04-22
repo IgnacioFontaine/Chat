@@ -1,11 +1,11 @@
-import Chat from '../Components/chat'
-import NotChat from '../Components/notChat'
 import { Container, Box, FormControl } from '@mui/material'
-import { useState } from 'react'
+import NotChat from '../Components/notChat'
 import { useSelector } from 'react-redux';
-import { useEffect } from 'react'
 import Rooms from '../Components/rooms'
+import Chat from '../Components/chat'
 import io from 'socket.io-client';
+import { useEffect } from 'react'
+import { useState } from 'react'
 
 
 const socket = io.connect("http://localhost:3001");
