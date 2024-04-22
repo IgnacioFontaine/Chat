@@ -4,6 +4,7 @@ import ACTION_TYPES from "./actionsTypes";
 const initialState = {
   user: null,
   user_uid: null,
+  user_pic:null,
   rooms_firebase: [],
   messages_room: [],
   select_room: null,
@@ -36,6 +37,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         rooms_firebase: action.payload
+      };
+    
+    case ACTION_TYPES.GET_PROFILE_PIC:
+      return {
+        ...state,
+        user_pic: action.payload
       };
     
     case ACTION_TYPES.GET_MESSAGES_ROOM:
