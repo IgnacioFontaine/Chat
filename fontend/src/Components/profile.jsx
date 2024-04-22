@@ -23,7 +23,10 @@ function Profile() {
   
   return (
     <Box>
-      <Box>
+      <Box sx={{
+        display: "flex",
+        justifyContent:"space-between"
+              }}>
          <Input
           type="file"
           placeholder="File"
@@ -34,9 +37,9 @@ function Profile() {
         <Button
           sx={{
                 bgcolor: `${color_secondary}`,
-                mt:0.5,
-                height: "4.6vh",
-                width: "1.8vw",
+                mt:2,
+                height: "3vh",
+                width: "1.2vw",
                 color: "black",
                 boxShadow:3,
                 ":hover":
