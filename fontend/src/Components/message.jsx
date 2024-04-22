@@ -17,6 +17,16 @@ export const Message = ({ message, username }) => {
   const minutes = timestamp.getMinutes();
   const formattedTime = `${day}/${month} ${hours}:${minutes}`;
 
+    const renderMessageContent = () => {
+    if (isFileMessage) {
+      return <img src={message.message} alt="Imagen adjunta" style={{ maxHeight: "400px" }} />;
+    } else if (isTextoMessage) {
+      return <Typography variant="body1" color="whitesmoke">{message.message}</Typography>;
+    } else if (isAudioMessage) {
+      return <AudioRepro sound={message.message} />;
+    }
+  };
+
   return (
     <Box
       sx={{
@@ -46,16 +56,7 @@ export const Message = ({ message, username }) => {
             borderRadius: isMe ? "20px 20px 5px 20px" : "20px 20px 20px 5px",
           }}
         >
-          {isFileMessage?? (
-            <img src={message.message} alt="Imagen adjunta" style={{maxHeight:"400px"}} />
-          )}
-          {isTextoMessage ?? (
-            <Typography variant="body1" color={"whitesmoke"} >{message.message}</Typography>
-          )}
-          {isAudioMessage?? (
-            <AudioRepro sound={message.message} /> 
-          )}
-          
+          {renderMessageContent()}
           <Typography
             variant="caption"
             color={"whitesmoke"}
