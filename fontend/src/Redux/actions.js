@@ -215,18 +215,57 @@ export const setFirebaseUserPic = (userPic) => {
   };
 }
 
-export const getUserProfilePic = (userPic) => {
+export const getUidUserPic = (userPic) => {
   const auth = getAuth();
-  const user = auth.currentUser;
-  
+  const user = auth.currentUser.uid
+
   if (user) {
     // Si el usuario tiene una foto de perfil, actualiza la URL de la foto
     const newPhotoURL = `${userPic}`; // Reemplaza con la URL de la nueva foto
       user.updateProfile({
            photoURL: newPhotoURL,
-        })
+      })
+        
         .then(() => {
-       console.log("Foto de perfil actualizada correctamente");
+          console.log("Foto de perfil actualizada correctamente");
+          console.log( user.photoURL);
+       })
+       .catch((error) => {
+       console.error("Error al actualizar la foto de perfil:", error);
+       });
+     } else {
+    console.log("No hay usuario autenticado");
+    }
+}
+
+
+export const setFirebaseUserPic = (userPic) => {
+  return async (dispatch) => {
+    try {
+
+      console.log("Foto de perfil actializada:", userPic);
+  
+  } catch (event) {
+      console.error("Error adding document: ", event);
+      return dispatch({ type: ACTION_TYPES.ERROR, payload: event });
+  }
+  };
+}
+
+export const getUserProfilePic = (userPic) => {
+  const auth = getAuth();
+  const user = auth.currentUser;
+
+  if (user) {
+    // Si el usuario tiene una foto de perfil, actualiza la URL de la foto
+    const newPhotoURL = `${userPic}`; // Reemplaza con la URL de la nueva foto
+      user.updateProfile({
+           photoURL: newPhotoURL,
+      })
+        
+        .then(() => {
+          console.log("Foto de perfil actualizada correctamente");
+          console.log( user.photoURL);
        })
        .catch((error) => {
        console.error("Error al actualizar la foto de perfil:", error);

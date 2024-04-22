@@ -13,7 +13,6 @@ const initialState = {
 
 //Config reducer
 const reducer = (state = initialState, action) => {
-  console.log(action);
   switch (action.type) {
     case ACTION_TYPES.SET_USER:
       return {
