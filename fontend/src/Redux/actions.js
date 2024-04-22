@@ -218,17 +218,10 @@ export const setUidUserPic = (userPic) => {
       // Get download URL of the uploaded file
       const downloadURL = await getDownloadURL(storageRef);
 
-      // Save message data in Firestore with file URL
-      const docRef = await addDoc(collection(db, "profile"), {
-        profile_pic: downloadURL,
-        user_id: user
-      });
-
       updateProfile(user, {
         photoURL: downloadURL,
       })
 
-      // console.log("Profile pic set: ", docRef.id);
     } catch (error) {
       console.error("Error adding document: ", error);
       return dispatch({ type: ACTION_TYPES.ERROR, payload: error });

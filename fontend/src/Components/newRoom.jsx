@@ -1,8 +1,9 @@
 import { Box, Typography, Button, TextField, AccordionDetails, AccordionSummary, Accordion } from "@mui/material"
 import { newFirebaseRoom, getFirebaseRooms } from '../Redux/actions';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import { useDispatch, useSelector } from 'react-redux';
 import AddIcon from '@mui/icons-material/Add';
+import { useDispatch} from 'react-redux';
+import { auth } from "../firebase";
 import InfoPopover from './info';
 import { useState } from 'react';
 
@@ -10,9 +11,9 @@ const color_secondary = "#3E2A61";
 
 function NewRoom() {
   const dispatch = useDispatch();
-  const current_uid = useSelector((state) => state.notWhatsapp.user_uid);
   const [name, setName] = useState("");
   const [id, setId] = useState("");
+  const current_uid = auth.currentUser.uid
   const [user_id] = useState(current_uid);
 
     function handleCreate(event) {

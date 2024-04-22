@@ -1,12 +1,13 @@
 import { Avatar, Box, Button, ListItemAvatar, ListItemText, ListItemButton } from '@mui/material';
 import { deleteFirestoreRoom, selectRoom, getFirebaseRooms } from '../Redux/actions';
-import { useDispatch, useSelector } from 'react-redux';
 import ClearIcon from '@mui/icons-material/Clear';
+import { useDispatch} from 'react-redux';
+import { auth } from '../firebase';
 
 
 export const AvatarRoom = ({ name, id }) => {
   const dispatch = useDispatch()
-  const current_uid = useSelector((state) => state.notWhatsapp.user_uid);
+  const current_uid = auth.currentUser.uid
 
   const handleDelete = () => {
     dispatch(deleteFirestoreRoom(id))

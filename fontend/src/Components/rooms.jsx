@@ -13,22 +13,21 @@ const color_secondary = "#3E2A61";
 export default function Rooms({socket}) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const current_uid = useSelector((state) => state.notWhatsapp.user_uid);
-  const profile_pic = auth.currentUser.photoURL
+  const profile_pic = auth.currentUser?.photoURL
+  const user_uid = auth.currentUser.uid
 
   useEffect(() => {
     
-    dispatch(getFirebaseRooms(current_uid))
+    dispatch(getFirebaseRooms(user_uid))
     
   }, []);
-
   
 
   const all_rooms = useSelector((state) => state.notWhatsapp.rooms_firebase)
 
-  const current_user = useSelector((state) => state.notWhatsapp.user);
+  const user_current= auth.currentUser.email
 
-  const username_email = current_user.slice(0, current_user.indexOf("@"));
+  const username_email = user_current.slice(0, user_current.indexOf("@"));
 
   const user_avatar = username_email[0].toUpperCase()
 
@@ -42,7 +41,7 @@ export default function Rooms({socket}) {
   }
 
   function handleOut() {
-    if (current_user) {
+    if (user_current) {
       auth.signOut();
       navigate("/")
     }
