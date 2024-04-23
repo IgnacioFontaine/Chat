@@ -107,7 +107,8 @@ export const newFirebaseAudio = (message) => {
 
       // Upload file to Firebase Storage
       const storageRef = ref(storage, `audio/${message.id}`);
-      await uploadBytes(storageRef, message.message);
+       await uploadBytes(storageRef, message.message);
+      
 
       // Get download URL of the uploaded file
       const downloadURL = await getDownloadURL(storageRef);
