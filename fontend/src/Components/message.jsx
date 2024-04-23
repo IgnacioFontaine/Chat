@@ -3,6 +3,7 @@ import AudioRepro from "./audioRepro";
 
 export const Message = ({ message, username }) => {
   const isMe = message.author === username;
+  
   // Verificar si el mensaje es de tipo "file"
   const isFileMessage = message.type === "file";
   const isTextoMessage = message.type === "texto";
@@ -23,12 +24,8 @@ export const Message = ({ message, username }) => {
     } else if (isTextoMessage) {
       return <Typography variant="body1" color="whitesmoke">{message.message}</Typography>;
     } else if (isAudioMessage) {
-      const url_message = message.message
       return (
         <AudioRepro  message={message}/>
-        // <audio controls  >
-        //     <source src={url_message} type="audio/mpeg"></source>
-        // </audio>
       )
     }
   };
