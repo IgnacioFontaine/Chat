@@ -17,13 +17,19 @@ export const Message = ({ message, username }) => {
   const minutes = timestamp.getMinutes();
   const formattedTime = `${day}/${month} ${hours}:${minutes}`;
 
-    const renderMessageContent = () => {
+  const renderMessageContent = () => {
     if (isFileMessage) {
       return <img src={message.message} alt="Imagen adjunta" style={{ maxHeight: "400px" }} />;
     } else if (isTextoMessage) {
       return <Typography variant="body1" color="whitesmoke">{message.message}</Typography>;
     } else if (isAudioMessage) {
-      return <AudioRepro sound={message.message} />;
+      const url_message = message.message
+      return (
+        <AudioRepro />
+        // <audio controls  >
+        //     <source src={url_message} type="audio/mpeg"></source>
+        // </audio>
+      )
     }
   };
 

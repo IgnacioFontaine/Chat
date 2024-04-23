@@ -95,7 +95,7 @@ const sortedMessages = all_message_room.sort((a, b) => {
       time: format(t, "YYYY-MM-DDTHH:mm:ss", l),
       id: crypto.randomUUID()
       };
-     setMessagesList((list) => [...list, info]);
+      setMessagesList((list) => [...list, info]);
      dispatch(newFirebaseAudio(info))  
     setcurrentAudioFile(null);
     setcurrentMessage("");

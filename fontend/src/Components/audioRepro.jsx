@@ -1,6 +1,7 @@
 import { Box } from "@mui/material"
+import sound from "../assets/chat.mp3"
 
-function AudioRepro({sound}) {
+function AudioRepro() {
 
   return (
     <Box>
