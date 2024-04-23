@@ -131,6 +131,20 @@ export const newFirebaseAudio = (message) => {
   };
 };
 
+export const getUrlAudio = (message) => {
+  return async (dispatch) => {
+    try {
+      // Get download URL of the uploaded file
+      const downloadURL = await getDownloadURL(message.message);
+      return downloadURL
+
+    } catch (error) {
+      console.error("Error adding document: ", error);
+      return dispatch({ type: ACTION_TYPES.ERROR, payload: error });
+    }
+  };
+};
+
 export const getFirebaseRooms = (uid) => {
   return async (dispatch) => {
     try {
