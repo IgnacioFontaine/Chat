@@ -10,7 +10,6 @@ import { AvatarRoom } from "./avatarRoom";
 import { format } from "@formkit/tempo"
 import { Message } from "./message";
 
-
 const color_secondary = "#3E2A61";
 
 function Chat({ socket, username, room }) {
@@ -101,7 +100,6 @@ const sortedMessages = all_message_room.sort((a, b) => {
     setcurrentMessage("");
   }
   }
-
   
   useEffect(() => {
     const handleMessage = (data) => {
@@ -135,7 +133,6 @@ const sortedMessages = all_message_room.sort((a, b) => {
     />
   );
 };
-
   
   return (
     <Box
