@@ -25,7 +25,7 @@ export const Message = ({ message, username }) => {
     } else if (isAudioMessage) {
       const url_message = message.message
       return (
-        <AudioRepro />
+        <AudioRepro  message={message}/>
         // <audio controls  >
         //     <source src={url_message} type="audio/mpeg"></source>
         // </audio>
