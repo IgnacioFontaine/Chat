@@ -2,7 +2,6 @@
 import { Box } from "@mui/material"
 import { Howl } from 'howler';
 
-
 function AudioRepro({ message }) {
   const sound = new Howl({
   src: [`${message.message}`],
@@ -11,7 +10,6 @@ function AudioRepro({ message }) {
   autoplay: true,
   format: ['mp3']
   });
-
   
   return (
     <Box>
