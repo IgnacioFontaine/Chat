@@ -6,7 +6,7 @@ export const Message = ({ message, username }) => {
   
   // Verificar si el mensaje es de tipo "file"
   const isFileMessage = message.type === "file";
-  const isTextoMessage = message.type === "texto";
+  const isTextoMessage = message.type === "text";
   const isAudioMessage = message.type === "audio";
   const id_message = crypto.randomUUID()
 
