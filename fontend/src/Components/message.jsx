@@ -25,7 +25,7 @@ export const Message = ({ message, username }) => {
       return <Typography variant="body1" color="whitesmoke">{message.message}</Typography>;
     } else if (isAudioMessage) {
       return (
-        <AudioRepro  message={message}/>
+        <AudioRepro />
       )
     }
   };
