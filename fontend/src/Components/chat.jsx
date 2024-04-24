@@ -39,7 +39,7 @@ const sortedMessages = all_message_room.sort((a, b) => {
     return dateA - dateB;
   }
 });
-  console.log( sortedMessages);
+  // console.log( sortedMessages);
   
   function selectFile(event) {
     setcurrentMessage(event.target.files[0].name)
@@ -61,7 +61,7 @@ const sortedMessages = all_message_room.sort((a, b) => {
         time: format(t, "YYYY-MM-DDTHH:mm:ss", l),
         id: crypto.randomUUID(),
       };
-      console.log("Enviando mensaje: ", info);
+      // console.log("Enviando mensaje: ", info);
 
       await socket.emit("send_message", info)
       dispatch(newFirebaseMessage(info));
@@ -244,18 +244,6 @@ const sortedMessages = all_message_room.sort((a, b) => {
                   </IconButton>
                   }
               />
-              {/* <Input
-                  type="file"
-                  disableUnderline
-                  inputProps={{ style: { display: "none" } }}
-                  
-                  endAdornment={
-                    <InputAdornment position="end"
-                    onChange={selectFile}>
-                      <AttachFileIcon />
-                    </InputAdornment>
-                  }
-                /> */}
             </Avatar>
           </Grid>
         </Grid>
