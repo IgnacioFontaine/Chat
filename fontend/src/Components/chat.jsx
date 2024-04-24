@@ -219,7 +219,6 @@ const sortedMessages = all_message_room.sort((a, b) => {
                 ":hover":
                   { bgcolor: `${color_secondary}`, color: "white" }
               }}>
-              {/* <KeyboardVoiceIcon /> */}
               <AudioInput />
             </Avatar>
             <Avatar sx={{
