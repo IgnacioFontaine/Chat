@@ -37,7 +37,7 @@ function Profile() {
         <Button
           sx={{
                 bgcolor: `${color_secondary}`,
-                mt:2,
+                mt:1,
                 height: "3vh",
                 width: "1.2vw",
                 color: "black",
