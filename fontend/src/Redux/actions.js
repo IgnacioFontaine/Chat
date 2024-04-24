@@ -134,9 +134,13 @@ export const newFirebaseAudio = (message) => {
 export const getUrlAudio = (message) => {
   return async (dispatch) => {
     try {
+      const db = getFirestore();
+      const storage = getStorage();
+
+      const storageRef = ref(storage, `audio/${message.id}`);
       // Get download URL of the uploaded file
-      const downloadURL = await getDownloadURL(message.message);
-      return downloadURL
+      const downloadURL = await getDownloadURL(storageRef);
+      return downloadURL;
 
     } catch (error) {
       console.error("Error adding document: ", error);
