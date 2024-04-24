@@ -1,5 +1,5 @@
 // import sound_dowload from "../assets/chat.mp3"
-import { Box } from "@mui/material"
+import { Box, Typography } from "@mui/material"
 import { Howl } from 'howler';
 
 function AudioRepro({ message }) {
@@ -16,7 +16,8 @@ function AudioRepro({ message }) {
       <audio controls>
         <source src={sound._src} type="audio/mpeg"></source>
         Tu navegador no admite la reproducción de audio.
-    </audio>
+      </audio>
+      <Typography>cambio en mensaje</Typography>
     </Box>
   );
 }
