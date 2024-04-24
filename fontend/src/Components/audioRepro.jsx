@@ -17,7 +17,6 @@ function AudioRepro({ message }) {
         <source src={sound._src} type="audio/mpeg"></source>
         Tu navegador no admite la reproducción de audio.
       </audio>
-      <Typography>cambio en mensaje</Typography>
     </Box>
   );
 }
