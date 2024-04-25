@@ -1,8 +1,8 @@
-import express from 'express'
-import cors from 'cors'
-import { Server } from "socket.io";
 import { createServer } from 'node:http'
+import { Server } from "socket.io";
+import express from 'express'
 import multer from 'multer'
+import cors from 'cors'
 
 // Configura Multer para manejar la carga de archivos
 const upload = multer({ dest: 'uploads/' });
@@ -53,7 +53,6 @@ io.on('connection', (socket) => {
     console.log('User disconnect', socket.id)
   })
 });
-
 
 const PORT = 3001;
 

@@ -1,6 +1,6 @@
 import sound_dowload from "../assets/chat.mp3"
-import { Box, Typography } from "@mui/material"
-import { Howl } from 'howler';
+import { Box} from "@mui/material"
+import { Howl } from 'howler'
 
 function AudioRepro({ message }) {
   const sound = new Howl({
