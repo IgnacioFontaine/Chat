@@ -8,7 +8,6 @@ import { useEffect } from 'react';
 import { auth } from './firebase';
 
 function App() {
-
   const dispatch = useDispatch()
 
   useEffect(() => {
